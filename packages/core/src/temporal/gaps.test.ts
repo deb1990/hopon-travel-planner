@@ -28,12 +28,12 @@ describe('Gap Detection Logic', () => {
     const result = identifyItineraryGaps(events);
 
     expect(result).toHaveLength(1);
-    expect(result[0].startTime).toBe('2026-10-03T11:00:00Z');
-    expect(result[0].endTime).toBe('2026-10-05T15:00:00Z');
+    expect(result[0]!.startTime).toBe('2026-10-03T11:00:00Z');
+    expect(result[0]!.endTime).toBe('2026-10-05T15:00:00Z');
   });
 
   it('should return empty if there are no gaps', () => {
-     const events: ItineraryEvent[] = [
+    const events: ItineraryEvent[] = [
       {
         id: 'stay-1',
         tripId: 'trip-1',

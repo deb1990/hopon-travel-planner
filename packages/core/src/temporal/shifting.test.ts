@@ -28,8 +28,8 @@ describe('Time-Slice Shifting Logic', () => {
     const ONE_DAY_MS = 24 * 60 * 60 * 1000;
     const result = shiftEvents(events, ONE_DAY_MS);
 
-    expect(result[0].startTime).toBe('2026-10-02T10:00:00.000Z');
-    expect(result[0].endTime).toBe('2026-10-06T10:00:00.000Z');
-    expect(result[1].startTime).toBe('2026-10-03T10:00:00.000Z');
+    expect(result[0]!.startTime).toBe('2026-10-02T10:00:00.000Z');
+    expect(result[0]!.endTime).toBe('2026-10-06T10:00:00.000Z');
+    expect(result[1]!.startTime).toBe('2026-10-03T10:00:00.000Z');
   });
 });

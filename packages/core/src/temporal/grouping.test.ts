@@ -42,13 +42,13 @@ describe('Event Grouping Logic', () => {
     const result = groupEventsByBase(events);
 
     expect(result).toHaveLength(2);
-    expect(result[0].stay.id).toBe('stay-1');
-    expect(result[0].items).toContainEqual(expect.objectContaining({ id: 'act-1' }));
-    expect(result[1].stay.id).toBe('stay-2');
-    expect(result[1].items).toContainEqual(expect.objectContaining({ id: 'act-2' }));
+    expect(result[0]!.stay.id).toBe('stay-1');
+    expect(result[0]!.items).toContainEqual(expect.objectContaining({ id: 'act-1' }));
+    expect(result[1]!.stay.id).toBe('stay-2');
+    expect(result[1]!.items).toContainEqual(expect.objectContaining({ id: 'act-2' }));
   });
 
   it('should handle activities occurring before any stay as orphans (handled by UI later)', () => {
-     // This test ensures we only group what is actually bounded by a stay
+    // This test ensures we only group what is actually bounded by a stay
   });
 });
