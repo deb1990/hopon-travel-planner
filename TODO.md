@@ -4,23 +4,23 @@ This file tracks the granular progress of the implementation. Each step follows 
 
 ## Milestone 1: Monorepo & Infrastructure Orchestration
 - [ ] **M1.1: Monorepo Setup**
-    - [ ] Initialize root `package.json` with npm workspaces (`packages/core`, `apps/api`, `apps/web`)
-    - [ ] Create folder structure for `packages/core`, `apps/api`, and `apps/web`
-    - [ ] Initialize `package.json` for `packages/core`
-    - [ ] Initialize `package.json` for `apps/api`
-    - [ ] Initialize `package.json` for `apps/web`
-- [ ] **M1.2: Docker Configuration**
-    - [ ] Create `.env.example` with database credentials
-    - [ ] Create `docker-compose.yml`
-    - [ ] Configure `postgres:16` service with persistent volume
-    - [ ] Create Dockerfile placeholder for `apps/api`
-    - [ ] Create Dockerfile placeholder for `apps/web`
-    - [ ] Verify `docker compose up` starts the database correctly
-- [ ] **M1.3: Tooling & Testing Foundation**
-    - [ ] Install `vitest` in root and configure for workspace-wide testing
-    - [ ] Configure root `eslint` with TypeScript support
-    - [ ] Configure root `prettier`
-    - [ ] Add `test`, `lint`, and `format` scripts to root `package.json`
+    - [x] Initialize root `package.json` with npm workspaces (`packages/core`, `apps/api`, `apps/web`)
+    - [x] Create folder structure for `packages/core`, `apps/api`, and `apps/web`
+    - [x] Initialize `package.json` for `packages/core`
+    - [x] Initialize `package.json` for `apps/api`
+    - [x] Initialize `package.json` for `apps/web`
+- [x] **M1.2: Docker Configuration**
+    - [x] Create `.env.example` with database credentials
+    - [x] Create `docker-compose.yml`
+    - [x] Configure `postgres:16` service with persistent volume
+    - [x] Create Dockerfile placeholder for `apps/api`
+    - [x] Create Dockerfile placeholder for `apps/web`
+    - [x] Verify `docker compose up` starts the database correctly
+- [x] **M1.3: Tooling & Testing Foundation**
+    - [x] Install `vitest` in root and configure for workspace-wide testing
+    - [x] Configure root `eslint` with TypeScript support
+    - [x] Configure root `prettier`
+    - [x] Add `test`, `lint`, and `format` scripts to root `package.json`
 
 ## Milestone 2: Domain Logic (The "Temporal Brain")
 - [ ] **M2.1: Event Grouping (TDD)**

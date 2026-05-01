@@ -1,0 +1,11 @@
+{
+  "name": "@hopon/api",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hopon/core": "*"
+  }
+}

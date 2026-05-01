@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: hopon-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-hopon}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hopon_password}
+      POSTGRES_DB: ${POSTGRES_DB:-hopon}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: hopon-api
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgres://hopon:hopon_password@db:5432/hopon}
+    depends_on:
+      - db
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: hopon-web
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
