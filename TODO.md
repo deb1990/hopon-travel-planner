@@ -80,13 +80,13 @@ This file tracks the granular progress of the implementation. Each step follows 
 
 ## Milestone 5: UI Foundations & Zinc Design System
 
-- [ ] **M5.1: Design System**
-  - [ ] Setup CSS Variables in `apps/web/src/styles/theme.css`
-  - [ ] Build `Card`, `Button`, and `Row` base components
-  - [ ] [TDD] Component tests for Row variants (Activity vs Stay)
-- [ ] **M5.2: State & Client**
-  - [ ] Setup TanStack Query and Zustand
-  - [ ] Create API Client wrapper using `fetch`
+- [x] **M5.1: Design System**
+  - [x] Setup CSS Variables in `apps/web/app/globals.css`
+  - [x] Build `Card`, `Button`, and `Row` base components
+  - [x] [TDD] Component tests for Row variants (Activity vs Stay)
+- [x] **M5.2: State & Client**
+  - [x] Setup TanStack Query and QueryProvider
+  - [x] Create API-driven main dashboard (`app/page.tsx`)
 
 ## Milestone 6: High-Density Itinerary & Mapping
 

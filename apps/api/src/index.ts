@@ -32,7 +32,7 @@ app.get('/', (c) => {
   });
 });
 
-const port = 3000;
+const port = 4000;
 console.log(`Server is running on http://localhost:${port}`);
 
 serve({
