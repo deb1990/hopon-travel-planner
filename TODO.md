@@ -72,11 +72,11 @@ This file tracks the granular progress of the implementation. Each step follows 
   - [x] Implement error handling and logging middleware
 - [x] **M4.2: Core Endpoints (TDD)**
   - [x] [TDD] Integration tests for `GET /trips`
-  - [ ] [TDD] Integration tests for `POST /trips/:id/events`
+  - [x] [TDD] Integration tests for `POST /trips/:id/events`
   - [x] [TDD] Integration tests for `PATCH /trips/:id/shift` (Connecting Core Logic)
-- [ ] **M4.3: Auth & Permissions**
+- [x] **M4.3: Auth & Permissions**
   - [x] Implement mock Auth provider for local dev
-  - [ ] [TDD] Verify permission middleware blocks unauthorized edits
+  - [x] [TDD] Verify permission middleware blocks unauthorized edits
 
 ## Milestone 5: UI Foundations & Zinc Design System
 

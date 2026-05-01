@@ -21,7 +21,6 @@ describe('Trips API Integration', () => {
   });
 
   afterAll(async () => {
-    // Delete events first due to foreign key constraints
     await db.delete(itineraryEvents).where(
       exists(
         db
@@ -35,7 +34,6 @@ describe('Trips API Integration', () => {
   });
 
   it('GET /trips should return an empty list when no trips exist', async () => {
-    // We pass the userId in a header to simulate authentication
     const res = await app.request('/trips', {
       headers: { 'x-user-id': userId },
     });
@@ -65,8 +63,61 @@ describe('Trips API Integration', () => {
     expect(res.status).toBe(401);
   });
 
+  it('GET /trips/:id should return trip with all its events', async () => {
+    const [trip] = await db
+      .insert(trips)
+      .values({
+        ownerId: userId,
+        name: 'Single Trip Test',
+      })
+      .returning();
+
+    await db.insert(itineraryEvents).values({
+      tripId: trip!.id,
+      type: 'ACTIVITY',
+      title: 'Museum',
+      startTime: new Date(),
+    });
+
+    const res = await app.request(`/trips/${trip!.id}`, {
+      headers: { 'x-user-id': userId },
+    });
+
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data.name).toBe('Single Trip Test');
+    expect(data.events).toHaveLength(1);
+    expect(data.events[0].title).toBe('Museum');
+  });
+
+  it('POST /trips/:id/events should create a new event', async () => {
+    const [trip] = await db
+      .insert(trips)
+      .values({
+        ownerId: userId,
+        name: 'Event Creation Trip',
+      })
+      .returning();
+
+    const res = await app.request(`/trips/${trip!.id}/events`, {
+      method: 'POST',
+      headers: {
+        'x-user-id': userId,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        type: 'STAY',
+        title: 'New Hotel',
+        startTime: '2026-11-01T15:00:00Z',
+      }),
+    });
+
+    expect(res.status).toBe(201);
+    const data = await res.json();
+    expect(data.title).toBe('New Hotel');
+  });
+
   it('PATCH /trips/:id/shift should shift all events in a trip', async () => {
-    // 1. Create a trip
     const [trip] = await db
       .insert(trips)
       .values({
@@ -75,7 +126,6 @@ describe('Trips API Integration', () => {
       })
       .returning();
 
-    // 2. Add an event
     const startTime = new Date('2026-10-01T10:00:00Z');
     const [event] = await db
       .insert(itineraryEvents)
@@ -87,7 +137,6 @@ describe('Trips API Integration', () => {
       })
       .returning();
 
-    // 3. Shift by 1 day (86400000 ms)
     const res = await app.request(`/trips/${trip!.id}/shift`, {
       method: 'PATCH',
       headers: {
@@ -101,7 +150,6 @@ describe('Trips API Integration', () => {
     const data = await res.json();
     expect(data.count).toBeGreaterThan(0);
 
-    // 4. Verify in DB
     const [updatedEvent] = await db
       .select()
       .from(itineraryEvents)

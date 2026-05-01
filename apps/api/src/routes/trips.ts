@@ -3,6 +3,8 @@ import { shiftEvents, ItineraryEvent } from '@hopon/core';
 import { db } from '../db';
 import { TripRepository } from '../repositories/trips';
 import { EventRepository } from '../repositories/events';
+import { trips } from '../db/schema';
+import { eq } from 'drizzle-orm';
 
 type Bindings = {
   // Add environment variables here if needed
@@ -43,6 +45,67 @@ tripsRouter.get('/', async (c) => {
 });
 
 /**
+ * Get a single trip with its events
+ */
+tripsRouter.get('/:id', async (c) => {
+  const tripId = c.req.param('id');
+  const userId = c.get('userId');
+
+  try {
+    // 1. Get trip details
+    const [trip] = await db.select().from(trips).where(eq(trips.id, tripId));
+    if (!trip) return c.json({ error: 'Not Found' }, 404);
+
+    // 2. Check permission (simple check for now, can use tripRepo later)
+    const role = await tripRepo.getUserRole(tripId, userId);
+    if (!role && trip.visibility !== 'public') {
+      return c.json({ error: 'Unauthorized' }, 403);
+    }
+
+    // 3. Get events
+    const events = await eventRepo.findByTripId(tripId, userId);
+
+    return c.json({
+      ...trip,
+      events,
+    });
+  } catch (error) {
+    console.error('Failed to fetch trip:', error);
+    return c.json({ error: 'Internal Server Error' }, 500);
+  }
+});
+
+/**
+ * Add a new event to a trip
+ */
+tripsRouter.post('/:id/events', async (c) => {
+  const tripId = c.req.param('id');
+  const userId = c.get('userId');
+  const body = await c.req.json<any>();
+
+  try {
+    // 1. Check write permission
+    const role = await tripRepo.getUserRole(tripId, userId);
+    if (role !== 'owner' && role !== 'editor') {
+      return c.json({ error: 'Unauthorized', message: 'Insufficient permissions' }, 403);
+    }
+
+    // 2. Create event
+    const newEvent = await eventRepo.create({
+      ...body,
+      tripId,
+      startTime: new Date(body.startTime),
+      endTime: body.endTime ? new Date(body.endTime) : null,
+    });
+
+    return c.json(newEvent, 201);
+  } catch (error) {
+    console.error('Failed to create event:', error);
+    return c.json({ error: 'Internal Server Error' }, 500);
+  }
+});
+
+/**
  * Shift all events in a trip by a given offset
  */
 tripsRouter.patch('/:id/shift', async (c) => {
@@ -55,14 +118,12 @@ tripsRouter.patch('/:id/shift', async (c) => {
   }
 
   try {
-    // 1. Fetch current events (This also verifies read access)
     const currentEvents = await eventRepo.findByTripId(tripId, userId);
 
     if (currentEvents.length === 0) {
       return c.json({ count: 0, message: 'No events to shift' });
     }
 
-    // 2. Map DB events to Core types for shifting
     const coreEvents: ItineraryEvent[] = currentEvents.map((e) => ({
       id: e.id,
       tripId: e.tripId,
@@ -77,10 +138,8 @@ tripsRouter.patch('/:id/shift', async (c) => {
       isLocked: e.isLocked,
     }));
 
-    // 3. Shift them using pure temporal logic
     const shifted = shiftEvents(coreEvents, offsetMs);
 
-    // 4. Update them back to DB
     const updates = shifted.map((e) =>
       eventRepo.update(e.id, userId, {
         startTime: new Date(e.startTime),
