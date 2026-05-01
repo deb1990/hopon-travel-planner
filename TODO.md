@@ -23,23 +23,23 @@ This file tracks the granular progress of the implementation. Each step follows 
     - [x] Add `test`, `lint`, and `format` scripts to root `package.json`
 
 ## Milestone 2: Domain Logic (The "Temporal Brain")
-- [ ] **M2.1: Event Grouping (TDD)**
-    - [ ] Define shared Types in `packages/core/src/types`
-    - [ ] Create `packages/core/src/temporal/grouping.test.ts`
-    - [ ] [RED] Write failing test for `groupEventsByBase`
-    - [ ] [GREEN] Implement basic grouping logic
-    - [ ] [REFACTOR] Optimize grouping for large timelines
-- [ ] **M2.2: Time-Slice Shifting (TDD)**
-    - [ ] Create `packages/core/src/temporal/shifting.test.ts`
-    - [ ] [RED] Write failing test for millisecond-accurate shifting
-    - [ ] [GREEN] Implement `calculateOffsetShift` logic
-    - [ ] [RED] Write test for shifting edge cases (Leap years/Timezones)
-    - [ ] [GREEN] Fix edge cases
-- [ ] **M2.3: Gap Detection (TDD)**
-    - [ ] Create `packages/core/src/temporal/gaps.test.ts`
-    - [ ] [RED] Write failing test for gap identification between stays
-    - [ ] [GREEN] Implement `identifyItineraryGaps`
-    - [ ] [RED] Write test for "No Stay" beginning/end scenarios
+- [x] **M2.1: Event Grouping (TDD)**
+    - [x] Define shared Types in `packages/core/src/types`
+    - [x] Create `packages/core/src/temporal/grouping.test.ts`
+    - [x] [RED] Write failing test for `groupEventsByBase`
+    - [x] [GREEN] Implement basic grouping logic
+    - [x] [REFACTOR] Optimize grouping for large timelines
+- [x] **M2.2: Time-Slice Shifting (TDD)**
+    - [x] Create `packages/core/src/temporal/shifting.test.ts`
+    - [x] [RED] Write failing test for millisecond-accurate shifting
+    - [x] [GREEN] Implement `calculateOffsetShift` logic
+    - [x] [RED] Write test for shifting edge cases (Leap years/Timezones)
+    - [x] [GREEN] Fix edge cases
+- [x] **M2.3: Gap Detection (TDD)**
+    - [x] Create `packages/core/src/temporal/gaps.test.ts`
+    - [x] [RED] Write failing test for gap identification between stays
+    - [x] [GREEN] Implement `identifyItineraryGaps`
+    - [x] [RED] Write test for "No Stay" beginning/end scenarios
 
 ## Milestone 3: Persistence Layer (Data Service)
 - [ ] **M3.1: Drizzle Schema Definition**
