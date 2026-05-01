@@ -53,11 +53,17 @@ This file tracks the granular progress of the implementation. Each step follows 
   - [x] Generate initial SQL migration files
   - [x] Implement database connection singleton
   - [x] Apply initial migration to local DB
-- [ ] **M3.3: Repository Pattern (TDD)**
+- [x] **M3.3: Repository Pattern (TDD)**
   - [x] Create `apps/api/src/repositories/events.test.ts`
   - [x] [RED] Test basic CRUD for events
   - [x] [GREEN] Implement EventRepository
-  - [ ] [RED] Test ownership/privacy constraints at DB level
+  - [x] [RED] Test ownership/privacy constraints at DB level
+- [x] **M3.4: Trip & Permission Repository (TDD)**
+  - [x] Implement `TripRepository` for sharing logic
+  - [x] [TDD] Verify permission-based access listing
+- [x] **M3.5: User Repository (TDD)**
+  - [x] Implement `UserRepository` for auth-related lookups
+  - [x] [TDD] Verify upsert logic for social login profile sync
 
 ## Milestone 4: The Service Layer (API Endpoints)
 

@@ -24,6 +24,7 @@ describe('EventRepository', () => {
       .values({
         ownerId: userId,
         name: 'Test Trip',
+        visibility: 'private',
       })
       .returning();
     tripId = trip!.id;
@@ -49,7 +50,7 @@ describe('EventRepository', () => {
     expect(newEvent.id).toBeDefined();
     expect(newEvent.title).toBe('Test Hotel');
 
-    const fetchedEvents = await repo.findByTripId(tripId);
+    const fetchedEvents = await repo.findByTripId(tripId, userId);
     expect(fetchedEvents).toHaveLength(1);
     expect(fetchedEvents[0]!.title).toBe('Test Hotel');
   });
@@ -64,7 +65,7 @@ describe('EventRepository', () => {
       startTime: new Date('2026-10-02T12:00:00Z'),
     });
 
-    const updated = await repo.update(event.id, {
+    const updated = await repo.update(event.id, userId, {
       title: 'Fancy Lunch',
       isLocked: true,
     });
@@ -83,9 +84,53 @@ describe('EventRepository', () => {
       startTime: new Date('2026-10-03T10:00:00Z'),
     });
 
-    await repo.delete(event.id);
+    await repo.delete(event.id, userId);
 
-    const fetched = await repo.findByTripId(tripId);
+    const fetched = await repo.findByTripId(tripId, userId);
     expect(fetched.find((e) => e.id === event.id)).toBeUndefined();
+  });
+
+  it('should prevent an unauthorized user from viewing a private trip', async () => {
+    const [userB] = await db
+      .insert(users)
+      .values({
+        email: `hacker_${Date.now()}@example.com`,
+        provider: 'apple',
+      })
+      .returning();
+    const userBId = userB!.id;
+
+    const repo = new EventRepository(db);
+
+    const results = await repo.findByTripId(tripId, userBId);
+    expect(results).toHaveLength(0);
+
+    await db.delete(users).where(eq(users.id, userBId));
+  });
+
+  it('should prevent an unauthorized user from updating an event', async () => {
+    const [userB] = await db
+      .insert(users)
+      .values({
+        email: `hacker_upd_${Date.now()}@example.com`,
+        provider: 'apple',
+      })
+      .returning();
+    const userBId = userB!.id;
+
+    const repo = new EventRepository(db);
+    const event = await repo.create({
+      tripId,
+      type: 'ACTIVITY',
+      title: 'Secret Meeting',
+      startTime: new Date(),
+    });
+
+    await expect(repo.update(event.id, userBId, { title: 'Pwned' })).rejects.toThrow(
+      'Event not found or unauthorized',
+    );
+
+    await repo.delete(event.id, userId);
+    await db.delete(users).where(eq(users.id, userBId));
   });
 });
