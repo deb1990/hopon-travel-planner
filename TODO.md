@@ -67,15 +67,15 @@ This file tracks the granular progress of the implementation. Each step follows 
 
 ## Milestone 4: The Service Layer (API Endpoints)
 
-- [ ] **M4.1: API Boilerplate**
+- [x] **M4.1: API Boilerplate**
   - [x] Setup Hono/Express server in `apps/api`
-  - [ ] Implement error handling and logging middleware
-- [ ] **M4.2: Core Endpoints (TDD)**
-  - [ ] [TDD] Integration tests for `GET /trips`
+  - [x] Implement error handling and logging middleware
+- [x] **M4.2: Core Endpoints (TDD)**
+  - [x] [TDD] Integration tests for `GET /trips`
   - [ ] [TDD] Integration tests for `POST /trips/:id/events`
-  - [ ] [TDD] Integration tests for `PATCH /trips/:id/shift` (Connecting Core Logic)
+  - [x] [TDD] Integration tests for `PATCH /trips/:id/shift` (Connecting Core Logic)
 - [ ] **M4.3: Auth & Permissions**
-  - [ ] Implement mock Auth provider for local dev
+  - [x] Implement mock Auth provider for local dev
   - [ ] [TDD] Verify permission middleware blocks unauthorized edits
 
 ## Milestone 5: UI Foundations & Zinc Design System
