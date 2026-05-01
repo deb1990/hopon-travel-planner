@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { identifyItineraryGaps } from './gaps';
+
 import { ItineraryEvent } from '../types';
+
+import { identifyItineraryGaps } from './gaps';
 
 describe('Gap Detection Logic', () => {
   it('should identify a gap between two stays', () => {

@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { shiftEvents } from './shifting';
+
 import { ItineraryEvent } from '../types';
+
+import { shiftEvents } from './shifting';
 
 describe('Time-Slice Shifting Logic', () => {
   it('should shift all event times by the given millisecond offset', () => {

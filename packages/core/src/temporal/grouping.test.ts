@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { groupEventsByBase } from './grouping';
+
 import { ItineraryEvent } from '../types';
+
+import { groupEventsByBase } from './grouping';
 
 describe('Event Grouping Logic', () => {
   it('should group activities under their chronologically associated stay', () => {
