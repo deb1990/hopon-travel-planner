@@ -54,9 +54,9 @@ This file tracks the granular progress of the implementation. Each step follows 
   - [x] Implement database connection singleton
   - [x] Apply initial migration to local DB
 - [ ] **M3.3: Repository Pattern (TDD)**
-  - [ ] Create `apps/api/src/repositories/events.test.ts`
-  - [ ] [RED] Test basic CRUD for events
-  - [ ] [GREEN] Implement EventRepository
+  - [x] Create `apps/api/src/repositories/events.test.ts`
+  - [x] [RED] Test basic CRUD for events
+  - [x] [GREEN] Implement EventRepository
   - [ ] [RED] Test ownership/privacy constraints at DB level
 
 ## Milestone 4: The Service Layer (API Endpoints)
