@@ -3,96 +3,101 @@
 This file tracks the granular progress of the implementation. Each step follows a strict TDD approach and professional engineering standards.
 
 ## Milestone 1: Monorepo & Infrastructure Orchestration
-- [ ] **M1.1: Monorepo Setup**
-    - [x] Initialize root `package.json` with npm workspaces (`packages/core`, `apps/api`, `apps/web`)
-    - [x] Create folder structure for `packages/core`, `apps/api`, and `apps/web`
-    - [x] Initialize `package.json` for `packages/core`
-    - [x] Initialize `package.json` for `apps/api`
-    - [x] Initialize `package.json` for `apps/web`
+
+- [x] **M1.1: Monorepo Setup**
+  - [x] Initialize root `package.json` with npm workspaces (`packages/core`, `apps/api`, `apps/web`)
+  - [x] Create folder structure for `packages/core`, `apps/api`, and `apps/web`
+  - [x] Initialize `package.json` for `packages/core`
+  - [x] Initialize `package.json` for `apps/api`
+  - [x] Initialize `package.json` for `apps/web`
 - [x] **M1.2: Docker Configuration**
-    - [x] Create `.env.example` with database credentials
-    - [x] Create `docker-compose.yml`
-    - [x] Configure `postgres:16` service with persistent volume
-    - [x] Create Dockerfile placeholder for `apps/api`
-    - [x] Create Dockerfile placeholder for `apps/web`
-    - [x] Verify `docker compose up` starts the database correctly
+  - [x] Create `.env.example` with database credentials
+  - [x] Create `docker-compose.yml`
+  - [x] Configure `postgres:16` service with persistent volume
+  - [x] Create Dockerfile placeholder for `apps/api`
+  - [x] Create Dockerfile placeholder for `apps/web`
+  - [x] Verify `docker compose up` starts the database correctly
 - [x] **M1.3: Tooling & Testing Foundation**
-    - [x] Install `vitest` in root and configure for workspace-wide testing
-    - [x] Configure root `eslint` with TypeScript support
-    - [x] Configure root `prettier`
-    - [x] Add `test`, `lint`, and `format` scripts to root `package.json`
+  - [x] Install `vitest` in root and configure for workspace-wide testing
+  - [x] Configure root `eslint` with TypeScript support
+  - [x] Configure root `prettier`
+  - [x] Add `test`, `lint`, and `format` scripts to root `package.json`
 
 ## Milestone 2: Domain Logic (The "Temporal Brain")
+
 - [x] **M2.1: Event Grouping (TDD)**
-    - [x] Define shared Types in `packages/core/src/types`
-    - [x] Create `packages/core/src/temporal/grouping.test.ts`
-    - [x] [RED] Write failing test for `groupEventsByBase`
-    - [x] [GREEN] Implement basic grouping logic
-    - [x] [REFACTOR] Optimize grouping for large timelines
+  - [x] Define shared Types in `packages/core/src/types`
+  - [x] Create `packages/core/src/temporal/grouping.test.ts`
+  - [x] [RED] Write failing test for `groupEventsByBase`
+  - [x] [GREEN] Implement basic grouping logic
+  - [x] [REFACTOR] Optimize grouping for large timelines
 - [x] **M2.2: Time-Slice Shifting (TDD)**
-    - [x] Create `packages/core/src/temporal/shifting.test.ts`
-    - [x] [RED] Write failing test for millisecond-accurate shifting
-    - [x] [GREEN] Implement `calculateOffsetShift` logic
-    - [x] [RED] Write test for shifting edge cases (Leap years/Timezones)
-    - [x] [GREEN] Fix edge cases
+  - [x] Create `packages/core/src/temporal/shifting.test.ts`
+  - [x] [RED] Write failing test for millisecond-accurate shifting
+  - [x] [GREEN] Implement `calculateOffsetShift` logic
+  - [x] [RED] Write test for shifting edge cases (Leap years/Timezones)
+  - [x] [GREEN] Fix edge cases
 - [x] **M2.3: Gap Detection (TDD)**
-    - [x] Create `packages/core/src/temporal/gaps.test.ts`
-    - [x] [RED] Write failing test for gap identification between stays
-    - [x] [GREEN] Implement `identifyItineraryGaps`
-    - [x] [RED] Write test for "No Stay" beginning/end scenarios
+  - [x] Create `packages/core/src/temporal/gaps.test.ts`
+  - [x] [RED] Write failing test for gap identification between stays
+  - [x] [GREEN] Implement `identifyItineraryGaps`
+  - [x] [RED] Write test for "No Stay" beginning/end scenarios
 
 ## Milestone 3: Persistence Layer (Data Service)
-- [ ] **M3.1: Drizzle Schema Definition**
-    - [ ] Setup Drizzle in `apps/api`
-    - [ ] Define `users` table schema
-    - [ ] Define `trips` table schema
-    - [ ] Define `permissions` table schema
-    - [ ] Define `events` table schema
-- [ ] **M3.2: Migrations & DB Connectivity**
-    - [ ] Configure `drizzle-kit` for migrations
-    - [ ] Generate initial SQL migration files
-    - [ ] Implement database connection singleton
+
+- [x] **M3.1: Drizzle Schema Definition**
+  - [x] Setup Drizzle in `apps/api`
+  - [x] Define `users`, `trips`, `permissions`, and `itinerary_events` table schemas
+- [x] **M3.2: Migrations & DB Connectivity**
+  - [x] Configure `drizzle-kit` for migrations
+  - [x] Generate initial SQL migration files
+  - [x] Implement database connection singleton
+  - [x] Apply initial migration to local DB
 - [ ] **M3.3: Repository Pattern (TDD)**
-    - [ ] Create `apps/api/src/repositories/events.test.ts`
-    - [ ] [RED] Test basic CRUD for events
-    - [ ] [GREEN] Implement EventRepository
-    - [ ] [RED] Test ownership/privacy constraints at DB level
+  - [ ] Create `apps/api/src/repositories/events.test.ts`
+  - [ ] [RED] Test basic CRUD for events
+  - [ ] [GREEN] Implement EventRepository
+  - [ ] [RED] Test ownership/privacy constraints at DB level
 
 ## Milestone 4: The Service Layer (API Endpoints)
+
 - [ ] **M4.1: API Boilerplate**
-    - [ ] Setup Hono/Express server in `apps/api`
-    - [ ] Implement error handling and logging middleware
+  - [x] Setup Hono/Express server in `apps/api`
+  - [ ] Implement error handling and logging middleware
 - [ ] **M4.2: Core Endpoints (TDD)**
-    - [ ] [TDD] Integration tests for `GET /trips`
-    - [ ] [TDD] Integration tests for `POST /trips/:id/events`
-    - [ ] [TDD] Integration tests for `PATCH /trips/:id/shift` (Connecting Core Logic)
+  - [ ] [TDD] Integration tests for `GET /trips`
+  - [ ] [TDD] Integration tests for `POST /trips/:id/events`
+  - [ ] [TDD] Integration tests for `PATCH /trips/:id/shift` (Connecting Core Logic)
 - [ ] **M4.3: Auth & Permissions**
-    - [ ] Implement mock Auth provider for local dev
-    - [ ] [TDD] Verify permission middleware blocks unauthorized edits
+  - [ ] Implement mock Auth provider for local dev
+  - [ ] [TDD] Verify permission middleware blocks unauthorized edits
 
 ## Milestone 5: UI Foundations & Zinc Design System
+
 - [ ] **M5.1: Design System**
-    - [ ] Setup CSS Variables in `apps/web/src/styles/theme.css`
-    - [ ] Build `Card`, `Button`, and `Row` base components
-    - [ ] [TDD] Component tests for Row variants (Activity vs Stay)
+  - [ ] Setup CSS Variables in `apps/web/src/styles/theme.css`
+  - [ ] Build `Card`, `Button`, and `Row` base components
+  - [ ] [TDD] Component tests for Row variants (Activity vs Stay)
 - [ ] **M5.2: State & Client**
-    - [ ] Setup TanStack Query and Zustand
-    - [ ] Create API Client wrapper using `fetch`
+  - [ ] Setup TanStack Query and Zustand
+  - [ ] Create API Client wrapper using `fetch`
 
 ## Milestone 6: High-Density Itinerary & Mapping
+
 - [ ] **M6.1: The Itinerary List**
-    - [ ] Implement virtual grouping in the UI
-    - [ ] Integrate "Amber Alert" visual for gaps
+  - [ ] Implement virtual grouping in the UI
+  - [ ] Integrate "Amber Alert" visual for gaps
 - [ ] **M6.2: Mapping**
-    - [ ] Setup Leaflet map component
-    - [ ] Implement chronological pathing logic (The Thread)
-    - [ ] Implement Bi-directional hover sync (Map <-> List)
+  - [ ] Setup Leaflet map component
+  - [ ] Implement chronological pathing logic (The Thread)
+  - [ ] Implement Bi-directional hover sync (Map <-> List)
 
 ## Milestone 7: Refinement
+
 - [ ] **M7.1: UI Polish**
-    - [ ] Add transitions and "Alive" UI feedback
-    - [ ] Enforce protected (locked) status in UI
+  - [ ] Add transitions and "Alive" UI feedback
+  - [ ] Enforce protected (locked) status in UI
 - [ ] **M7.2: Duplication Logic**
-    - [ ] [TDD] Implement and test deep-clone logic for trips
+  - [ ] [TDD] Implement and test deep-clone logic for trips
 - [ ] **M7.3: Mobile Prep Audit**
-    - [ ] Final package verification for future React Native use
+  - [ ] Final package verification for future React Native use
