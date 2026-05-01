@@ -7,24 +7,16 @@
   ],
   "scripts": {
     "test": "npm run test --workspaces",
-    "lint": "npm run lint --workspaces",
+    "lint": "oxlint . --deny-warnings",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "prepare": "husky"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.59.1",
-    "@typescript-eslint/parser": "^8.59.1",
-    "eslint": "^9.39.4",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^17.24.0",
-    "eslint-plugin-promise": "^7.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
+    "oxlint": "^1.62.0",
     "prettier": "^3.8.3",
     "typescript": "^5.0.0",
-    "typescript-eslint": "^8.59.1",
     "vitest": "^1.6.1"
   }
 }
