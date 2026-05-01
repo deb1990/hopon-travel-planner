@@ -18,6 +18,7 @@ This document serves as a foundational mandate for all AI agents (Gemini CLI) wo
 
 ## 3. Workflow Mandates
 
+- **No Automatic Pushes:** NEVER push changes to the remote repository (`git push`) without explicit verbal confirmation from the user in the current turn.
 - **Pre-commit Quality Gates:** Every commit must pass `tsc --noEmit`, `oxlint`, and `prettier` checks.
 - **Context Preservation:** Always update `TODO.md` after completing a sub-task.
 - **Surgical Updates:** When modifying files, preserve existing patterns and types.
