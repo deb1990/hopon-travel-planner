@@ -56,14 +56,14 @@ export function DeleteTripDialog({ tripId, tripName }: DeleteTripDialogProps) {
           <div className="size-12 bg-red-500/10 rounded-2xl flex items-center justify-center mb-4 border border-red-500/20">
             <AlertCircle className="size-6 text-red-500" />
           </div>
-          <DialogTitle className="text-red-500">Terminate Expedition?</DialogTitle>
+          <DialogTitle className="text-red-500">Delete Trip?</DialogTitle>
           <DialogDescription>
-            You are about to permanently delete{' '}
-            <span className="font-bold text-foreground">{tripName}</span>. This action is
-            irreversible and all spatial data will be purged.
+            Are you sure you want to delete{' '}
+            <span className="font-bold text-foreground">{tripName}</span>? This action cannot be
+            undone.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className="mt-8">
+        <DialogFooter className="mt-8 gap-3 sm:gap-0">
           <Button
             variant="ghost"
             onClick={() => setOpen(false)}
@@ -76,7 +76,7 @@ export function DeleteTripDialog({ tripId, tripName }: DeleteTripDialogProps) {
             onClick={() => mutation.mutate()}
             className="flex-1 rounded-2xl h-12 bg-red-600 hover:bg-red-700 text-white font-black"
           >
-            {mutation.isPending ? 'Purging...' : 'Confirm Purge'}
+            {mutation.isPending ? 'Deleting...' : 'Delete Trip'}
           </Button>
         </DialogFooter>
       </DialogContent>
