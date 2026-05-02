@@ -18,7 +18,7 @@ describe('TripDetail Page', () => {
     vi.clearAllMocks();
   });
 
-  it('should render multiple base groups and an inter-stay gap', () => {
+  it('should render multiple base groups and an inter-stay gap', async () => {
     (useTrip as any).mockReturnValue({
       data: {
         id: 'trip-123',
@@ -54,8 +54,7 @@ describe('TripDetail Page', () => {
     expect(screen.getByText('Tokyo Hotel')).toBeInTheDocument();
     expect(screen.getByText('Osaka Hotel')).toBeInTheDocument();
 
-    // Verify the "Base Not Assigned" alert exists for the gap (Oct 3 to Oct 5)
-    expect(screen.getByText(/Base Not Assigned/i)).toBeInTheDocument();
-    expect(screen.getByText(/2 Days unassigned/i)).toBeInTheDocument();
+    // Verify the "Stay Not Assigned" alert exists for the gap
+    expect(screen.getAllByText(/Stay Not Assigned/i).length).toBeGreaterThan(0);
   });
 });

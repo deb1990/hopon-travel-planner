@@ -11,7 +11,7 @@ import { groupEventsByBase, identifyItineraryGaps, BaseGroup as BaseGroupType } 
 import { Button } from '@/components/ui/button';
 import { calculateTripDuration } from '@/lib/temporal-utils';
 import { BaseGroup } from '@/components/itinerary/base-group';
-import { GapAlert } from '@/components/itinerary/gap-alert';
+import { GhostGroup } from '@/components/itinerary/ghost-group';
 
 /**
  * Detailed itinerary view for a single trip.
@@ -128,16 +128,18 @@ function TimelineList({
 
   return (
     <div className="flex flex-col gap-2">
-      {baseGroups.map((group) => (
-        <React.Fragment key={group.stay.id}>
-          <BaseGroup stay={group.stay} items={group.items} />
+      {baseGroups.map((group) => {
+        const gapAfter = gaps.find((g) => g.startTime === group.stay.endTime);
 
-          {/* Check for gap after this stay */}
-          {gaps.find((g) => g.startTime === group.stay.endTime) && (
-            <GapAlert days={gaps.find((g) => g.startTime === group.stay.endTime)!.numDays} />
-          )}
-        </React.Fragment>
-      ))}
+        return (
+          <React.Fragment key={group.stay.id}>
+            <BaseGroup stay={group.stay} items={group.items} />
+
+            {/* Show the High-Fidelity Ghost Group for the gap */}
+            {gapAfter && <GhostGroup startTime={gapAfter.startTime} numDays={gapAfter.numDays} />}
+          </React.Fragment>
+        );
+      })}
     </div>
   );
 }

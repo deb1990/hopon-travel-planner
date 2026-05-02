@@ -24,32 +24,29 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
         className,
       )}
     >
-      {/* Time Column (Technical Mono) */}
-      <div className="flex w-20 flex-col font-mono text-[10px] tabular-nums tracking-tighter shrink-0">
-        <span
-          className={cn(
-            'text-muted-foreground font-bold group-hover:text-foreground transition-colors',
-            isStay && 'text-primary',
-          )}
-        >
-          {new Date(event.startTime).toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false,
-          })}
-        </span>
-        {event.endTime && (
-          <span className="text-[9px] opacity-40">
-            {new Date(event.endTime).toLocaleTimeString([], {
+      {/* Time Column (Technical Mono) - Only shown for non-STAY events */}
+      {!isStay && (
+        <div className="flex w-20 flex-col font-mono text-[10px] tabular-nums tracking-tighter shrink-0">
+          <span className="text-muted-foreground font-bold group-hover:text-foreground transition-colors">
+            {new Date(event.startTime).toLocaleTimeString([], {
               hour: '2-digit',
               minute: '2-digit',
               hour12: false,
             })}
           </span>
-        )}
-      </div>
+          {event.endTime && (
+            <span className="text-[9px] opacity-40">
+              {new Date(event.endTime).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false,
+              })}
+            </span>
+          )}
+        </div>
+      )}
 
-      {/* Main Content */}
+      {/* Main Content - Naturally aligns left if time column is missing */}
       <div className="flex flex-1 flex-col gap-0.5 min-w-0">
         <div className="flex items-center gap-3">
           <span
