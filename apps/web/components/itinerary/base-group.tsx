@@ -1,61 +1,79 @@
-import * as React from 'react';
+'use client';
+
+import React from 'react';
+import { ItineraryEvent } from '@hopon/core';
 import { ItineraryRow } from './itinerary-row';
-import { BaseGroup as BaseGroupType } from '@hopon/core';
+import { DayHeader } from './day-header';
+import { calculateTripDuration } from '@/lib/temporal-utils';
 
 interface BaseGroupProps {
-  group: BaseGroupType;
+  stay: ItineraryEvent;
+  items: ItineraryEvent[];
 }
 
 /**
- * A visual grouping of itinerary items (activities) nested under a specific accommodation (stay).
- *
- * @param props.group - The base group object containing the stay and its associated items.
+ * High-density container for a Stay and its nested activities.
+ * Ensures every calendar day of the stay is visually represented.
  */
-export function BaseGroup({ group }: BaseGroupProps) {
-  return (
-    <div className="flex flex-col gap-0 relative">
-      <ItineraryRow event={group.stay} className="border-l-4 border-l-primary bg-white/[0.05]" />
+export function BaseGroup({ stay, items }: BaseGroupProps) {
+  // 1. Calculate the total number of days for this stay
+  const totalDays = calculateTripDuration(stay.startTime, stay.endTime);
 
-      <div className="flex flex-col gap-0 ml-4 border-l border-white/5">
-        {group.items.length > 0 ? (
-          group.items.map((event) => <ItineraryRow key={event.id} event={event} className="pl-8" />)
-        ) : (
-          <div className="px-12 py-4 text-[10px] uppercase font-black text-zinc-800 tracking-widest italic">
-            No activities scheduled for this base
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-/**
- * An alert component for identifying gaps in the timeline between stays.
- *
- * @param props.gap - The interval representing the unassigned period.
- */
-export function GapAlert({ gap }: { gap: { startTime: string; endTime: string } }) {
-  const start = new Date(gap.startTime).toLocaleDateString(undefined, {
-    month: 'short',
-    day: 'numeric',
-  });
-  const end = new Date(gap.endTime).toLocaleDateString(undefined, {
-    month: 'short',
-    day: 'numeric',
+  // 2. Map existing items to their specific day numbers
+  const itemsByDay = new Map<number, ItineraryEvent[]>();
+  items.forEach((item) => {
+    const dayNum = calculateTripDuration(stay.startTime, item.startTime);
+    if (!itemsByDay.has(dayNum)) itemsByDay.set(dayNum, []);
+    itemsByDay.get(dayNum)!.push(item);
   });
 
+  // 3. Generate a sequence of all days in the stay
+  const days = Array.from({ length: totalDays }, (_, i) => i + 1);
+
   return (
-    <div className="mx-6 my-2 p-3 rounded-xl border border-dashed border-amber-500/20 bg-amber-500/[0.02] flex items-center justify-between group hover:bg-amber-500/[0.05] transition-colors">
-      <div className="flex flex-col gap-0.5">
-        <span className="text-[10px] font-black text-amber-500/50 uppercase tracking-[0.2em]">
-          Amber Alert: Unassigned Interval
-        </span>
-        <span className="text-xs font-medium text-amber-200/70">
-          {start} — {end}
-        </span>
+    <div className="relative flex flex-col group/base-group bg-card mb-12 rounded-[2.5rem] border shadow-2xl overflow-hidden">
+      <div className="relative z-10 border-b border-border/40">
+        <ItineraryRow event={stay} className="bg-primary/[0.04] py-8 border-none" />
       </div>
-      <div className="text-[9px] font-black text-amber-500/40 uppercase border border-amber-500/20 px-2 py-1 rounded-md group-hover:border-amber-500/50 group-hover:text-amber-500 transition-all cursor-pointer">
-        Resolve Gap
+
+      <div className="absolute left-[31px] top-[90px] bottom-0 w-px bg-gradient-to-b from-primary via-primary/30 to-border/40 z-0 opacity-60 group-hover/base-group:opacity-100 transition-opacity duration-500" />
+
+      <div className="flex flex-col relative z-10 pl-6 pb-8">
+        {days.map((dayNum) => {
+          const dayItems = itemsByDay.get(dayNum) || [];
+
+          // Calculate the actual calendar date for this day number
+          const currentDate = new Date(stay.startTime);
+          currentDate.setUTCDate(currentDate.getUTCDate() + (dayNum - 1));
+          const dateISO = currentDate.toISOString();
+
+          return (
+            <React.Fragment key={dayNum}>
+              <DayHeader date={dateISO} className={dayNum === 1 ? 'mt-6' : 'mt-10'} />
+
+              <div className="flex flex-col gap-1">
+                {dayItems.length > 0 ? (
+                  dayItems.map((item) => (
+                    <div key={item.id} className="relative">
+                      <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border ring-2 ring-background z-20" />
+                      <ItineraryRow
+                        event={item}
+                        className="border-none py-3 pl-8 hover:bg-primary/[0.02]"
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <div className="relative py-4 pl-14">
+                    <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border/30 ring-2 ring-background z-10" />
+                    <p className="text-[10px] text-muted-foreground italic font-medium uppercase tracking-widest opacity-60">
+                      No activities planned
+                    </p>
+                  </div>
+                )}
+              </div>
+            </React.Fragment>
+          );
+        })}
       </div>
     </div>
   );

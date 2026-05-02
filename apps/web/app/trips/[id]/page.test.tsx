@@ -18,30 +18,28 @@ describe('TripDetail Page', () => {
     vi.clearAllMocks();
   });
 
-  it('should render the empty itinerary state when no events exist', () => {
-    (useTrip as any).mockReturnValue({
-      data: { id: 'trip-123', name: 'New Trip', events: [] },
-      isLoading: false,
-    });
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <TripDetail />
-      </QueryClientProvider>,
-    );
-
-    expect(screen.getByText(/Empty Itinerary/i)).toBeInTheDocument();
-    expect(screen.getByText(/Create First Entry/i)).toBeInTheDocument();
-  });
-
-  it('should calculate and display the correct duration', () => {
+  it('should render multiple base groups and an inter-stay gap', () => {
     (useTrip as any).mockReturnValue({
       data: {
         id: 'trip-123',
-        name: 'Long Trip',
-        startDate: '2026-05-01',
-        endDate: '2026-05-10',
-        events: [],
+        name: 'Japan',
+        events: [
+          {
+            id: 's1',
+            type: 'STAY',
+            title: 'Tokyo Hotel',
+            startTime: '2026-10-01T15:00:00Z',
+            endTime: '2026-10-03T11:00:00Z',
+          },
+          {
+            id: 's2',
+            type: 'STAY',
+            title: 'Osaka Hotel',
+            startTime: '2026-10-05T15:00:00Z',
+            endTime: '2026-10-07T11:00:00Z',
+          },
+          { id: 'a1', type: 'ACTIVITY', title: 'Sushi', startTime: '2026-10-02T12:00:00Z' },
+        ],
       },
       isLoading: false,
     });
@@ -52,7 +50,12 @@ describe('TripDetail Page', () => {
       </QueryClientProvider>,
     );
 
-    // Duration is 10 days (inclusive)
-    expect(screen.getByText('10')).toBeInTheDocument();
+    // Verify both hotels exist
+    expect(screen.getByText('Tokyo Hotel')).toBeInTheDocument();
+    expect(screen.getByText('Osaka Hotel')).toBeInTheDocument();
+
+    // Verify the "Base Not Assigned" alert exists for the gap (Oct 3 to Oct 5)
+    expect(screen.getByText(/Base Not Assigned/i)).toBeInTheDocument();
+    expect(screen.getByText(/2 Days unassigned/i)).toBeInTheDocument();
   });
 });

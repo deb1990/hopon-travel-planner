@@ -1,23 +1,36 @@
 import React from 'react';
 import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Calendar } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { EditTripDialog } from '@/components/dashboard/edit-trip-dialog';
 import { Trip } from '@hopon/core';
 
 interface ItineraryHeaderProps {
   trip?: Trip;
-  tripId: string;
 }
 
 /**
  * Sticky header for the trip detail view.
- * Provides professional breadcrumb navigation and mission control actions.
+ * Provides professional breadcrumb navigation and temporal context.
  *
- * @param props.trip - The full trip object for editing.
- * @param props.tripId - Unique identifier for the trip.
+ * @param props.trip - The full trip object for editing and metadata display.
  */
-export function ItineraryHeader({ trip, tripId }: ItineraryHeaderProps) {
+export function ItineraryHeader({ trip }: ItineraryHeaderProps) {
+  const dateLabel = trip?.startDate
+    ? `${new Date(trip.startDate).toLocaleDateString(undefined, {
+        month: 'short',
+        day: 'numeric',
+      })} — ${
+        trip.endDate
+          ? new Date(trip.endDate).toLocaleDateString(undefined, {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })
+          : 'Open Ended'
+      }`
+    : null;
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl px-8 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
@@ -31,12 +44,15 @@ export function ItineraryHeader({ trip, tripId }: ItineraryHeaderProps) {
           </Link>
           <div className="h-4 w-px bg-border/60" />
           <div className="flex flex-col">
-            <h1 className="text-xl font-[1000] tracking-tight text-foreground uppercase italic">
+            <h1 className="text-xl font-[1000] tracking-tight text-foreground uppercase italic leading-tight">
               {trip?.name || 'Exploring...'}
             </h1>
-            <span className="text-[9px] text-primary/60 font-mono font-bold tracking-tighter">
-              {tripId}
-            </span>
+            {dateLabel && (
+              <div className="flex items-center gap-1.5 text-[10px] text-primary/60 font-bold uppercase tracking-widest mt-0.5">
+                <Calendar className="size-2.5" />
+                <span>{dateLabel}</span>
+              </div>
+            )}
           </div>
         </div>
 

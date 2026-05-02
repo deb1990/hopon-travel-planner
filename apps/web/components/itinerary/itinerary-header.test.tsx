@@ -12,21 +12,23 @@ const mockTrip: Trip = {
   id: 'trip-12345678',
   ownerId: 'user-1',
   name: 'Japan 2026',
+  startDate: '2026-05-01T10:00:00Z',
+  endDate: '2026-05-10T10:00:00Z',
   visibility: 'private',
   createdAt: '2026-05-01T10:00:00Z',
   updatedAt: '2026-05-01T10:00:00Z',
 };
 
 describe('ItineraryHeader', () => {
-  it('should render the trip name and ID correctly', () => {
+  it('should render the trip name and date range correctly', () => {
     render(
       <QueryClientProvider client={queryClient}>
         <ThemeProvider attribute="class">
-          <ItineraryHeader trip={mockTrip} tripId="trip-12345678" />
+          <ItineraryHeader trip={mockTrip} />
         </ThemeProvider>
       </QueryClientProvider>,
     );
     expect(screen.getByText('Japan 2026')).toBeInTheDocument();
-    expect(screen.getByText('trip-12345678')).toBeInTheDocument();
+    expect(screen.getByText(/May 1 — May 10/i)).toBeInTheDocument();
   });
 });

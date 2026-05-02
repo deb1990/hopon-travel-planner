@@ -5,12 +5,13 @@ import { useParams } from 'next/navigation';
 import { useTrip } from '@/hooks/use-trip';
 import { ItineraryHeader } from '@/components/itinerary/itinerary-header';
 import { ItineraryMetrics } from '@/components/itinerary/itinerary-metrics';
-import { ItineraryRow } from '@/components/itinerary/itinerary-row';
 import { Skeleton } from '@/components/ui/skeleton';
-import { MapPin, CalendarDays, Plus, Sparkles } from 'lucide-react';
-import { groupEventsByBase, identifyItineraryGaps, ItineraryEvent, BaseGroup } from '@hopon/core';
+import { CalendarDays, Plus, Sparkles, MapPin } from 'lucide-react';
+import { groupEventsByBase, identifyItineraryGaps, BaseGroup as BaseGroupType } from '@hopon/core';
 import { Button } from '@/components/ui/button';
 import { calculateTripDuration } from '@/lib/temporal-utils';
+import { BaseGroup } from '@/components/itinerary/base-group';
+import { GapAlert } from '@/components/itinerary/gap-alert';
 
 /**
  * Detailed itinerary view for a single trip.
@@ -33,7 +34,7 @@ export default function TripDetail() {
 
   return (
     <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
-      <ItineraryHeader trip={trip} tripId={tripId} />
+      <ItineraryHeader trip={trip} />
 
       <div className="flex-1 max-w-7xl mx-auto w-full p-8 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
@@ -57,14 +58,8 @@ export default function TripDetail() {
               </Button>
             </div>
 
-            {/* Container for the timeline with the background thread */}
-            <div className="relative bg-card rounded-[2.5rem] border shadow-2xl overflow-hidden min-h-[400px]">
-              {/* Vertical Thread Line */}
-              <div className="timeline-thread z-0" />
-
-              <div className="flex flex-col relative z-10">
-                <TimelineList baseGroups={baseGroups} gaps={gaps} />
-              </div>
+            <div className="flex flex-col">
+              <TimelineList baseGroups={baseGroups} gaps={gaps} />
             </div>
           </div>
 
@@ -106,12 +101,12 @@ function TimelineList({
   baseGroups,
   gaps,
 }: {
-  baseGroups: BaseGroup[];
-  gaps: { startTime: string; endTime: string }[];
+  baseGroups: BaseGroupType[];
+  gaps: { startTime: string; endTime: string; numDays: number }[];
 }) {
   if (baseGroups.length === 0) {
     return (
-      <div className="p-32 text-center flex flex-col items-center gap-6">
+      <div className="relative bg-card rounded-[2.5rem] border shadow-2xl p-32 text-center flex flex-col items-center gap-6">
         <div className="size-20 rounded-[2.5rem] bg-muted/30 border border-border/50 flex items-center justify-center mb-2 shadow-inner">
           <Sparkles className="size-8 text-muted-foreground/40 animate-pulse" />
         </div>
@@ -132,46 +127,16 @@ function TimelineList({
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-2">
       {baseGroups.map((group) => (
-        <div key={group.stay.id} className="relative">
-          {/* Base Header Indicator */}
-          <div className="absolute left-[31px] top-10 -translate-x-1/2 size-3 rounded-full bg-primary ring-4 ring-background z-20 shadow-[0_0_15px_rgba(var(--primary),0.5)]" />
+        <React.Fragment key={group.stay.id}>
+          <BaseGroup stay={group.stay} items={group.items} />
 
-          <div className="bg-muted/50 py-10 border-b border-border/40">
-            <ItineraryRow event={group.stay} className="bg-transparent border-none py-0 px-16" />
-          </div>
-
-          <div className="flex flex-col py-4">
-            {group.items.map((item: ItineraryEvent) => (
-              <div key={item.id} className="relative">
-                {/* Item Indicator Dot */}
-                <div className="absolute left-[31px] top-1/2 -translate-y-1/2 -translate-x-1/2 size-1.5 rounded-full bg-muted-foreground/30 ring-2 ring-background z-20" />
-                <ItineraryRow
-                  event={item}
-                  className="pl-24 border-none py-4 hover:bg-primary/[0.03]"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Gap Alert Injection */}
+          {/* Check for gap after this stay */}
           {gaps.find((g) => g.startTime === group.stay.endTime) && (
-            <div className="mx-16 my-8 p-6 rounded-[2rem] border border-dashed border-amber-500/20 bg-amber-500/[0.02] flex items-center justify-between group hover:bg-amber-500/[0.05] transition-all duration-300">
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-black text-amber-600 uppercase tracking-widest">
-                  Temporal Gap Detected
-                </span>
-                <span className="text-[11px] text-amber-600/50 font-medium tracking-tight">
-                  No accommodation assigned for this interval.
-                </span>
-              </div>
-              <button className="text-[9px] font-black text-amber-600 uppercase bg-background px-4 py-2 rounded-full border border-amber-500/20 shadow-sm hover:scale-105 hover:border-amber-500 transition-all cursor-pointer">
-                Assign Base
-              </button>
-            </div>
+            <GapAlert days={gaps.find((g) => g.startTime === group.stay.endTime)!.numDays} />
           )}
-        </div>
+        </React.Fragment>
       ))}
     </div>
   );
