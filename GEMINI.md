@@ -10,6 +10,8 @@ This document serves as a foundational mandate for all AI agents (Gemini CLI) wo
 
 ## 2. Technical Standards
 
+- **Atomic Modularity:** NEVER create large functions or components. Every function, component, hook, or service MUST do exactly one thing.
+- **Composition over Inheritance:** Prefer small, composed units. Use hooks for stateful logic, services for data fetching/processing, and factories for complex object creation.
 - **Linting:** Use **Oxlint** exclusively for linting. No ESLint.
 - **TypeScript:** Enforce the strictest possible settings (`strict: true`, `noImplicitAny: true`, `strictNullChecks: true`).
 - **Formatting:** Prettier must run on every commit.
@@ -19,6 +21,9 @@ This document serves as a foundational mandate for all AI agents (Gemini CLI) wo
 ## 3. Workflow Mandates
 
 - **Directives only:** Never start a new Milestone, major feature, or architectural section without explicit verbal confirmation from the user in the current turn.
+- **Test-Driven Everything:** Every new component, hook, or utility MUST have a corresponding unit test file.
+- **High-Level Integrity:** Critical pages and user flows MUST have high-level integration tests (Page Integrity Tests) to catch build-time and runtime failures.
+- **Zero Visual Errors:** I should never see an error on screen. Every potential failure path (API down, missing data, 404) MUST be handled by a professional Error Boundary or Fallback UI.
 - **No Automatic Pushes:** NEVER push changes to the remote repository (`git push`) without explicit verbal confirmation from the user in the current turn.
 - **Pre-commit Quality Gates:** Every commit must pass `tsc --noEmit`, `oxlint`, and `prettier` checks.
 - **Context Preservation:** Always update `TODO.md` after completing a sub-task.
