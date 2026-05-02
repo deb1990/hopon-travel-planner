@@ -45,6 +45,25 @@ tripsRouter.get('/', async (c) => {
 });
 
 /**
+ * Create a new trip
+ */
+tripsRouter.post('/', async (c) => {
+  const userId = c.get('userId');
+  const { name } = await c.req.json<{ name: string }>();
+
+  try {
+    const newTrip = await tripRepo.create({
+      ownerId: userId,
+      name: name || 'Untitled Journey',
+    });
+    return c.json(newTrip, 201);
+  } catch (error) {
+    console.error('Failed to create trip:', error);
+    return c.json({ error: 'Internal Server Error' }, 500);
+  }
+});
+
+/**
  * Get a single trip with its events
  */
 tripsRouter.get('/:id', async (c) => {

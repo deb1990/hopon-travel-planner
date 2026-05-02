@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import Dashboard from './page';
+import Home from './page';
 import QueryProvider from '@/components/providers/query-provider';
 
-// Mock useParams/useRouter
+// Mock useParams
 vi.mock('next/navigation', () => ({
-  useParams: () => ({}),
+  useParams: () => ({ id: 'trip-1' }),
   useRouter: () => ({ push: vi.fn() }),
 }));
 
@@ -14,15 +14,20 @@ vi.mock('next/navigation', () => ({
 global.fetch = vi.fn(() =>
   Promise.resolve({
     ok: true,
-    json: () => Promise.resolve([]),
+    json: () =>
+      Promise.resolve({
+        id: 'trip-1',
+        name: 'Single Trip Test',
+        events: [],
+      }),
   }),
 ) as any;
 
-describe('Main Dashboard Integrity', () => {
+describe('Dashboard Page Integrity', () => {
   it('should render the dashboard without crashing', () => {
     const { container } = render(
       <QueryProvider>
-        <Dashboard />
+        <Home />
       </QueryProvider>,
     );
     expect(container).toBeDefined();

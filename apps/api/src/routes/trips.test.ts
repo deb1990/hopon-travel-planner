@@ -58,6 +58,22 @@ describe('Trips API Integration', () => {
     expect(data.some((t: any) => t.name === 'API Test Trip')).toBe(true);
   });
 
+  it('POST /trips should create a new trip', async () => {
+    const res = await app.request('/trips', {
+      method: 'POST',
+      headers: {
+        'x-user-id': userId,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: 'New Journey' }),
+    });
+
+    expect(res.status).toBe(201);
+    const data = await res.json();
+    expect(data.name).toBe('New Journey');
+    expect(data.ownerId).toBe(userId);
+  });
+
   it('GET /trips should return 401 if x-user-id is missing', async () => {
     const res = await app.request('/trips');
     expect(res.status).toBe(401);

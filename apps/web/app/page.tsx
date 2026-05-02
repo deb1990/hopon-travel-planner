@@ -1,143 +1,97 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import { ItineraryRow } from '@/components/itinerary/itinerary-row';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { TripCard } from '@/components/dashboard/trip-card';
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { MapPin } from 'lucide-react';
+import { Plus, Globe } from 'lucide-react';
 
-// Mock user ID from our SEED process
 const DEMO_USER_ID = 'b07bb29b-67de-4f35-8c85-111c8358436b';
 const API_URL = 'http://localhost:4000';
 
-export default function Home() {
-  const {
-    data: trips,
-    isLoading,
-    error,
-  } = useQuery({
+export default function Dashboard() {
+  const queryClient = useQueryClient();
+
+  const { data: trips, isLoading } = useQuery({
     queryKey: ['trips'],
     queryFn: async () => {
-      try {
-        const res = await fetch(`${API_URL}/trips`, {
-          headers: { 'x-user-id': DEMO_USER_ID },
-        });
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-      } catch (e) {
-        console.error('Fetch trips failed:', e);
-        throw e;
-      }
+      const res = await fetch(`${API_URL}/trips`, {
+        headers: { 'x-user-id': DEMO_USER_ID },
+      });
+      if (!res.ok) throw new Error('Failed to fetch trips');
+      return res.json();
     },
   });
 
-  const tripId = trips?.[0]?.id;
-  const { data: trip, isLoading: isLoadingTrip } = useQuery({
-    queryKey: ['trip', tripId],
-    queryFn: async () => {
-      const res = await fetch(`${API_URL}/trips/${tripId}`, {
-        headers: { 'x-user-id': DEMO_USER_ID },
+  const createTripMutation = useMutation({
+    mutationFn: async () => {
+      const res = await fetch(`${API_URL}/trips`, {
+        method: 'POST',
+        headers: {
+          'x-user-id': DEMO_USER_ID,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: `New Trip ${new Date().toLocaleDateString()}` }),
       });
       return res.json();
     },
-    enabled: !!tripId,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['trips'] });
+    },
   });
 
-  if (error) {
+  if (isLoading) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
-        <h2 className="text-destructive font-bold">API Connection Error</h2>
-        <p className="text-zinc-500 text-sm mt-2">{(error as Error).message}</p>
-        <button
-          onClick={() => window.location.reload()}
-          className="mt-4 px-4 py-2 bg-zinc-800 rounded-md text-xs hover:bg-zinc-700"
-        >
-          Retry Connection
-        </button>
-      </div>
-    );
-  }
-
-  if (isLoading || isLoadingTrip) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center p-24 gap-4 bg-background text-foreground">
-        <Skeleton className="h-12 w-64" />
-        <Skeleton className="h-4 w-48" />
+      <div className="p-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[1, 2, 3].map((i) => (
+          <Skeleton key={i} className="h-40 w-full" />
+        ))}
       </div>
     );
   }
 
   return (
-    <main className="flex min-h-screen flex-col bg-background text-foreground">
-      <header className="sticky top-0 z-10 border-b border-border/50 bg-background/80 backdrop-blur-md px-6 py-4">
-        <div className="flex items-center justify-between max-w-6xl mx-auto">
-          <div className="flex flex-col">
-            <h1 className="text-xl font-bold tracking-tight uppercase tracking-widest text-primary">
-              {trip?.name || 'Hop On'}
+    <main className="min-h-screen bg-background text-foreground flex flex-col">
+      <header className="border-b border-border/50 px-8 py-12">
+        <div className="max-w-6xl mx-auto flex justify-between items-end">
+          <div>
+            <h1 className="text-4xl font-black tracking-tighter uppercase text-primary italic">
+              Hop On
             </h1>
-            <p className="text-[10px] text-muted-foreground uppercase font-medium">
-              Itinerary Planner / High Density View
+            <p className="text-muted-foreground text-sm uppercase tracking-widest mt-2 font-medium">
+              Global Itinerary Manager
             </p>
           </div>
-          <div className="flex items-center gap-4 text-xs font-mono text-zinc-500 uppercase tracking-tighter">
-            <span>Status: Sync Active</span>
-            <div className="size-2 rounded-full bg-green-500 animate-pulse" />
-          </div>
+          <Button
+            onClick={() => createTripMutation.mutate()}
+            disabled={createTripMutation.isPending}
+            className="rounded-full px-6 font-bold"
+          >
+            <Plus className="size-4 mr-2" />
+            New Trip
+          </Button>
         </div>
       </header>
 
-      <div className="flex-1 max-w-6xl mx-auto w-full p-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="md:col-span-2 flex flex-col gap-4">
-            <Card className="border-none shadow-none bg-transparent">
-              <CardHeader className="px-0 pb-2">
-                <CardTitle className="text-xs uppercase text-zinc-500 tracking-widest font-bold">
-                  Timeline
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="px-0 pt-0 flex flex-col border border-border/50 rounded-lg overflow-hidden">
-                {trip?.events?.length > 0 ? (
-                  trip.events.map((event: any) => <ItineraryRow key={event.id} event={event} />)
-                ) : (
-                  <div className="p-12 text-center text-muted-foreground text-sm border-dashed border-2 border-zinc-800 rounded-lg">
-                    No events found. Start planning.
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="flex flex-col gap-6">
-            <section className="flex flex-col gap-2">
-              <h3 className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">
-                Summary
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="bg-secondary/20 p-3 rounded-md border border-border/50">
-                  <span className="text-[10px] uppercase block text-muted-foreground">Days</span>
-                  <span className="text-xl font-bold font-mono">05</span>
-                </div>
-                <div className="bg-secondary/20 p-3 rounded-md border border-border/50">
-                  <span className="text-[10px] uppercase block text-muted-foreground">Stops</span>
-                  <span className="text-xl font-bold font-mono">01</span>
-                </div>
-              </div>
-            </section>
-
-            <section className="flex flex-col gap-2">
-              <h3 className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">
-                Map View
-              </h3>
-              <div className="aspect-square bg-zinc-900 rounded-lg border border-border/50 flex items-center justify-center relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-black opacity-50" />
-                <MapPin className="size-8 text-zinc-700 group-hover:text-primary transition-colors" />
-                <span className="z-10 text-[10px] uppercase font-medium text-zinc-500">
-                  Interactive Map Coming Soon
-                </span>
-              </div>
-            </section>
-          </div>
+      <div className="max-w-6xl mx-auto w-full p-8">
+        <div className="flex items-center gap-2 mb-8">
+          <Globe className="size-4 text-primary" />
+          <h2 className="text-xs uppercase font-bold tracking-[0.2em] text-zinc-500">
+            Your Journeys
+          </h2>
         </div>
+
+        {trips?.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {trips.map((trip: any) => (
+              <TripCard key={trip.id} trip={trip} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center p-20 border-2 border-dashed border-zinc-800 rounded-3xl">
+            <p className="text-zinc-600 font-medium italic">Your map is empty. Where to first?</p>
+          </div>
+        )}
       </div>
     </main>
   );

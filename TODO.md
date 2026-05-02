@@ -87,6 +87,11 @@ This file tracks the granular progress of the implementation. Each step follows 
 - [x] **M5.2: State & Client**
   - [x] Setup TanStack Query and QueryProvider
   - [x] Create API-driven main dashboard (`app/page.tsx`)
+- [x] **M5.3: Trip Management UI**
+  - [x] Create `components/dashboard/trip-card.tsx`
+  - [x] Implement `GET /trips` list view on home page
+  - [x] Implement `POST /trips` (Create Trip) modal/form
+  - [x] Add navigation between Dashboard and Itinerary View
 
 ## Milestone 6: High-Density Itinerary & Mapping
 
