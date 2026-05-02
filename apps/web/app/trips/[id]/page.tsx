@@ -153,7 +153,7 @@ function TimelineList({
                   No accommodation assigned for this interval.
                 </span>
               </div>
-              <button className="text-[9px] font-black text-amber-600 uppercase bg-background px-4 py-2 rounded-full border border-amber-500/20 shadow-sm hover:scale-105 hover:border-amber-500 transition-all">
+              <button className="text-[9px] font-black text-amber-600 uppercase bg-background px-4 py-2 rounded-full border border-amber-500/20 shadow-sm hover:scale-105 hover:border-amber-500 transition-all cursor-pointer">
                 Assign Base
               </button>
             </div>
@@ -190,8 +190,8 @@ function SpatialContext() {
 function LoadingView() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-24 gap-4 bg-background">
-      <Skeleton className="h-12 w-64 bg-muted" />
-      <Skeleton className="h-4 w-48 bg-muted" />
+      <Skeleton className="h-12 w-64" />
+      <Skeleton className="h-4 w-48" />
     </div>
   );
 }

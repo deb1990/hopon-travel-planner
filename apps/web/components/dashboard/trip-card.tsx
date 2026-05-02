@@ -17,7 +17,7 @@ interface TripCardProps {
  */
 export function TripCard({ trip }: TripCardProps) {
   return (
-    <div className="group relative">
+    <div className="group relative cursor-pointer">
       {/* Action Layer (Trash Button) - High Z-Index to stay above the Link */}
       <div className="absolute top-8 right-8 z-30">
         <DeleteTripDialog tripId={trip.id} tripName={trip.name} />

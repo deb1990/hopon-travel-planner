@@ -19,7 +19,7 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
   return (
     <div
       className={cn(
-        'group relative flex items-center gap-6 border-b border-border/40 bg-transparent px-6 py-4 hover:bg-muted/30 transition-all duration-200',
+        'group relative flex items-center gap-6 border-b border-border/40 bg-transparent px-6 py-4 hover:bg-muted/30 transition-all duration-200 cursor-pointer',
         isStay && 'bg-primary/[0.02] border-l-2 border-l-primary',
         className,
       )}
