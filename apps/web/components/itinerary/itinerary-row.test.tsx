@@ -24,6 +24,6 @@ describe('ItineraryRow', () => {
   it('should apply special styling for STAY type', () => {
     const stayEvent: ItineraryEvent = { ...mockEvent, type: 'STAY' };
     const { container } = render(<ItineraryRow event={stayEvent} />);
-    expect(container.firstChild).toHaveClass('bg-secondary/20');
+    expect(container.firstChild).toHaveClass('bg-primary/[0.02]');
   });
 });

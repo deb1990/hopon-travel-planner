@@ -12,6 +12,6 @@ describe('ItineraryHeader', () => {
       </ThemeProvider>,
     );
     expect(screen.getByText('Japan 2026')).toBeInTheDocument();
-    expect(screen.getByText('trip-123')).toBeInTheDocument(); // Showing first 8 chars
+    expect(screen.getByText('trip-12345678')).toBeInTheDocument();
   });
 });

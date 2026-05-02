@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Share2, MoreHorizontal } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { Button } from '@/components/ui/button';
 
 interface ItineraryHeaderProps {
   tripName?: string;
@@ -10,42 +11,47 @@ interface ItineraryHeaderProps {
 
 /**
  * Sticky header for the trip detail view.
- * Provides navigation back to dashboard, trip title, and sync status.
+ * Provides professional breadcrumb navigation and mission control actions.
  *
  * @param props.tripName - The display name of the trip.
  * @param props.tripId - Unique identifier for the trip.
  */
 export function ItineraryHeader({ tripName, tripId }: ItineraryHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/80 backdrop-blur-xl px-8 py-5">
+    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl px-8 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6">
           <Link
             href="/"
-            className="size-10 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-white hover:border-blue-100 transition-all duration-300 group"
+            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors group"
           >
-            <ChevronLeft className="size-5 group-hover:-translate-x-0.5 transition-transform" />
+            <ChevronLeft className="size-3.5 group-hover:-translate-x-0.5 transition-transform" />
+            Dashboard
           </Link>
+          <div className="h-4 w-px bg-border/60" />
           <div className="flex flex-col">
-            <h1 className="text-2xl font-black tracking-tight text-slate-900 uppercase">
+            <h1 className="text-xl font-[1000] tracking-tight text-foreground uppercase italic">
               {tripName || 'Exploring...'}
             </h1>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="text-[10px] text-slate-400 uppercase font-black tracking-[0.2em]">
-                Trip ID:
-              </span>
-              <span className="text-[10px] text-blue-600 font-mono font-bold tracking-tighter">
-                {tripId.slice(0, 8)}
-              </span>
-            </div>
+            <span className="text-[9px] text-primary/60 font-mono font-bold tracking-tighter">
+              {tripId}
+            </span>
           </div>
         </div>
-        <div className="flex items-center gap-6">
+
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" className="size-8 rounded-xl hover:bg-primary/5">
+            <Share2 className="size-4 text-muted-foreground" />
+          </Button>
+          <Button variant="ghost" size="icon" className="size-8 rounded-xl hover:bg-primary/5">
+            <MoreHorizontal className="size-4 text-muted-foreground" />
+          </Button>
+          <div className="w-px h-4 bg-border/60 mx-1" />
           <ThemeToggle />
-          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-100 shadow-sm">
-            <div className="size-1.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
-            <span className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
-              Live Sync
+          <div className="flex items-center gap-2 bg-primary/5 px-3 py-1.5 rounded-full border border-primary/10 ml-2">
+            <div className="size-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
+            <span className="text-[9px] font-black uppercase text-primary/70 tracking-widest">
+              Active Sync
             </span>
           </div>
         </div>
