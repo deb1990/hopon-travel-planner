@@ -31,6 +31,10 @@ export function GhostGroup({ startTime, numDays }: GhostGroupProps) {
             Missing accommodation
           </p>
         </div>
+        <Button className="rounded-full bg-orange-600 text-white font-black h-8 px-4 text-[10px] uppercase tracking-widest hover:scale-105 transition-transform shadow-md border-none cursor-pointer">
+          <Plus className="size-3 mr-1.5 stroke-[3]" />
+          Add Stay
+        </Button>
       </div>
 
       {/* The Thread (Orange Variant) */}
@@ -48,7 +52,7 @@ export function GhostGroup({ startTime, numDays }: GhostGroupProps) {
               <DayHeader date={dateISO} className={dayNum === 1 ? 'mt-6' : 'mt-10'} />
 
               <div className="flex flex-col gap-1">
-                {/* IN-LINE ADD BUTTON */}
+                {/* IN-LINE ADD ACTIVITY BUTTON */}
                 <div className="relative pl-8 py-2">
                   <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-orange-500/30 ring-2 ring-background z-10" />
                   <Button
