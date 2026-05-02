@@ -11,6 +11,7 @@ describe('Gap Detection Logic (Comprehensive)', () => {
       title: 'First Hotel',
       startTime: '2026-10-03T15:00:00Z',
       endTime: '2026-10-05T11:00:00Z',
+      isLocked: false,
     },
   ];
 
@@ -28,7 +29,7 @@ describe('Gap Detection Logic (Comprehensive)', () => {
     const result = identifyItineraryGaps(mockStays, undefined, tripEnd);
 
     expect(result).toHaveLength(1);
-    expect(result[0]!.numDays).toBe(2); // Oct 5, Oct 6 (Oct 7 check-in would be needed)
+    expect(result[0]!.numDays).toBe(2); // Oct 5, Oct 6
     expect(new Date(result[0]!.startTime).getUTCDate()).toBe(5);
   });
 
@@ -42,6 +43,7 @@ describe('Gap Detection Logic (Comprehensive)', () => {
         title: 'Second Hotel',
         startTime: '2026-10-07T15:00:00Z',
         endTime: '2026-10-10T11:00:00Z',
+        isLocked: false,
       },
     ];
     const result = identifyItineraryGaps(events);

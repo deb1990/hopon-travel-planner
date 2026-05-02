@@ -18,6 +18,13 @@ export const eventTypeEnum = pgEnum('event_type', [
   'CHECK_OUT',
 ]);
 
+export const accommodationTypeEnum = pgEnum('accommodation_type', [
+  'Hotel',
+  'AirBNB',
+  'Camping',
+  'Other',
+]);
+
 /**
  * Users table - Auth managed via Google/Apple
  */
@@ -77,6 +84,7 @@ export const itineraryEvents = pgTable('itinerary_events', {
   lat: doublePrecision('lat'),
   lng: doublePrecision('lng'),
   bookingLink: text('booking_link'),
+  accommodationType: accommodationTypeEnum('accommodation_type'),
   notes: text('notes'),
   isLocked: boolean('is_locked').default(false).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),

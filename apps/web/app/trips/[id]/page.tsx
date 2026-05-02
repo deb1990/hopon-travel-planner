@@ -28,9 +28,13 @@ export default function TripDetail() {
     (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime(),
   );
 
+  // Normalize nulls to undefined for utility logic
+  const startDate = trip.startDate ?? undefined;
+  const endDate = trip.endDate ?? undefined;
+
   const baseGroups = groupEventsByBase(events);
-  const gaps = identifyItineraryGaps(events, trip.startDate, trip.endDate);
-  const days = calculateTripDuration(trip.startDate, trip.endDate);
+  const gaps = identifyItineraryGaps(events, startDate, endDate);
+  const days = calculateTripDuration(startDate, endDate);
 
   return (
     <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
@@ -51,10 +55,11 @@ export default function TripDetail() {
 
             <div className="flex flex-col" data-testid="timeline-list">
               <TimelineList
+                tripId={tripId}
                 baseGroups={baseGroups}
                 gaps={gaps}
-                tripStartDate={trip.startDate}
-                tripEndDate={trip.endDate}
+                tripStartDate={startDate}
+                tripEndDate={endDate}
               />
             </div>
           </div>
@@ -93,17 +98,18 @@ export default function TripDetail() {
 }
 
 function TimelineList({
+  tripId,
   baseGroups,
   gaps,
   tripStartDate,
   tripEndDate,
 }: {
+  tripId: string;
   baseGroups: BaseGroupType[];
   gaps: { startTime: string; endTime: string; numDays: number }[];
   tripStartDate?: string;
   tripEndDate?: string;
 }) {
-  // If trip is truly empty and no gaps returned (unlikely with our logic)
   if (baseGroups.length === 0 && gaps.length === 0) {
     return (
       <div className="relative bg-card rounded-[2.5rem] border shadow-2xl p-32 text-center flex flex-col items-center gap-6 opacity-40">
@@ -120,7 +126,9 @@ function TimelineList({
 
   return (
     <div className="flex flex-col gap-2">
-      {startGap && <GhostGroup startTime={startGap.startTime} numDays={startGap.numDays} />}
+      {startGap && (
+        <GhostGroup tripId={tripId} startTime={startGap.startTime} numDays={startGap.numDays} />
+      )}
 
       {baseGroups.map((group) => {
         const gapAfter = gaps.find(
@@ -129,13 +137,19 @@ function TimelineList({
         return (
           <React.Fragment key={group.stay.id}>
             <BaseGroup stay={group.stay} items={group.items} />
-            {gapAfter && <GhostGroup startTime={gapAfter.startTime} numDays={gapAfter.numDays} />}
+            {gapAfter && (
+              <GhostGroup
+                tripId={tripId}
+                startTime={gapAfter.startTime}
+                numDays={gapAfter.numDays}
+              />
+            )}
           </React.Fragment>
         );
       })}
 
       {endGap && endGap !== startGap && (
-        <GhostGroup startTime={endGap.startTime} numDays={endGap.numDays} />
+        <GhostGroup tripId={tripId} startTime={endGap.startTime} numDays={endGap.numDays} />
       )}
     </div>
   );

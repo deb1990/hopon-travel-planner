@@ -5,8 +5,7 @@ import { ItineraryEvent } from '@hopon/core';
 import { ItineraryRow } from './itinerary-row';
 import { DayHeader } from './day-header';
 import { calculateTripDuration } from '@/lib/temporal-utils';
-import { Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { AddEventDialog } from './add-event-dialog';
 
 interface BaseGroupProps {
   stay: ItineraryEvent;
@@ -17,7 +16,10 @@ interface BaseGroupProps {
  * High-density container for a Stay and its nested chronological activities.
  */
 export function BaseGroup({ stay, items }: BaseGroupProps) {
-  const totalDays = calculateTripDuration(stay.startTime, stay.endTime);
+  // Normalize stay.endTime to string | undefined
+  const endTime = stay.endTime ?? undefined;
+  const totalDays = calculateTripDuration(stay.startTime, endTime);
+
   const itemsByDay = new Map<number, ItineraryEvent[]>();
 
   items.forEach((item) => {
@@ -64,17 +66,10 @@ export function BaseGroup({ stay, items }: BaseGroupProps) {
                   </div>
                 ))}
 
-                {/* IN-LINE ADD BUTTON */}
+                {/* DYNAMIC ADD DIALOG */}
                 <div className="relative pl-8 py-2">
                   <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border/40 ring-2 ring-background z-10" />
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-7 px-3 text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground/50 hover:text-primary hover:bg-primary/5 rounded-full transition-all group/add-btn"
-                  >
-                    <Plus className="size-2.5 mr-1.5 stroke-[4] group-hover/add-btn:scale-110 transition-transform" />
-                    Add Activity
-                  </Button>
+                  <AddEventDialog tripId={stay.tripId} type="ACTIVITY" initialDate={dateISO} />
                 </div>
               </div>
             </div>

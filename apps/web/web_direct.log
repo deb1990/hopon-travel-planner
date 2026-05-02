@@ -18,3 +18,38 @@
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 37ms (next.js: 23ms, application-code: 14ms)
 ✓ Compiled in 64ms
 ✓ Compiled in 21ms
+✓ Compiled in 29ms
+✓ Compiled in 35ms
+✓ Compiled in 214ms
+✓ Compiled in 180ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 75ms (next.js: 41ms, application-code: 34ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 12ms (next.js: 1500µs, application-code: 11ms)
+✓ Compiled in 16ms
+✓ Compiled in 17ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 148ms (next.js: 21ms, application-code: 127ms)
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+✓ Compiled in 19ms
+✓ Compiled in 22ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 69ms (next.js: 19ms, application-code: 50ms)
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+✓ Compiled in 15ms
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+✓ Compiled in 15ms
+✓ Compiled in 16ms
+✓ Compiled in 15ms
+✓ Compiled in 184ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 76ms (next.js: 38ms, application-code: 38ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 33ms (next.js: 1284µs, application-code: 31ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 11ms (next.js: 1556µs, application-code: 9ms)
+✓ Compiled in 76ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 44ms (next.js: 21ms, application-code: 23ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 23ms (next.js: 1308µs, application-code: 21ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 15ms (next.js: 1336µs, application-code: 13ms)
+✓ Compiled in 22ms
+✓ Compiled in 14ms
+✓ Compiled in 16ms

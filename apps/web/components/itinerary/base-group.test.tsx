@@ -3,6 +3,9 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { BaseGroup } from './base-group';
 import { ItineraryEvent } from '@hopon/core';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const mockStay: ItineraryEvent = {
   id: 'stay-1',
@@ -10,8 +13,9 @@ const mockStay: ItineraryEvent = {
   type: 'STAY',
   title: 'Test Hotel',
   startTime: '2026-10-01T15:00:00Z',
-  endTime: '2026-10-03T11:00:00Z', // 3 Days: Oct 1, 2, 3
+  endTime: '2026-10-03T11:00:00Z',
   locationName: 'Test City',
+  isLocked: false,
 };
 
 const mockActivities: ItineraryEvent[] = [
@@ -21,12 +25,17 @@ const mockActivities: ItineraryEvent[] = [
     type: 'ACTIVITY',
     title: 'Nested Activity',
     startTime: '2026-10-01T10:00:00Z',
+    isLocked: false,
   },
 ];
 
 describe('BaseGroup Component', () => {
   it('should render chronological date markers and add buttons for every day', () => {
-    render(<BaseGroup stay={mockStay} items={mockActivities} />);
+    render(
+      <QueryClientProvider client={queryClient}>
+        <BaseGroup stay={mockStay} items={mockActivities} />
+      </QueryClientProvider>,
+    );
 
     // Oct 1 (Has activity)
     expect(screen.getByText(/Nested Activity/i)).toBeInTheDocument();

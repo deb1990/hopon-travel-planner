@@ -11,6 +11,7 @@ describe('Timeline Reordering Engine (Push-Forward)', () => {
       startTime: '2026-06-05T10:00:00Z',
       endTime: '2026-06-05T11:00:00Z',
       tripId: 't1',
+      isLocked: false,
     },
     {
       id: 'b',
@@ -19,6 +20,7 @@ describe('Timeline Reordering Engine (Push-Forward)', () => {
       startTime: '2026-06-05T11:00:00Z',
       endTime: '2026-06-05T12:00:00Z',
       tripId: 't1',
+      isLocked: false,
     },
     {
       id: 'c',
@@ -27,6 +29,7 @@ describe('Timeline Reordering Engine (Push-Forward)', () => {
       startTime: '2026-06-05T12:00:00Z',
       endTime: '2026-06-05T13:00:00Z',
       tripId: 't1',
+      isLocked: false,
     },
   ];
 

@@ -72,3 +72,81 @@ Server is running on http://localhost:4001
 --> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
 <-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
 --> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 15ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 1ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 12ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 24ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 5ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 1ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 17ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 6ms
+10:08:49 PM [tsx] change in ./../../packages/core/src/types/index.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌘ enable debugging { debug: true }
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+10:09:02 PM [tsx] change in ./src/db/schema.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+10:10:41 PM [tsx] change in ./../../packages/core/src/types/index.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 2ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 30ms
+10:13:16 PM [tsx] change in ./../../packages/core/src/types/index.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001

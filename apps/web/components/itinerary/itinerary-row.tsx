@@ -32,6 +32,9 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
       })
     : null;
 
+  // Narrowing the type to access stay-specific fields
+  const bookingLink = event.type === 'STAY' ? event.bookingLink : null;
+
   return (
     <div
       className={cn(
@@ -81,9 +84,9 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
 
       {/* Actions (Professional Gray) */}
       <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
-        {event.bookingLink && (
+        {bookingLink && (
           <a
-            href={event.bookingLink}
+            href={bookingLink}
             target="_blank"
             rel="noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"

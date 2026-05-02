@@ -12,6 +12,7 @@ const mockEvent: ItineraryEvent = {
   startTime: '2026-10-01T10:00:00Z',
   endTime: '2026-10-01T11:00:00Z',
   locationName: 'Test Location',
+  isLocked: false,
 };
 
 describe('ItineraryRow Component', () => {
@@ -23,9 +24,6 @@ describe('ItineraryRow Component', () => {
 
   it('should render both start and end times for activities', () => {
     render(<ItineraryRow event={mockEvent} />);
-
-    // Use a flexible matcher since timezones in JSDOM can be finicky
-    // We just want to ensure two distinct time-like strings are rendered in the time column
     const timeContainers = screen.getAllByText(/\d{2}:\d{2}/);
     expect(timeContainers.length).toBeGreaterThanOrEqual(2);
   });

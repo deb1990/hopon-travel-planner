@@ -15,6 +15,13 @@
       "when": 1777728846968,
       "tag": "0001_misty_jocasta",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1777756163580,
+      "tag": "0002_dapper_paibok",
+      "breakpoints": true
     }
   ]
 }

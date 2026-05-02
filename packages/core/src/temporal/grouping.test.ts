@@ -1,54 +1,55 @@
 import { describe, it, expect } from 'vitest';
-
 import { ItineraryEvent } from '../types';
-
 import { groupEventsByBase } from './grouping';
 
 describe('Event Grouping Logic', () => {
-  it('should group activities under their chronologically associated stay', () => {
+  it('should group activities under their chronologically active stay', () => {
     const events: ItineraryEvent[] = [
       {
         id: 'stay-1',
-        tripId: 'trip-1',
+        tripId: 't1',
         type: 'STAY',
         title: 'Tokyo Hotel',
         startTime: '2026-10-01T15:00:00Z',
         endTime: '2026-10-05T11:00:00Z',
+        isLocked: false,
       },
       {
         id: 'act-1',
-        tripId: 'trip-1',
+        tripId: 't1',
         type: 'ACTIVITY',
-        title: 'Sushi Dinner',
-        startTime: '2026-10-02T19:00:00Z',
+        title: 'Sushi Lunch',
+        startTime: '2026-10-02T12:00:00Z',
+        isLocked: false,
       },
       {
         id: 'stay-2',
-        tripId: 'trip-1',
+        tripId: 't1',
         type: 'STAY',
-        title: 'Osaka Ryokan',
+        title: 'Osaka Hotel',
         startTime: '2026-10-05T15:00:00Z',
         endTime: '2026-10-08T10:00:00Z',
+        isLocked: false,
       },
       {
         id: 'act-2',
-        tripId: 'trip-1',
+        tripId: 't1',
         type: 'ACTIVITY',
-        title: 'Universal Studios',
+        title: 'Castle Tour',
         startTime: '2026-10-06T10:00:00Z',
+        isLocked: false,
       },
     ];
 
     const result = groupEventsByBase(events);
 
     expect(result).toHaveLength(2);
-    expect(result[0]!.stay.id).toBe('stay-1');
-    expect(result[0]!.items).toContainEqual(expect.objectContaining({ id: 'act-1' }));
-    expect(result[1]!.stay.id).toBe('stay-2');
-    expect(result[1]!.items).toContainEqual(expect.objectContaining({ id: 'act-2' }));
-  });
+    expect(result[0]!.stay.title).toBe('Tokyo Hotel');
+    expect(result[0]!.items).toHaveLength(1);
+    expect(result[0]!.items[0]!.title).toBe('Sushi Lunch');
 
-  it('should handle activities occurring before any stay as orphans (handled by UI later)', () => {
-    // This test ensures we only group what is actually bounded by a stay
+    expect(result[1]!.stay.title).toBe('Osaka Hotel');
+    expect(result[1]!.items).toHaveLength(1);
+    expect(result[1]!.items[0]!.title).toBe('Castle Tour');
   });
 });
