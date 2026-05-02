@@ -1,30 +1,63 @@
+'use client';
+
 import * as React from 'react';
-import { MapPin, Lock, ExternalLink, MoreVertical } from 'lucide-react';
+import { MapPin, Lock, ExternalLink, MoreVertical, GripVertical } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { ItineraryEvent } from '@hopon/core';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 interface ItineraryRowProps {
   event: ItineraryEvent;
   className?: string;
+  isDraggable?: boolean;
 }
 
 /**
  * A high-precision row for displaying itinerary events.
- * Optimized for information density and technical clarity.
+ * Supports drag-and-drop sortable interactions.
  */
-export function ItineraryRow({ event, className }: ItineraryRowProps) {
+export function ItineraryRow({ event, className, isDraggable = false }: ItineraryRowProps) {
   const isStay = event.type === 'STAY';
+
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: event.id,
+    disabled: !isDraggable || isStay, // Stays are anchors, not draggable
+    data: {
+      type: event.type,
+      event,
+    },
+  });
+
+  const style = {
+    transform: CSS.Translate.toString(transform),
+    transition,
+  };
 
   return (
     <div
+      ref={setNodeRef}
+      style={style}
       className={cn(
         'group relative flex items-center gap-6 border-b border-border/40 bg-transparent px-6 py-4 hover:bg-muted/30 transition-all duration-200 cursor-pointer',
         isStay && 'bg-primary/[0.02] border-l-2 border-l-primary',
+        isDragging && 'opacity-50 scale-[0.98] z-50 bg-muted shadow-2xl',
         className,
       )}
     >
-      {/* Time Column (Technical Mono) - Only shown for non-STAY events */}
+      {/* Drag Handle (Only for non-stay draggable items) */}
+      {!isStay && isDraggable && (
+        <div
+          {...attributes}
+          {...listeners}
+          className="absolute left-1 opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing p-1 hover:bg-muted rounded transition-opacity"
+        >
+          <GripVertical className="size-3.5 text-muted-foreground/40" />
+        </div>
+      )}
+
+      {/* Time Column */}
       {!isStay && (
         <div className="flex w-20 flex-col font-mono text-[10px] tabular-nums tracking-tighter shrink-0">
           <span className="text-muted-foreground font-bold group-hover:text-foreground transition-colors">
@@ -46,7 +79,7 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
         </div>
       )}
 
-      {/* Main Content - Naturally aligns left if time column is missing */}
+      {/* Main Content */}
       <div className="flex flex-1 flex-col gap-0.5 min-w-0">
         <div className="flex items-center gap-3">
           <span
@@ -74,7 +107,7 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
         )}
       </div>
 
-      {/* Actions (Professional Gray) */}
+      {/* Actions */}
       <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
         {event.bookingLink && (
           <a
