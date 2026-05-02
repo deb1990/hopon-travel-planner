@@ -7,7 +7,7 @@ import { ItineraryHeader } from '@/components/itinerary/itinerary-header';
 import { ItineraryMetrics } from '@/components/itinerary/itinerary-metrics';
 import { ItineraryRow } from '@/components/itinerary/itinerary-row';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Activity, MapPin, CalendarDays, Plus } from 'lucide-react';
+import { MapPin, CalendarDays, Plus, Sparkles } from 'lucide-react';
 import { groupEventsByBase, identifyItineraryGaps, ItineraryEvent, BaseGroup } from '@hopon/core';
 import { Button } from '@/components/ui/button';
 
@@ -26,6 +26,9 @@ export default function TripDetail() {
   const events = trip.events || [];
   const baseGroups = groupEventsByBase(events);
   const gaps = identifyItineraryGaps(events);
+
+  // Calculate dynamic duration
+  const days = calculateDays(trip.startDate, trip.endDate);
 
   return (
     <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
@@ -55,7 +58,7 @@ export default function TripDetail() {
 
             {/* Container for the timeline with the background thread */}
             <div className="relative bg-card rounded-[2.5rem] border shadow-2xl overflow-hidden min-h-[400px]">
-              {/* Vertical Thread Line (Restored) */}
+              {/* Vertical Thread Line */}
               <div className="timeline-thread z-0" />
 
               <div className="flex flex-col relative z-10">
@@ -67,7 +70,7 @@ export default function TripDetail() {
           {/* Inspector Panel Sidebar */}
           <div className="lg:col-span-4 flex flex-col gap-12 pt-4">
             <div className="flex flex-col gap-8 sticky top-24">
-              <ItineraryMetrics days={5} stays={baseGroups.length} />
+              <ItineraryMetrics days={days} stays={baseGroups.length} />
               <SpatialContext />
 
               {/* Secondary Meta Panel */}
@@ -98,6 +101,18 @@ export default function TripDetail() {
   );
 }
 
+/**
+ * Calculates the total number of days between two ISO dates.
+ * Defaults to 1 if no range is provided.
+ */
+function calculateDays(start?: string, end?: string): number {
+  if (!start || !end) return 1;
+  const s = new Date(start);
+  const e = new Date(end);
+  const diff = e.getTime() - s.getTime();
+  return Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
+}
+
 function TimelineList({
   baseGroups,
   gaps,
@@ -107,13 +122,22 @@ function TimelineList({
 }) {
   if (baseGroups.length === 0) {
     return (
-      <div className="p-40 text-center flex flex-col items-center gap-4">
-        <div className="size-16 rounded-full bg-background border flex items-center justify-center mb-4">
-          <Activity className="size-8 text-muted-foreground/20" />
+      <div className="p-32 text-center flex flex-col items-center gap-6">
+        <div className="size-20 rounded-[2.5rem] bg-muted/30 border border-border/50 flex items-center justify-center mb-2 shadow-inner">
+          <Sparkles className="size-8 text-muted-foreground/40 animate-pulse" />
         </div>
-        <p className="text-muted-foreground font-black uppercase tracking-[0.2em] text-[10px]">
-          Timeline Offline
-        </p>
+        <div className="flex flex-col gap-1">
+          <p className="text-foreground font-black uppercase tracking-[0.2em] text-sm italic">
+            Empty Itinerary
+          </p>
+          <p className="text-muted-foreground text-xs font-medium max-w-[200px]">
+            Begin your journey by defining your first accommodation base.
+          </p>
+        </div>
+        <Button className="rounded-full bg-primary text-primary-foreground font-black h-12 px-8 text-[11px] uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">
+          <Plus className="size-4 mr-2 stroke-[3]" />
+          Create First Entry
+        </Button>
       </div>
     );
   }
@@ -122,7 +146,7 @@ function TimelineList({
     <div className="flex flex-col">
       {baseGroups.map((group) => (
         <div key={group.stay.id} className="relative">
-          {/* Base Header Indicator (Onyx Restored) */}
+          {/* Base Header Indicator */}
           <div className="absolute left-[31px] top-10 -translate-x-1/2 size-3 rounded-full bg-primary ring-4 ring-background z-20 shadow-[0_0_15px_rgba(var(--primary),0.5)]" />
 
           <div className="bg-muted/50 py-10 border-b border-border/40">
