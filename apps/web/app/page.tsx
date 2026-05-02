@@ -11,13 +11,23 @@ const DEMO_USER_ID = 'b07bb29b-67de-4f35-8c85-111c8358436b';
 const API_URL = 'http://localhost:4000';
 
 export default function Home() {
-  const { data: trips, isLoading } = useQuery({
+  const {
+    data: trips,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ['trips'],
     queryFn: async () => {
-      const res = await fetch(`${API_URL}/trips`, {
-        headers: { 'x-user-id': DEMO_USER_ID },
-      });
-      return res.json();
+      try {
+        const res = await fetch(`${API_URL}/trips`, {
+          headers: { 'x-user-id': DEMO_USER_ID },
+        });
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      } catch (e) {
+        console.error('Fetch trips failed:', e);
+        throw e;
+      }
     },
   });
 
@@ -32,6 +42,21 @@ export default function Home() {
     },
     enabled: !!tripId,
   });
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
+        <h2 className="text-destructive font-bold">API Connection Error</h2>
+        <p className="text-zinc-500 text-sm mt-2">{(error as Error).message}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-4 px-4 py-2 bg-zinc-800 rounded-md text-xs hover:bg-zinc-700"
+        >
+          Retry Connection
+        </button>
+      </div>
+    );
+  }
 
   if (isLoading || isLoadingTrip) {
     return (
