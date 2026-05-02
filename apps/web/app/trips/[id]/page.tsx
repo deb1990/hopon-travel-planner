@@ -6,16 +6,15 @@ import { useTrip } from '@/hooks/use-trip';
 import { ItineraryHeader } from '@/components/itinerary/itinerary-header';
 import { ItineraryMetrics } from '@/components/itinerary/itinerary-metrics';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CalendarDays, Plus, Sparkles, MapPin } from 'lucide-react';
+import { CalendarDays, Sparkles, MapPin } from 'lucide-react';
 import { groupEventsByBase, identifyItineraryGaps, BaseGroup as BaseGroupType } from '@hopon/core';
-import { Button } from '@/components/ui/button';
 import { calculateTripDuration } from '@/lib/temporal-utils';
 import { BaseGroup } from '@/components/itinerary/base-group';
 import { GhostGroup } from '@/components/itinerary/ghost-group';
 
 /**
  * Detailed itinerary view for a single trip.
- * Displays a high-density chronological timeline.
+ * Displays a high-density chronological timeline with in-line entry points.
  */
 export default function TripDetail() {
   const params = useParams();
@@ -25,7 +24,6 @@ export default function TripDetail() {
   if (error) return <ErrorView message={(error as Error).message} />;
   if (isLoading || !trip) return <LoadingView />;
 
-  // Sort events chronologically
   const events = [...(trip.events || [])].sort(
     (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime(),
   );
@@ -42,22 +40,13 @@ export default function TripDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Main Timeline Column */}
           <div className="lg:col-span-8 flex flex-col gap-10">
-            <div className="flex items-center justify-between px-2">
-              <div className="flex items-center gap-4">
-                <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <CalendarDays className="size-4 text-primary" />
-                </div>
-                <h2 className="text-sm font-black uppercase tracking-[0.2em] text-foreground">
-                  Timeline Sequence
-                </h2>
+            <div className="flex items-center gap-4 px-2">
+              <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
+                <CalendarDays className="size-4 text-primary" />
               </div>
-              <Button
-                size="sm"
-                className="rounded-full bg-primary text-primary-foreground font-bold h-8 px-4 text-[10px] uppercase tracking-widest hover:scale-105 transition-transform"
-              >
-                <Plus className="size-3 mr-1.5 stroke-[3]" />
-                Add Entry
-              </Button>
+              <h2 className="text-sm font-black uppercase tracking-[0.2em] text-foreground/60">
+                Itinerary Sequence
+              </h2>
             </div>
 
             <div className="flex flex-col" data-testid="timeline-list">
@@ -114,17 +103,14 @@ function TimelineList({
   tripStartDate?: string;
   tripEndDate?: string;
 }) {
+  // If trip is truly empty and no gaps returned (unlikely with our logic)
   if (baseGroups.length === 0 && gaps.length === 0) {
     return (
-      <div className="relative bg-card rounded-[2.5rem] border shadow-2xl p-32 text-center flex flex-col items-center gap-6">
+      <div className="relative bg-card rounded-[2.5rem] border shadow-2xl p-32 text-center flex flex-col items-center gap-6 opacity-40">
         <Sparkles className="size-8 text-muted-foreground/40 animate-pulse" />
         <p className="text-foreground font-black uppercase tracking-[0.2em] text-sm italic">
           Empty Itinerary
         </p>
-        <Button className="rounded-full bg-primary text-primary-foreground font-black h-12 px-8 text-[11px] uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">
-          <Plus className="size-4 mr-2 stroke-[3]" />
-          Create First Entry
-        </Button>
       </div>
     );
   }

@@ -12,7 +12,6 @@ interface GhostGroupProps {
 
 /**
  * A placeholder group for intervals where no stay accommodation is assigned.
- * Designed to perfectly mirror the refined BaseGroup header styling.
  */
 export function GhostGroup({ startTime, numDays }: GhostGroupProps) {
   const days = Array.from({ length: numDays }, (_, i) => i + 1);
@@ -22,7 +21,7 @@ export function GhostGroup({ startTime, numDays }: GhostGroupProps) {
       data-testid="ghost-group"
       className="relative flex flex-col group/ghost-group bg-orange-500/[0.03] mb-12 rounded-[2.5rem] border border-orange-500/20 shadow-xl overflow-hidden"
     >
-      {/* The Ghost Header - Perfectly left-aligned minimalist design */}
+      {/* The Ghost Header */}
       <div className="relative z-10 border-b border-orange-500/10 px-8 py-8 flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <h3 className="text-base font-bold text-orange-600 tracking-tight italic">
@@ -32,10 +31,6 @@ export function GhostGroup({ startTime, numDays }: GhostGroupProps) {
             Missing accommodation
           </p>
         </div>
-        <Button className="rounded-full bg-orange-600 text-white font-black h-8 px-4 text-[10px] uppercase tracking-widest hover:scale-105 transition-transform shadow-md border-none cursor-pointer">
-          <Plus className="size-3 mr-1.5 stroke-[3]" />
-          Assign
-        </Button>
       </div>
 
       {/* The Thread (Orange Variant) */}
@@ -49,17 +44,21 @@ export function GhostGroup({ startTime, numDays }: GhostGroupProps) {
           const dateISO = currentDate.toISOString();
 
           return (
-            <div key={dayNum}>
+            <div key={dayNum} className="flex flex-col">
               <DayHeader date={dateISO} className={dayNum === 1 ? 'mt-6' : 'mt-10'} />
+
               <div className="flex flex-col gap-1">
-                <div
-                  data-testid="ghost-empty-placeholder"
-                  className="relative py-4 pl-14 text-orange-900/40 dark:text-orange-100/30"
-                >
+                {/* IN-LINE ADD BUTTON */}
+                <div className="relative pl-8 py-2">
                   <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-orange-500/30 ring-2 ring-background z-10" />
-                  <p className="text-[10px] italic font-medium uppercase tracking-widest">
-                    No activities planned
-                  </p>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-7 px-3 text-[9px] font-black uppercase tracking-[0.2em] text-orange-600/40 hover:text-orange-600 hover:bg-orange-500/5 rounded-full transition-all group/add-btn"
+                  >
+                    <Plus className="size-2.5 mr-1.5 stroke-[4] group-hover/add-btn:scale-110 transition-transform" />
+                    Add Activity
+                  </Button>
                 </div>
               </div>
             </div>

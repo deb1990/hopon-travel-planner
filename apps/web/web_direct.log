@@ -9,3 +9,10 @@
 
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 837ms (next.js: 723ms, application-code: 113ms)
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 109ms (next.js: 61ms, application-code: 48ms)
+✓ Compiled in 50ms
+✓ Compiled in 39ms
+✓ Compiled in 28ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 74ms (next.js: 17ms, application-code: 57ms)
+✓ Compiled in 163ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 104ms (next.js: 34ms, application-code: 70ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 37ms (next.js: 23ms, application-code: 14ms)

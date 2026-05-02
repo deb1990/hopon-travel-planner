@@ -5,6 +5,8 @@ import { ItineraryEvent } from '@hopon/core';
 import { ItineraryRow } from './itinerary-row';
 import { DayHeader } from './day-header';
 import { calculateTripDuration } from '@/lib/temporal-utils';
+import { Plus } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface BaseGroupProps {
   stay: ItineraryEvent;
@@ -13,7 +15,6 @@ interface BaseGroupProps {
 
 /**
  * High-density container for a Stay and its nested chronological activities.
- * Ensures every calendar day of the stay is visually represented.
  */
 export function BaseGroup({ stay, items }: BaseGroupProps) {
   const totalDays = calculateTripDuration(stay.startTime, stay.endTime);
@@ -49,28 +50,32 @@ export function BaseGroup({ stay, items }: BaseGroupProps) {
           const dateISO = currentDate.toISOString();
 
           return (
-            <div key={dayNum}>
+            <div key={dayNum} className="flex flex-col">
               <DayHeader date={dateISO} className={dayNum === 1 ? 'mt-6' : 'mt-10'} />
 
               <div className="flex flex-col gap-1">
-                {dayItems.length > 0 ? (
-                  dayItems.map((item) => (
-                    <div key={item.id} data-testid="nested-activity" className="relative">
-                      <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border ring-2 ring-background z-20" />
-                      <ItineraryRow
-                        event={item}
-                        className="border-none py-3 pl-8 hover:bg-primary/[0.02]"
-                      />
-                    </div>
-                  ))
-                ) : (
-                  <div data-testid="empty-day-placeholder" className="relative py-4 pl-14">
-                    <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border/30 ring-2 ring-background z-10" />
-                    <p className="text-[10px] text-muted-foreground italic font-medium uppercase tracking-widest opacity-60">
-                      No activities planned
-                    </p>
+                {dayItems.map((item) => (
+                  <div key={item.id} data-testid="nested-activity" className="relative">
+                    <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border ring-2 ring-background z-20" />
+                    <ItineraryRow
+                      event={item}
+                      className="border-none py-3 pl-8 hover:bg-primary/[0.02]"
+                    />
                   </div>
-                )}
+                ))}
+
+                {/* IN-LINE ADD BUTTON */}
+                <div className="relative pl-8 py-2">
+                  <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border/40 ring-2 ring-background z-10" />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-7 px-3 text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground/50 hover:text-primary hover:bg-primary/5 rounded-full transition-all group/add-btn"
+                  >
+                    <Plus className="size-2.5 mr-1.5 stroke-[4] group-hover/add-btn:scale-110 transition-transform" />
+                    Add Activity
+                  </Button>
+                </div>
               </div>
             </div>
           );

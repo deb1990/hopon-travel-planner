@@ -25,18 +25,18 @@ const mockActivities: ItineraryEvent[] = [
 ];
 
 describe('BaseGroup Component', () => {
-  it('should render chronological date markers and empty messages for inactive days', () => {
+  it('should render chronological date markers and add buttons for every day', () => {
     render(<BaseGroup stay={mockStay} items={mockActivities} />);
 
     // Oct 1 (Has activity)
     expect(screen.getByText(/Nested Activity/i)).toBeInTheDocument();
 
-    // Check for both Date and Day name in the document
+    // Check for Date and Day names
     expect(screen.getByText(/Oct 2, 2026/i)).toBeInTheDocument();
     expect(screen.getByText(/Friday/i)).toBeInTheDocument();
 
-    // Should find exactly 2 empty day placeholders
-    const placeholders = screen.getAllByText(/No activities planned/i);
-    expect(placeholders).toHaveLength(2);
+    // Should find exactly 3 "Add Activity" buttons (one for each day of the stay)
+    const addButtons = screen.getAllByText(/Add Activity/i);
+    expect(addButtons).toHaveLength(3);
   });
 });
