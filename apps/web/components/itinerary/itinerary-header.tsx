@@ -3,9 +3,11 @@ import Link from 'next/link';
 import { ChevronLeft, Share2, MoreHorizontal } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Button } from '@/components/ui/button';
+import { EditTripDialog } from '@/components/dashboard/edit-trip-dialog';
+import { Trip } from '@hopon/core';
 
 interface ItineraryHeaderProps {
-  tripName?: string;
+  trip?: Trip;
   tripId: string;
 }
 
@@ -13,10 +15,10 @@ interface ItineraryHeaderProps {
  * Sticky header for the trip detail view.
  * Provides professional breadcrumb navigation and mission control actions.
  *
- * @param props.tripName - The display name of the trip.
+ * @param props.trip - The full trip object for editing.
  * @param props.tripId - Unique identifier for the trip.
  */
-export function ItineraryHeader({ tripName, tripId }: ItineraryHeaderProps) {
+export function ItineraryHeader({ trip, tripId }: ItineraryHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl px-8 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
@@ -31,7 +33,7 @@ export function ItineraryHeader({ tripName, tripId }: ItineraryHeaderProps) {
           <div className="h-4 w-px bg-border/60" />
           <div className="flex flex-col">
             <h1 className="text-xl font-[1000] tracking-tight text-foreground uppercase italic">
-              {tripName || 'Exploring...'}
+              {trip?.name || 'Exploring...'}
             </h1>
             <span className="text-[9px] text-primary/60 font-mono font-bold tracking-tighter">
               {tripId}
@@ -40,6 +42,7 @@ export function ItineraryHeader({ tripName, tripId }: ItineraryHeaderProps) {
         </div>
 
         <div className="flex items-center gap-3">
+          {trip && <EditTripDialog trip={trip} />}
           <Button variant="ghost" size="icon" className="size-8 rounded-xl hover:bg-primary/5">
             <Share2 className="size-4 text-muted-foreground" />
           </Button>

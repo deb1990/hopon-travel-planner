@@ -86,14 +86,12 @@ export class TripRepository {
    */
   async delete(tripId: string, userId: string) {
     return this.db.transaction(async (tx) => {
-      // 1. Verify ownership
       const [trip] = await tx
         .select()
         .from(trips)
         .where(and(eq(trips.id, tripId), eq(trips.ownerId, userId)));
       if (!trip) throw new Error('Unauthorized or Trip not found');
 
-      // 2. Cascade delete
       await tx.delete(itineraryEvents).where(eq(itineraryEvents.tripId, tripId));
       await tx.delete(permissions).where(eq(permissions.tripId, tripId));
       await tx.delete(trips).where(eq(trips.id, tripId));
@@ -107,26 +105,20 @@ export class TripRepository {
    * ONLY the owner or an editor can update a trip.
    */
   async update(tripId: string, userId: string, data: Partial<typeof trips.$inferInsert>) {
-    // Validate dates
-    if (data.startDate || data.endDate) {
-      const [current] = await this.db.select().from(trips).where(eq(trips.id, tripId));
-      const start = data.startDate
-        ? new Date(data.startDate)
-        : current?.startDate
-          ? new Date(current.startDate)
-          : null;
-      const end = data.endDate
-        ? new Date(data.endDate)
-        : current?.endDate
-          ? new Date(current.endDate)
-          : null;
+    // 1. Fetch current state for validation and existence check
+    const [current] = await this.db.select().from(trips).where(eq(trips.id, tripId));
+    if (!current) throw new Error('Trip not found');
 
-      if (start && end && start > end) {
-        throw new Error('End date cannot be before start date');
-      }
+    // 2. Validate dates
+    const start = data.startDate !== undefined ? data.startDate : current.startDate;
+    const end = data.endDate !== undefined ? data.endDate : current.endDate;
+
+    if (start && end && new Date(start) > new Date(end)) {
+      throw new Error('End date cannot be before start date');
     }
 
-    const [result] = await this.db
+    // 3. Perform update with strict ownership/editor check
+    const query = this.db
       .update(trips)
       .set({ ...data, updatedAt: new Date() })
       .where(
@@ -148,10 +140,11 @@ export class TripRepository {
             ),
           ),
         ),
-      )
-      .returning();
+      );
 
-    if (!result) throw new Error('Unauthorized or Trip not found');
+    const [result] = await query.returning();
+
+    if (!result) throw new Error('Unauthorized');
     return result;
   }
 }

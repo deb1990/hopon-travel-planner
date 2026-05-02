@@ -1,11 +1,9 @@
 
 > @hopon/web@0.1.0 dev
-> next dev
+> next dev --port 3000 --hostname 0.0.0.0
 
 ▲ Next.js 16.2.4 (Turbopack)
 - Local:         http://localhost:3000
-- Network:       http://192.168.1.229:3000
-✓ Ready in 301ms
-
-  We detected TypeScript in your project and created a tsconfig.json file for you.
+- Network:       http://0.0.0.0:3000
+✓ Ready in 340ms
 

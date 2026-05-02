@@ -1,4 +1,4 @@
-◇ injected env (1) from .env // tip: ⌘ override existing { override: true }
+◇ injected env (1) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
 Registered Routes:
 - ALL /*
 - ALL /*

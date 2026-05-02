@@ -110,9 +110,12 @@ This file tracks the granular progress of the implementation. Each step follows 
   - [x] [API] Implement `PATCH /trips/:id` endpoint
   - [x] Build `components/dashboard/edit-trip-dialog.tsx`
   - [x] Add Edit action to `TripCard`
-- [x] **M5.7: Process Integrity**
+- [x] **M5.7: Refactoring & Maintenance**
+  - [x] Extract `TripForm` for shared Create/Edit logic
+  - [x] Centralize `CONFIG` and API hooks
+  - [x] Achieve 100% component test coverage
+- [x] **M5.8: Process Integrity**
   - [x] Implement "Two-Turn Handshake" in `GEMINI.md`
-  - [x] Add PUSH tracking to `TODO.md`
   - [x] PUSH AUTHORIZED (Archived)
 
 ## Milestone 6: High-Density Itinerary & Mapping

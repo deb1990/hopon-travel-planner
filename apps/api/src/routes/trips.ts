@@ -95,13 +95,24 @@ tripsRouter.patch('/:id', async (c) => {
     visibility?: 'private' | 'public';
   }>();
 
-  const updated = await tripRepo.update(tripId, userId, {
-    name: body.name,
-    startDate: body.startDate ? new Date(body.startDate) : undefined,
-    endDate: body.endDate ? new Date(body.endDate) : undefined,
-    visibility: body.visibility,
-  });
-  return c.json(updated);
+  try {
+    const updated = await tripRepo.update(tripId, userId, {
+      name: body.name,
+      startDate: body.startDate ? new Date(body.startDate) : undefined,
+      endDate: body.endDate ? new Date(body.endDate) : undefined,
+      visibility: body.visibility,
+    });
+    return c.json(updated);
+  } catch (error) {
+    console.error('Failed to update trip:', error);
+    return c.json(
+      {
+        error: 'Unauthorized or Not Found',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      },
+      403,
+    );
+  }
 });
 
 /**
@@ -133,8 +144,20 @@ tripsRouter.post('/:id/events', async (c) => {
 tripsRouter.delete('/:id', async (c) => {
   const tripId = c.req.param('id');
   const userId = c.get('userId');
-  const result = await tripRepo.delete(tripId, userId);
-  return c.json(result);
+
+  try {
+    const result = await tripRepo.delete(tripId, userId);
+    return c.json(result);
+  } catch (error) {
+    console.error('Failed to delete trip:', error);
+    return c.json(
+      {
+        error: 'Unauthorized or Not Found',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      },
+      403,
+    );
+  }
 });
 
 /**

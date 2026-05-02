@@ -14,6 +14,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Trip } from '@hopon/core';
 import { CONFIG } from '@/lib/config';
 import { TripForm, TripFormData } from './trip-form';
+import { toast } from 'sonner';
 
 interface EditTripDialogProps {
   trip: Trip;
@@ -31,6 +32,7 @@ export function EditTripDialog({ trip }: EditTripDialogProps) {
 
   const mutation = useMutation({
     mutationFn: async (data: TripFormData) => {
+      if (!trip?.id) throw new Error('Invalid Trip ID');
       const res = await fetch(`${CONFIG.API_URL}/trips/${trip.id}`, {
         method: 'PATCH',
         headers: {
@@ -45,10 +47,14 @@ export function EditTripDialog({ trip }: EditTripDialogProps) {
       }
       return res.json();
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['trips'] });
       queryClient.invalidateQueries({ queryKey: ['trip', trip.id] });
       setOpen(false);
+      toast.success(`Journey "${data.name}" edited successfully.`);
+    },
+    onError: (err) => {
+      toast.error(err.message);
     },
   });
 

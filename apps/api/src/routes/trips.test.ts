@@ -195,4 +195,28 @@ describe('Trips API Integration', () => {
     const [found] = await db.select().from(trips).where(eq(trips.id, trip!.id));
     expect(found).toBeUndefined();
   });
+
+  it('PATCH /trips/:id should update a trip', async () => {
+    const [trip] = await db
+      .insert(trips)
+      .values({
+        ownerId: userId,
+        name: 'To Update',
+      })
+      .returning();
+
+    const res = await app.request(`/trips/${trip!.id}`, {
+      method: 'PATCH',
+      headers: {
+        'x-user-id': userId,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: 'Updated Name', startDate: '2026-06-01T00:00:00.000Z' }),
+    });
+
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data.name).toBe('Updated Name');
+    expect(new Date(data.startDate).toISOString()).toBe('2026-06-01T00:00:00.000Z');
+  });
 });

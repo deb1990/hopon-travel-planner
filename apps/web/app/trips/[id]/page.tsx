@@ -28,14 +28,14 @@ export default function TripDetail() {
   const gaps = identifyItineraryGaps(events);
 
   return (
-    <main className="flex min-h-screen flex-col bg-background text-foreground selection:bg-primary/10 transition-colors duration-500">
-      <ItineraryHeader tripName={trip.name} tripId={tripId} />
+    <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
+      <ItineraryHeader trip={trip} tripId={tripId} />
 
       <div className="flex-1 max-w-7xl mx-auto w-full p-8 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Main Timeline Column */}
           <div className="lg:col-span-8 flex flex-col gap-10">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between px-2">
               <div className="flex items-center gap-4">
                 <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
                   <CalendarDays className="size-4 text-primary" />
@@ -53,9 +53,10 @@ export default function TripDetail() {
               </Button>
             </div>
 
-            <div className="relative bg-card rounded-[2.5rem] border shadow-[0_40px_80px_-15px_rgba(0,0,0,0.05)] dark:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] overflow-hidden">
-              {/* The Vertical Thread Line */}
-              <div className="absolute left-[31px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-border to-transparent opacity-50" />
+            {/* Container for the timeline with the background thread */}
+            <div className="relative bg-card rounded-[2.5rem] border shadow-2xl overflow-hidden min-h-[400px]">
+              {/* Vertical Thread Line (Restored) */}
+              <div className="timeline-thread z-0" />
 
               <div className="flex flex-col relative z-10">
                 <TimelineList baseGroups={baseGroups} gaps={gaps} />
@@ -97,10 +98,6 @@ export default function TripDetail() {
   );
 }
 
-/**
- * Renders the chronological list of stays and their activities.
- * Implements the Base-Centric visual nesting.
- */
 function TimelineList({
   baseGroups,
   gaps,
@@ -110,7 +107,7 @@ function TimelineList({
 }) {
   if (baseGroups.length === 0) {
     return (
-      <div className="p-40 text-center flex flex-col items-center gap-4 bg-muted/10">
+      <div className="p-40 text-center flex flex-col items-center gap-4">
         <div className="size-16 rounded-full bg-background border flex items-center justify-center mb-4">
           <Activity className="size-8 text-muted-foreground/20" />
         </div>
@@ -125,26 +122,29 @@ function TimelineList({
     <div className="flex flex-col">
       {baseGroups.map((group) => (
         <div key={group.stay.id} className="relative">
-          {/* Base Header Indicator */}
-          <div className="absolute left-[31px] top-8 -translate-x-1/2 size-3 rounded-full bg-primary ring-4 ring-background z-20 shadow-[0_0_15px_rgba(var(--primary),0.5)]" />
+          {/* Base Header Indicator (Onyx Restored) */}
+          <div className="absolute left-[31px] top-10 -translate-x-1/2 size-3 rounded-full bg-primary ring-4 ring-background z-20 shadow-[0_0_15px_rgba(var(--primary),0.5)]" />
 
-          <div className="bg-muted/30 py-8 border-b border-border/40">
-            <ItineraryRow event={group.stay} className="bg-transparent border-none py-0 px-14" />
+          <div className="bg-muted/50 py-10 border-b border-border/40">
+            <ItineraryRow event={group.stay} className="bg-transparent border-none py-0 px-16" />
           </div>
 
-          <div className="flex flex-col py-2">
+          <div className="flex flex-col py-4">
             {group.items.map((item: ItineraryEvent) => (
-              <ItineraryRow
-                key={item.id}
-                event={item}
-                className="pl-20 border-none py-4 hover:bg-primary/[0.03]"
-              />
+              <div key={item.id} className="relative">
+                {/* Item Indicator Dot */}
+                <div className="absolute left-[31px] top-1/2 -translate-y-1/2 -translate-x-1/2 size-1.5 rounded-full bg-muted-foreground/30 ring-2 ring-background z-20" />
+                <ItineraryRow
+                  event={item}
+                  className="pl-24 border-none py-4 hover:bg-primary/[0.03]"
+                />
+              </div>
             ))}
           </div>
 
           {/* Gap Alert Injection */}
           {gaps.find((g) => g.startTime === group.stay.endTime) && (
-            <div className="mx-14 my-6 p-5 rounded-[2rem] border border-dashed border-amber-500/20 bg-amber-500/[0.02] flex items-center justify-between group hover:bg-amber-500/[0.05] transition-all duration-300">
+            <div className="mx-16 my-8 p-6 rounded-[2rem] border border-dashed border-amber-500/20 bg-amber-500/[0.02] flex items-center justify-between group hover:bg-amber-500/[0.05] transition-all duration-300">
               <div className="flex flex-col gap-0.5">
                 <span className="text-[10px] font-black text-amber-600 uppercase tracking-widest">
                   Temporal Gap Detected
@@ -164,9 +164,6 @@ function TimelineList({
   );
 }
 
-/**
- * Visual placeholder for the future interactive map engine.
- */
 function SpatialContext() {
   return (
     <section className="flex flex-col gap-6">
@@ -184,21 +181,15 @@ function SpatialContext() {
   );
 }
 
-/**
- * Loading state with skeletons.
- */
 function LoadingView() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-24 gap-4 bg-background">
-      <Skeleton className="h-12 w-64" />
-      <Skeleton className="h-4 w-48" />
+      <Skeleton className="h-12 w-64 bg-muted" />
+      <Skeleton className="h-4 w-48 bg-muted" />
     </div>
   );
 }
 
-/**
- * Fallback UI for operational failures.
- */
 function ErrorView({ message }: { message: string }) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">

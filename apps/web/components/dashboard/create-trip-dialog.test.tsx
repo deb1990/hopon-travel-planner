@@ -1,12 +1,24 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { CreateTripDialog } from './create-trip-dialog';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+// Mock sonner
+vi.mock('sonner', () => ({
+  toast: {
+    success: vi.fn(),
+    error: vi.fn(),
+  },
+}));
 
 const queryClient = new QueryClient();
 
 describe('CreateTripDialog', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it('should show an error if the journey name is too short', async () => {
     render(
       <QueryClientProvider client={queryClient}>
@@ -14,14 +26,10 @@ describe('CreateTripDialog', () => {
       </QueryClientProvider>,
     );
 
-    // Open dialog
     fireEvent.click(screen.getByText('New Journey'));
-
-    // Type a short name
     const input = screen.getByPlaceholderText(/e.g. Summer in Japan/i);
     fireEvent.change(input, { target: { value: 'Hi' } });
 
-    // Submit - using getByRole to be precise
     const submitBtn = screen.getByRole('button', { name: /Create Journey/i });
     fireEvent.click(submitBtn);
 

@@ -6,7 +6,7 @@ export const CONFIG = {
   /**
    * Base URL for the backend API service.
    */
-  API_URL: process.env['NEXT_PUBLIC_API_URL'] || 'http://localhost:4000',
+  API_URL: process.env['NEXT_PUBLIC_API_URL'] || 'http://localhost:4001',
 
   /**
    * Mock user ID for local development and demonstration.

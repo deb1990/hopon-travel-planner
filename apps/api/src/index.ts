@@ -25,6 +25,9 @@ app.onError((err, c) => {
 
 app.route('/trips', tripsRouter);
 
+console.log('Registered Routes:');
+app.routes.forEach((r) => console.log(`- ${r.method} ${r.path}`));
+
 app.get('/', (c) => {
   return c.json({
     message: 'Hop On API',
@@ -32,7 +35,7 @@ app.get('/', (c) => {
   });
 });
 
-const port = 4000;
+const port = 4001;
 console.log(`Server is running on http://localhost:${port}`);
 
 serve({

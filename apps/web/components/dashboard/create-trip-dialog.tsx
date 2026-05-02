@@ -14,6 +14,7 @@ import { Plus } from 'lucide-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { CONFIG } from '@/lib/config';
 import { TripForm, TripFormData } from './trip-form';
+import { toast } from 'sonner';
 
 /**
  * Modal dialog for initiating a new travel project.
@@ -39,9 +40,13 @@ export function CreateTripDialog() {
       }
       return res.json();
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['trips'] });
       setOpen(false);
+      toast.success(`Journey "${data.name}" initiated successfully.`);
+    },
+    onError: (err) => {
+      toast.error(err.message);
     },
   });
 

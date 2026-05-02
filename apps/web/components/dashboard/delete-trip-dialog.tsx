@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Trash2, AlertCircle } from 'lucide-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { CONFIG } from '@/lib/config';
+import { toast } from 'sonner';
 
 interface DeleteTripDialogProps {
   tripId: string;
@@ -43,6 +44,14 @@ export function DeleteTripDialog({ tripId, tripName }: DeleteTripDialogProps) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['trips'] });
       setOpen(false);
+      // Use toast.error to ensure the "Red Message" requirement for deletions
+      toast.error(`Journey "${tripName}" has been deleted.`, {
+        description: 'All associated itinerary data was removed.',
+        icon: <Trash2 className="size-4" />,
+      });
+    },
+    onError: (err) => {
+      toast.error(err.message);
     },
   });
 
