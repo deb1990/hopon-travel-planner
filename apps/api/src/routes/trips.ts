@@ -77,17 +77,14 @@ tripsRouter.get('/:id', async (c) => {
   const userId = c.get('userId');
 
   try {
-    // 1. Get trip details
     const [trip] = await db.select().from(trips).where(eq(trips.id, tripId));
     if (!trip) return c.json({ error: 'Not Found' }, 404);
 
-    // 2. Check permission (simple check for now, can use tripRepo later)
     const role = await tripRepo.getUserRole(tripId, userId);
     if (!role && trip.visibility !== 'public') {
       return c.json({ error: 'Unauthorized' }, 403);
     }
 
-    // 3. Get events
     const events = await eventRepo.findByTripId(tripId, userId);
 
     return c.json({
@@ -101,6 +98,39 @@ tripsRouter.get('/:id', async (c) => {
 });
 
 /**
+ * Update a trip
+ */
+tripsRouter.patch('/:id', async (c) => {
+  const tripId = c.req.param('id');
+  const userId = c.get('userId');
+  const body = await c.req.json<{
+    name?: string;
+    startDate?: string;
+    endDate?: string;
+    visibility?: 'private' | 'public';
+  }>();
+
+  try {
+    const updated = await tripRepo.update(tripId, userId, {
+      name: body.name,
+      startDate: body.startDate ? new Date(body.startDate) : undefined,
+      endDate: body.endDate ? new Date(body.endDate) : undefined,
+      visibility: body.visibility,
+    });
+    return c.json(updated);
+  } catch (error) {
+    console.error('Failed to update trip:', error);
+    return c.json(
+      {
+        error: 'Unauthorized or Not Found',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      },
+      403,
+    );
+  }
+});
+
+/**
  * Add a new event to a trip
  */
 tripsRouter.post('/:id/events', async (c) => {
@@ -109,19 +139,17 @@ tripsRouter.post('/:id/events', async (c) => {
   const body = (await c.req.json()) as Record<string, unknown>;
 
   try {
-    // 1. Check write permission
     const role = await tripRepo.getUserRole(tripId, userId);
     if (role !== 'owner' && role !== 'editor') {
       return c.json({ error: 'Unauthorized', message: 'Insufficient permissions' }, 403);
     }
 
-    // 2. Create event
     const newEvent = await eventRepo.create({
-      ...(body as Record<string, unknown>), // Cast specifically for spread to schema
+      ...(body as Record<string, unknown>),
       tripId,
       startTime: new Date(body['startTime'] as string),
       endTime: body['endTime'] ? new Date(body['endTime'] as string) : null,
-    } as unknown as Parameters<typeof eventRepo.create>[0]); // Safe cast to the repo's expected type
+    } as unknown as Parameters<typeof eventRepo.create>[0]);
 
     return c.json(newEvent, 201);
   } catch (error) {

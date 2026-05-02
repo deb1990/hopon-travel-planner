@@ -101,10 +101,15 @@ This file tracks the granular progress of the implementation. Each step follows 
   - [x] Add Delete action to `TripCard` with a Confirmation Modal
   - [x] Implement optimistic UI updates for deletion
 - [ ] **M5.5: Trip Date Range Support**
-  - [ ] [DB] Add `startDate` and `endDate` to `trips` table
-  - [ ] [API] Update `TripRepository` and `POST /trips` to handle dates
-  - [ ] [UI] Add Date Pickers to `CreateTripDialog`
-  - [ ] [UI] Display trip date range on `TripCard`
+  - [x] [DB] Add `startDate` and `endDate` to `trips` table
+  - [x] [API] Update `TripRepository` and `POST /trips` to handle dates
+  - [x] [UI] Add Date Pickers to `CreateTripDialog`
+  - [x] [UI] Display trip date range on `TripCard`
+- [x] **M5.6: Trip Editing UI**
+  - [x] [API] Add `update` method to `TripRepository`
+  - [x] [API] Implement `PATCH /trips/:id` endpoint
+  - [x] Build `components/dashboard/edit-trip-dialog.tsx`
+  - [x] Add Edit action to `TripCard`
 
 ## Milestone 6: High-Density Itinerary & Mapping
 

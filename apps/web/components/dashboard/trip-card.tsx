@@ -4,6 +4,7 @@ import { Calendar, Globe } from 'lucide-react';
 import { Trip } from '@hopon/core';
 import Link from 'next/link';
 import { DeleteTripDialog } from './delete-trip-dialog';
+import { EditTripDialog } from './edit-trip-dialog';
 
 interface TripCardProps {
   trip: Trip;
@@ -11,7 +12,7 @@ interface TripCardProps {
 
 /**
  * A high-density card representing a travel journey in the dashboard grid.
- * Separates navigation (clicking the card) from management (the delete action).
+ * Separates navigation (clicking the card) from management (edit/delete actions).
  *
  * @param props.trip - The trip metadata to display.
  */
@@ -26,8 +27,9 @@ export function TripCard({ trip }: TripCardProps) {
 
   return (
     <div className="group relative cursor-pointer">
-      {/* Action Layer (Trash Button) - High Z-Index to stay above the Link */}
-      <div className="absolute top-8 right-8 z-30">
+      {/* Action Layer - High Z-Index to stay above the Link */}
+      <div className="absolute top-8 right-8 z-30 flex items-center gap-1">
+        <EditTripDialog trip={trip} />
         <DeleteTripDialog tripId={trip.id} tripName={trip.name} />
       </div>
 
@@ -39,8 +41,8 @@ export function TripCard({ trip }: TripCardProps) {
               <div className="size-10 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
                 <Globe className="size-5" />
               </div>
-              {/* Empty space for the absolute-positioned Trash button */}
-              <div className="size-8" />
+              {/* Empty space for the absolute-positioned buttons */}
+              <div className="size-16" />
             </div>
           </CardHeader>
           <CardContent className="pb-8 px-8">

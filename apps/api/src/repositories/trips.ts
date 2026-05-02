@@ -13,6 +13,9 @@ export class TripRepository {
    * Creates a new trip.
    */
   async create(trip: typeof trips.$inferInsert) {
+    if (trip.startDate && trip.endDate && new Date(trip.startDate) > new Date(trip.endDate)) {
+      throw new Error('End date cannot be before start date');
+    }
     const [result] = await this.db.insert(trips).values(trip).returning();
     if (!result) throw new Error('Failed to create trip');
     return result;
@@ -97,5 +100,58 @@ export class TripRepository {
 
       return { success: true };
     });
+  }
+
+  /**
+   * Updates a trip's metadata.
+   * ONLY the owner or an editor can update a trip.
+   */
+  async update(tripId: string, userId: string, data: Partial<typeof trips.$inferInsert>) {
+    // Validate dates
+    if (data.startDate || data.endDate) {
+      const [current] = await this.db.select().from(trips).where(eq(trips.id, tripId));
+      const start = data.startDate
+        ? new Date(data.startDate)
+        : current?.startDate
+          ? new Date(current.startDate)
+          : null;
+      const end = data.endDate
+        ? new Date(data.endDate)
+        : current?.endDate
+          ? new Date(current.endDate)
+          : null;
+
+      if (start && end && start > end) {
+        throw new Error('End date cannot be before start date');
+      }
+    }
+
+    const [result] = await this.db
+      .update(trips)
+      .set({ ...data, updatedAt: new Date() })
+      .where(
+        and(
+          eq(trips.id, tripId),
+          or(
+            eq(trips.ownerId, userId),
+            exists(
+              this.db
+                .select()
+                .from(permissions)
+                .where(
+                  and(
+                    eq(permissions.tripId, tripId),
+                    eq(permissions.userId, userId),
+                    eq(permissions.role, 'editor'),
+                  ),
+                ),
+            ),
+          ),
+        ),
+      )
+      .returning();
+
+    if (!result) throw new Error('Unauthorized or Trip not found');
+    return result;
   }
 }

@@ -12,28 +12,33 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Plus, Calendar } from 'lucide-react';
+import { Pencil, Calendar } from 'lucide-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Trip } from '@hopon/core';
 
 const DEMO_USER_ID = 'b07bb29b-67de-4f35-8c85-111c8358436b';
 const API_URL = 'http://localhost:4000';
 
+interface EditTripDialogProps {
+  trip: Trip;
+}
+
 /**
- * Modal dialog for creating a new travel project.
- * Handles form validation and real-time date constraints.
+ * Modal dialog for editing an existing travel project.
+ * Handles metadata updates with real-time date validation.
  */
-export function CreateTripDialog() {
+export function EditTripDialog({ trip }: EditTripDialogProps) {
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [name, setName] = useState(trip.name);
+  const [startDate, setStartDate] = useState(trip.startDate ? trip.startDate.split('T')[0] : '');
+  const [endDate, setEndDate] = useState(trip.endDate ? trip.endDate.split('T')[0] : '');
   const [error, setError] = useState<string | null>(null);
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: async (data: { name: string; startDate?: string; endDate?: string }) => {
-      const res = await fetch(`${API_URL}/trips`, {
-        method: 'POST',
+      const res = await fetch(`${API_URL}/trips/${trip.id}`, {
+        method: 'PATCH',
         headers: {
           'x-user-id': DEMO_USER_ID,
           'Content-Type': 'application/json',
@@ -42,16 +47,14 @@ export function CreateTripDialog() {
       });
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || 'Failed to create journey');
+        throw new Error(errorData.message || 'Failed to update journey');
       }
       return res.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['trips'] });
+      queryClient.invalidateQueries({ queryKey: ['trip', trip.id] });
       setOpen(false);
-      setName('');
-      setStartDate('');
-      setEndDate('');
       setError(null);
     },
     onError: (err) => {
@@ -68,11 +71,6 @@ export function CreateTripDialog() {
       return;
     }
 
-    if (trimmedName.length < 3) {
-      setError('Journey name must be at least 3 characters');
-      return;
-    }
-
     if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
       setError('End date cannot be before start date');
       return;
@@ -86,7 +84,6 @@ export function CreateTripDialog() {
     });
   };
 
-  // Ensure end date is reset if it becomes invalid when start date changes
   const handleStartDateChange = (val: string) => {
     setStartDate(val);
     if (error) setError(null);
@@ -96,31 +93,20 @@ export function CreateTripDialog() {
   };
 
   return (
-    <Dialog
-      open={open}
-      onOpenChange={(val) => {
-        setOpen(val);
-        if (!val) {
-          setName('');
-          setStartDate('');
-          setEndDate('');
-          setError(null);
-        }
-      }}
-    >
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="h-10 px-6 rounded-full bg-blue-600 text-white font-black hover:bg-blue-700 hover:scale-105 transition-all shadow-md active:scale-95 border-none text-xs uppercase tracking-widest cursor-pointer">
-          <Plus className="size-4 mr-2 stroke-[4]" />
-          New Journey
-        </Button>
+        <button
+          onClick={(e) => e.stopPropagation()}
+          className="size-8 bg-transparent hover:bg-primary/10 rounded-full flex items-center justify-center text-slate-500 hover:text-primary transition-all border border-transparent hover:border-primary/20"
+        >
+          <Pencil className="size-3.5" />
+        </button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent onClick={(e) => e.stopPropagation()}>
         <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>Create New Trip</DialogTitle>
-            <DialogDescription>
-              Give your new journey a name and optional dates to get started.
-            </DialogDescription>
+            <DialogTitle>Edit Trip Details</DialogTitle>
+            <DialogDescription>Update the name and timeframe for this journey.</DialogDescription>
           </DialogHeader>
 
           <div className="py-8 flex flex-col gap-6">
@@ -170,7 +156,7 @@ export function CreateTripDialog() {
                     type="date"
                     className="pl-10"
                     value={endDate}
-                    min={startDate} // PHYSICALLY PREVENTS EARLIER DATES
+                    min={startDate}
                     onChange={(e) => {
                       setEndDate(e.target.value);
                       if (error) setError(null);
@@ -185,9 +171,9 @@ export function CreateTripDialog() {
             <Button
               type="submit"
               disabled={mutation.isPending}
-              className="w-full h-14 rounded-2xl bg-blue-600 text-white font-black text-base hover:bg-blue-700 cursor-pointer"
+              className="w-full h-14 rounded-2xl bg-primary text-primary-foreground font-black text-base hover:opacity-90 cursor-pointer"
             >
-              {mutation.isPending ? 'Creating Trip...' : 'Create Journey'}
+              {mutation.isPending ? 'Updating...' : 'Save Changes'}
             </Button>
           </DialogFooter>
         </form>
