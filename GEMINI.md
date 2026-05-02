@@ -23,7 +23,10 @@ This document serves as a foundational mandate for all AI agents (Gemini CLI) wo
 - **High-Level Integrity:** Critical pages and user flows MUST have high-level integration tests (Page Integrity Tests) to catch build-time and runtime failures.
 - **Zero Visual Errors:** I should never see an error on screen. Every potential failure path (API down, missing data, 404) MUST be handled by a professional Error Boundary or Fallback UI.
 - **No Automatic Pushes:** NEVER push changes to the remote repository (`git push`) without explicit verbal confirmation from the user in the current turn.
+- **The Two-Turn Handshake:** `git push` is STRICTLY FORBIDDEN from being executed in a multi-command block. It MUST be its own standalone tool call, executed ONLY after the user has seen the successful test/lint results and responded with the literal word "push".
 - **Pre-commit Quality Gates:** Every commit must pass `tsc --noEmit`, `oxlint`, and `prettier` checks.
+- **Verification First:** I must present the "Green" status of all quality gates in the chat history BEFORE asking for a push instruction.
+- **No Anticipatory Action:** Never assume a push is allowed because a fix was requested. Authorization expires at the end of every turn.
 - **Context Preservation:** Always update `TODO.md` after completing a sub-task.
 - **Surgical Updates:** When modifying files, preserve existing patterns and types.
 - **Zero-link Persistence:** Avoid hardcoded IDs for relationships in the frontend logic; use temporal scopes.

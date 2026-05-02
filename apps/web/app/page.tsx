@@ -1,38 +1,27 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 import { TripCard } from '@/components/dashboard/trip-card';
 import { CreateTripDialog } from '@/components/dashboard/create-trip-dialog';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Compass, Sparkles } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Trip } from '@hopon/core';
-
-const DEMO_USER_ID = 'b07bb29b-67de-4f35-8c85-111c8358436b';
-const API_URL = 'http://localhost:4000';
+import { useTrips } from '@/hooks/use-trips';
 
 /**
  * The primary dashboard for managing travel journeys.
  * Handles listing existing trips and initiating new ones.
  */
 export default function Dashboard() {
-  const { data: trips, isLoading } = useQuery<Trip[]>({
-    queryKey: ['trips'],
-    queryFn: async () => {
-      const res = await fetch(`${API_URL}/trips`, {
-        headers: { 'x-user-id': DEMO_USER_ID },
-      });
-      if (!res.ok) throw new Error('Failed to fetch trips');
-      return res.json();
-    },
-  });
+  const { data: trips, isLoading } = useTrips();
 
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
           {[1, 2, 3].map((i) => (
-            <Skeleton key={i} className="h-48 rounded-[2rem] bg-muted" />
+            <Skeleton key={i} className="h-48 rounded-[2rem] bg-slate-100 dark:bg-slate-900" />
           ))}
         </div>
       </div>
@@ -41,7 +30,6 @@ export default function Dashboard() {
 
   return (
     <main className="min-h-screen bg-background text-foreground transition-colors duration-500">
-      {/* Sleek, Compact Header */}
       <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl px-8 py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4 text-foreground">
@@ -49,7 +37,9 @@ export default function Dashboard() {
               <Compass className="size-5 text-primary-foreground stroke-[2.5]" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-2xl font-[1000] tracking-tighter uppercase">Hop On</h1>
+              <h1 className="text-2xl font-[1000] tracking-tighter uppercase text-foreground">
+                Hop On
+              </h1>
               <p className="text-[10px] text-muted-foreground uppercase font-black tracking-[0.3em] -mt-1">
                 Travel Planner
               </p>

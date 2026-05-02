@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { CreateTripDialog } from './create-trip-dialog';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -21,10 +21,13 @@ describe('CreateTripDialog', () => {
     const input = screen.getByPlaceholderText(/e.g. Summer in Japan/i);
     fireEvent.change(input, { target: { value: 'Hi' } });
 
-    // Submit
-    fireEvent.click(screen.getByText('Create Journey'));
+    // Submit - using getByRole to be precise
+    const submitBtn = screen.getByRole('button', { name: /Create Journey/i });
+    fireEvent.click(submitBtn);
 
-    expect(screen.getByText(/must be at least 3 characters/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(/must be at least 3 characters/i)).toBeInTheDocument();
+    });
   });
 
   it('should show an error if the journey name is empty', async () => {
@@ -35,8 +38,11 @@ describe('CreateTripDialog', () => {
     );
 
     fireEvent.click(screen.getByText('New Journey'));
-    fireEvent.click(screen.getByText('Create Journey'));
+    const submitBtn = screen.getByRole('button', { name: /Create Journey/i });
+    fireEvent.click(submitBtn);
 
-    expect(screen.getByText(/provide a name for your journey/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(/provide a name for your journey/i)).toBeInTheDocument();
+    });
   });
 });
