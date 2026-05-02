@@ -81,9 +81,11 @@ This file tracks the granular progress of the implementation. Each step follows 
 ## Milestone 5: UI Foundations & Zinc Design System
 
 - [x] **M5.1: Design System**
-  - [x] Setup CSS Variables in `apps/web/app/globals.css`
-  - [x] Build `Card`, `Button`, and `Row` base components
-  - [x] [TDD] Component tests for Row variants (Activity vs Stay)
+  - [x] Setup Tailwind v4 with PostCSS for Next.js
+  - [x] Implement Ultra-Premium Zinc/Void theme
+  - [x] Build high-fidelity `Card`, `Button`, and `Row` components
+  - [x] [TDD] Component tests for premium Row variants
+
 - [x] **M5.2: State & Client**
   - [x] Setup TanStack Query and QueryProvider
   - [x] Create API-driven main dashboard (`app/page.tsx`)

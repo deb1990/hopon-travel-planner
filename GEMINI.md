@@ -18,6 +18,7 @@ This document serves as a foundational mandate for all AI agents (Gemini CLI) wo
 
 ## 3. Workflow Mandates
 
+- **Directives only:** Never start a new Milestone, major feature, or architectural section without explicit verbal confirmation from the user in the current turn.
 - **No Automatic Pushes:** NEVER push changes to the remote repository (`git push`) without explicit verbal confirmation from the user in the current turn.
 - **Pre-commit Quality Gates:** Every commit must pass `tsc --noEmit`, `oxlint`, and `prettier` checks.
 - **Context Preservation:** Always update `TODO.md` after completing a sub-task.
@@ -26,7 +27,8 @@ This document serves as a foundational mandate for all AI agents (Gemini CLI) wo
 
 ## 4. Visual Standards (UI)
 
-- **Theme:** "Zinc/Dark" professional theme.
+- **Theme:** "Slate & Indigo" sophisticated professional theme. Deep charcoal slate for dark mode, soft pearl slate for light mode.
+- **Accents:** Use Indigo for primary actions and indicators to provide depth beyond monochromatic.
 - **Density:** High-density rows designed for information richness.
 - **Feedback:** UI must feel "alive" with transitions and interactive state synchronization.
 

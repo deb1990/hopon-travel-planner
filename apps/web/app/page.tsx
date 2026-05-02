@@ -4,7 +4,8 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { TripCard } from '@/components/dashboard/trip-card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Plus, Globe } from 'lucide-react';
+import { Plus, Compass, Sparkles } from 'lucide-react';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 const DEMO_USER_ID = 'b07bb29b-67de-4f35-8c85-111c8358436b';
 const API_URL = 'http://localhost:4000';
@@ -31,7 +32,7 @@ export default function Dashboard() {
           'x-user-id': DEMO_USER_ID,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: `New Trip ${new Date().toLocaleDateString()}` }),
+        body: JSON.stringify({ name: 'New Expedition' }),
       });
       return res.json();
     },
@@ -42,54 +43,78 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="p-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[1, 2, 3].map((i) => (
-          <Skeleton key={i} className="h-40 w-full" />
-        ))}
+      <div className="min-h-screen bg-background flex items-center justify-center p-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+          {[1, 2, 3].map((i) => (
+            <Skeleton key={i} className="h-48 rounded-[2rem] bg-slate-100" />
+          ))}
+        </div>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground flex flex-col">
-      <header className="border-b border-border/50 px-8 py-12">
-        <div className="max-w-6xl mx-auto flex justify-between items-end">
-          <div>
-            <h1 className="text-4xl font-black tracking-tighter uppercase text-primary italic">
-              Hop On
-            </h1>
-            <p className="text-muted-foreground text-sm uppercase tracking-widest mt-2 font-medium">
-              Global Itinerary Manager
-            </p>
+    <main className="min-h-screen bg-background text-foreground">
+      {/* Sleek, Compact Header */}
+      <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/80 backdrop-blur-xl px-8 py-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="size-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <Compass className="size-5 text-white stroke-[2.5]" />
+            </div>
+            <div className="flex flex-col">
+              <h1 className="text-2xl font-[1000] tracking-tighter text-slate-900 uppercase">
+                Hop On
+              </h1>
+              <p className="text-[10px] text-slate-400 uppercase font-black tracking-[0.3em] -mt-1">
+                Architect
+              </p>
+            </div>
           </div>
-          <Button
-            onClick={() => createTripMutation.mutate()}
-            disabled={createTripMutation.isPending}
-            className="rounded-full px-6 font-bold"
-          >
-            <Plus className="size-4 mr-2" />
-            New Trip
-          </Button>
+
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Button
+              onClick={() => createTripMutation.mutate()}
+              disabled={createTripMutation.isPending}
+              className="h-10 px-6 rounded-full bg-blue-600 text-white font-black hover:bg-blue-700 hover:scale-105 transition-all shadow-md active:scale-95 border-none text-xs uppercase tracking-widest"
+            >
+              <Plus className="size-4 mr-2 stroke-[4]" />
+              New Journey
+            </Button>
+          </div>
         </div>
       </header>
 
-      <div className="max-w-6xl mx-auto w-full p-8">
-        <div className="flex items-center gap-2 mb-8">
-          <Globe className="size-4 text-primary" />
-          <h2 className="text-xs uppercase font-bold tracking-[0.2em] text-zinc-500">
-            Your Journeys
+      <div className="max-w-7xl mx-auto px-10 pt-16 pb-32">
+        {/* Welcome Section */}
+        <div className="mb-16">
+          <div className="flex items-center gap-2 mb-3">
+            <Sparkles className="size-4 text-blue-500" />
+            <span className="text-[10px] font-black uppercase text-blue-600/50 tracking-[0.2em]">
+              Ready for deployment
+            </span>
+          </div>
+          <h2 className="text-5xl font-black tracking-tight text-slate-900 uppercase">
+            Your Expeditions
           </h2>
+          <p className="text-slate-400 mt-2 max-w-xl font-medium">
+            Manage your spatial-temporal itineraries through our high-density architectural
+            interface.
+          </p>
         </div>
 
         {trips?.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {trips.map((trip: any) => (
               <TripCard key={trip.id} trip={trip} />
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center p-20 border-2 border-dashed border-zinc-800 rounded-3xl">
-            <p className="text-zinc-600 font-medium italic">Your map is empty. Where to first?</p>
+          <div className="flex flex-col items-center justify-center p-32 bg-white border border-slate-100 rounded-[4rem] shadow-sm">
+            <p className="text-slate-300 font-black uppercase tracking-widest text-xs italic">
+              Awaiting first coordinate input...
+            </p>
           </div>
         )}
       </div>

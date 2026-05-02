@@ -51,7 +51,7 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
         )}
       </div>
 
-      {/* Actions (Visible on hover) */}
+      {/* Actions */}
       <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
         {event.bookingLink && (
           <a
