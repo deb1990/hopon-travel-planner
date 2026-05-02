@@ -6,7 +6,7 @@ export interface ItineraryEvent {
   type: EventType;
   title: string;
   startTime: string; // ISO 8601
-  endTime?: string;  // Required for STAY
+  endTime?: string; // Required for STAY
   locationName?: string;
   coords?: [number, number];
   bookingLink?: string;
@@ -18,6 +18,8 @@ export interface Trip {
   id: string;
   ownerId: string;
   name: string;
+  startDate?: string;
+  endDate?: string;
   visibility: 'private' | 'public';
   createdAt: string;
   updatedAt: string;

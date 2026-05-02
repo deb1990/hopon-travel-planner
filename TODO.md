@@ -100,6 +100,11 @@ This file tracks the granular progress of the implementation. Each step follows 
   - [x] Build `components/dashboard/create-trip-dialog.tsx`
   - [x] Add Delete action to `TripCard` with a Confirmation Modal
   - [x] Implement optimistic UI updates for deletion
+- [ ] **M5.5: Trip Date Range Support**
+  - [ ] [DB] Add `startDate` and `endDate` to `trips` table
+  - [ ] [API] Update `TripRepository` and `POST /trips` to handle dates
+  - [ ] [UI] Add Date Pickers to `CreateTripDialog`
+  - [ ] [UI] Display trip date range on `TripCard`
 
 ## Milestone 6: High-Density Itinerary & Mapping
 

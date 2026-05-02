@@ -16,6 +16,14 @@ interface TripCardProps {
  * @param props.trip - The trip metadata to display.
  */
 export function TripCard({ trip }: TripCardProps) {
+  const dateLabel = trip.startDate
+    ? `${new Date(trip.startDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} — ${
+        trip.endDate
+          ? new Date(trip.endDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+          : 'Open Ended'
+      }`
+    : `Created ${new Date(trip.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}`;
+
   return (
     <div className="group relative cursor-pointer">
       {/* Action Layer (Trash Button) - High Z-Index to stay above the Link */}
@@ -42,12 +50,7 @@ export function TripCard({ trip }: TripCardProps) {
             <div className="flex items-center gap-4 text-[10px] text-muted-foreground uppercase font-black tracking-widest">
               <div className="flex items-center gap-1.5">
                 <Calendar className="size-3" />
-                <span>
-                  {new Date(trip.createdAt).toLocaleDateString(undefined, {
-                    month: 'short',
-                    day: 'numeric',
-                  })}
-                </span>
+                <span>{dateLabel}</span>
               </div>
               <div className="size-1 rounded-full bg-border" />
               <span>{trip.visibility}</span>

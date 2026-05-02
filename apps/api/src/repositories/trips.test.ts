@@ -52,6 +52,22 @@ describe('TripRepository', () => {
     expect(role).toBe('editor');
   });
 
+  it('should create a trip with start and end dates', async () => {
+    const repo = new TripRepository(db);
+    const startDate = new Date('2026-12-01T00:00:00Z');
+    const endDate = new Date('2026-12-10T00:00:00Z');
+
+    const trip = await repo.create({
+      ownerId: userIdA,
+      name: 'Winter Break',
+      startDate,
+      endDate,
+    });
+
+    expect(trip.startDate).toBeDefined();
+    expect(new Date(trip.startDate!).toISOString()).toBe(startDate.toISOString());
+  });
+
   it('should list public trips for everyone', async () => {
     const repo = new TripRepository(db);
     const trip = await repo.create({

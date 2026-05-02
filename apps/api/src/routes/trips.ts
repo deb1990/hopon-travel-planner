@@ -49,12 +49,18 @@ tripsRouter.get('/', async (c) => {
  */
 tripsRouter.post('/', async (c) => {
   const userId = c.get('userId');
-  const { name } = await c.req.json<{ name: string }>();
+  const { name, startDate, endDate } = await c.req.json<{
+    name: string;
+    startDate?: string;
+    endDate?: string;
+  }>();
 
   try {
     const newTrip = await tripRepo.create({
       ownerId: userId,
       name: name || 'Untitled Journey',
+      startDate: startDate ? new Date(startDate) : null,
+      endDate: endDate ? new Date(endDate) : null,
     });
     return c.json(newTrip, 201);
   } catch (error) {

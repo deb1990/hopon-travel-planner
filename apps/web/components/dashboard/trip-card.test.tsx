@@ -25,7 +25,7 @@ describe('TripCard', () => {
     );
 
     expect(screen.getByText('Alpine Adventure')).toBeInTheDocument();
-    expect(screen.getByText('May 1')).toBeInTheDocument();
+    expect(screen.getByText('Created May 1')).toBeInTheDocument();
   });
 
   it('should contain a link to the trip details', () => {
@@ -37,5 +37,21 @@ describe('TripCard', () => {
 
     const link = screen.getByRole('link');
     expect(link).toHaveAttribute('href', '/trips/trip-123');
+  });
+
+  it('should render the planned date range when provided', () => {
+    const tripWithDates: Trip = {
+      ...mockTrip,
+      startDate: '2026-10-01T00:00:00Z',
+      endDate: '2026-10-05T00:00:00Z',
+    };
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <TripCard trip={tripWithDates} />
+      </QueryClientProvider>,
+    );
+
+    expect(screen.getByText('Oct 1 — Oct 5')).toBeInTheDocument();
   });
 });

@@ -39,6 +39,8 @@ export const trips = pgTable('trips', {
     .references(() => users.id)
     .notNull(),
   name: text('name').notNull(),
+  startDate: timestamp('start_date'),
+  endDate: timestamp('end_date'),
   visibility: visibilityEnum('visibility').default('private').notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
