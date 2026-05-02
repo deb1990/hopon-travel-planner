@@ -1,7 +1,5 @@
 import { describe, it, expect } from 'vitest';
-
 import { ItineraryEvent } from '../types';
-
 import { identifyItineraryGaps } from './gaps';
 
 describe('Gap Detection Logic', () => {
@@ -32,7 +30,7 @@ describe('Gap Detection Logic', () => {
     expect(result[0]!.endTime).toBe('2026-10-05T15:00:00Z');
   });
 
-  it('should return empty if there are no gaps', () => {
+  it('should return empty if there are no gaps (continuous stays)', () => {
     const events: ItineraryEvent[] = [
       {
         id: 'stay-1',
@@ -53,5 +51,68 @@ describe('Gap Detection Logic', () => {
     ];
     const result = identifyItineraryGaps(events);
     expect(result).toHaveLength(0);
+  });
+
+  it('should return empty for an empty timeline', () => {
+    expect(identifyItineraryGaps([])).toHaveLength(0);
+  });
+
+  it('should return empty if there is only one stay', () => {
+    const events: ItineraryEvent[] = [
+      {
+        id: 'stay-1',
+        tripId: 'trip-1',
+        type: 'STAY',
+        title: 'Tokyo',
+        startTime: '2026-10-01T15:00:00Z',
+        endTime: '2026-10-03T11:00:00Z',
+      },
+    ];
+    expect(identifyItineraryGaps(events)).toHaveLength(0);
+  });
+
+  it('should ignore stays with missing endTime', () => {
+    const events: ItineraryEvent[] = [
+      {
+        id: 'stay-1',
+        tripId: 'trip-1',
+        type: 'STAY',
+        title: 'Tokyo',
+        startTime: '2026-10-01T15:00:00Z',
+        // endTime is missing
+      },
+      {
+        id: 'stay-2',
+        tripId: 'trip-1',
+        type: 'STAY',
+        title: 'Osaka',
+        startTime: '2026-10-05T15:00:00Z',
+        endTime: '2026-10-08T10:00:00Z',
+      },
+    ];
+    expect(identifyItineraryGaps(events)).toHaveLength(0);
+  });
+
+  it('should return no gaps for overlapping stays', () => {
+    const events: ItineraryEvent[] = [
+      {
+        id: 'stay-1',
+        tripId: 'trip-1',
+        type: 'STAY',
+        title: 'Hotel A',
+        startTime: '2026-10-01T15:00:00Z',
+        endTime: '2026-10-05T11:00:00Z',
+      },
+      {
+        id: 'stay-2',
+        tripId: 'trip-1',
+        type: 'STAY',
+        title: 'Hotel B',
+        startTime: '2026-10-03T15:00:00Z',
+        endTime: '2026-10-06T11:00:00Z',
+      },
+    ];
+    // Start (next) is before End (current), so no gap exists (it's an overlap)
+    expect(identifyItineraryGaps(events)).toHaveLength(0);
   });
 });

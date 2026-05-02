@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { ChevronLeft, Share2, MoreHorizontal } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
-import { Button } from '@/components/ui/button';
 import { EditTripDialog } from '@/components/dashboard/edit-trip-dialog';
 import { Trip } from '@hopon/core';
 
@@ -41,22 +40,10 @@ export function ItineraryHeader({ trip, tripId }: ItineraryHeaderProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           {trip && <EditTripDialog trip={trip} />}
-          <Button variant="ghost" size="icon" className="size-8 rounded-xl hover:bg-primary/5">
-            <Share2 className="size-4 text-muted-foreground" />
-          </Button>
-          <Button variant="ghost" size="icon" className="size-8 rounded-xl hover:bg-primary/5">
-            <MoreHorizontal className="size-4 text-muted-foreground" />
-          </Button>
-          <div className="w-px h-4 bg-border/60 mx-1" />
+          <div className="w-px h-4 bg-border/60" />
           <ThemeToggle />
-          <div className="flex items-center gap-2 bg-primary/5 px-3 py-1.5 rounded-full border border-primary/10 ml-2">
-            <div className="size-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
-            <span className="text-[9px] font-black uppercase text-primary/70 tracking-widest">
-              Active Sync
-            </span>
-          </div>
         </div>
       </div>
     </header>

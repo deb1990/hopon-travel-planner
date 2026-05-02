@@ -50,6 +50,22 @@ describe('useTrip Hook', () => {
     await waitFor(() => expect(result.current.isError).toBe(true));
     expect(result.current.error).toBeDefined();
   });
+
+  it('should handle 403 Unauthorized correctly', async () => {
+    (global.fetch as Mock).mockResolvedValueOnce({
+      ok: false,
+      status: 403,
+    });
+
+    const queryClient = createTestQueryClient();
+    const { result } = renderHook(() => useTrip('private-trip'), {
+      wrapper: ({ children }) =>
+        React.createElement(QueryProvider, { client: queryClient, children }, children),
+    });
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+    expect(result.current.error?.message).toContain('HTTP error! status: 403');
+  });
 });
 
 // Local QueryProvider for testing

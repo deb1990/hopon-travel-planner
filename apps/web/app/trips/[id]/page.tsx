@@ -10,6 +10,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { MapPin, CalendarDays, Plus, Sparkles } from 'lucide-react';
 import { groupEventsByBase, identifyItineraryGaps, ItineraryEvent, BaseGroup } from '@hopon/core';
 import { Button } from '@/components/ui/button';
+import { calculateTripDuration } from '@/lib/temporal-utils';
 
 /**
  * Detailed itinerary view for a single trip.
@@ -27,8 +28,8 @@ export default function TripDetail() {
   const baseGroups = groupEventsByBase(events);
   const gaps = identifyItineraryGaps(events);
 
-  // Calculate dynamic duration
-  const days = calculateDays(trip.startDate, trip.endDate);
+  // Use the verified utility logic
+  const days = calculateTripDuration(trip.startDate, trip.endDate);
 
   return (
     <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
@@ -99,18 +100,6 @@ export default function TripDetail() {
       </div>
     </main>
   );
-}
-
-/**
- * Calculates the total number of days between two ISO dates.
- * Defaults to 1 if no range is provided.
- */
-function calculateDays(start?: string, end?: string): number {
-  if (!start || !end) return 1;
-  const s = new Date(start);
-  const e = new Date(end);
-  const diff = e.getTime() - s.getTime();
-  return Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
 }
 
 function TimelineList({

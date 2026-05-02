@@ -1,35 +1,58 @@
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import TripDetail from './page';
+import { useTrip } from '@/hooks/use-trip';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
-import { render } from '@testing-library/react';
-import { describe, it, expect, vi, type Mock } from 'vitest';
-import Home from './page';
-import QueryProvider from '@/components/providers/query-provider';
 
-// Mock useParams
+// Mock hooks
+vi.mock('@/hooks/use-trip');
 vi.mock('next/navigation', () => ({
-  useParams: () => ({ id: 'trip-1' }),
-  useRouter: () => ({ push: vi.fn() }),
+  useParams: () => ({ id: 'trip-123' }),
 }));
 
-// Mock the fetch call
-global.fetch = vi.fn(() =>
-  Promise.resolve({
-    ok: true,
-    json: () =>
-      Promise.resolve({
-        id: 'trip-1',
-        name: 'Single Trip Test',
-        events: [],
-      }),
-  }),
-) as Mock;
+const queryClient = new QueryClient();
 
-describe('Dashboard Page Integrity', () => {
-  it('should render the dashboard without crashing', () => {
-    const { container } = render(
-      <QueryProvider>
-        <Home />
-      </QueryProvider>,
+describe('TripDetail Page', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('should render the empty itinerary state when no events exist', () => {
+    (useTrip as any).mockReturnValue({
+      data: { id: 'trip-123', name: 'New Trip', events: [] },
+      isLoading: false,
+    });
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <TripDetail />
+      </QueryClientProvider>,
     );
-    expect(container).toBeDefined();
+
+    expect(screen.getByText(/Empty Itinerary/i)).toBeInTheDocument();
+    expect(screen.getByText(/Create First Entry/i)).toBeInTheDocument();
+  });
+
+  it('should calculate and display the correct duration', () => {
+    (useTrip as any).mockReturnValue({
+      data: {
+        id: 'trip-123',
+        name: 'Long Trip',
+        startDate: '2026-05-01',
+        endDate: '2026-05-10',
+        events: [],
+      },
+      isLoading: false,
+    });
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <TripDetail />
+      </QueryClientProvider>,
+    );
+
+    // Duration is 10 days (inclusive)
+    expect(screen.getByText('10')).toBeInTheDocument();
   });
 });
