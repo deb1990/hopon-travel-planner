@@ -11,11 +11,9 @@ This document serves as a foundational mandate for all AI agents (Gemini CLI) wo
 ## 2. Technical Standards
 
 - **Atomic Modularity:** NEVER create large functions or components. Every function, component, hook, or service MUST do exactly one thing.
+- **Strict Documentation:** Every exported function, component, or core business logic MUST have JSDoc comments explaining its intent, parameters, and return value.
+- **TypeScript Purity:** NEVER use `any`. Enforce the strictest possible settings (`strict: true`, `noImplicitAny: true`, `noExplicitAny: error`).
 - **Composition over Inheritance:** Prefer small, composed units. Use hooks for stateful logic, services for data fetching/processing, and factories for complex object creation.
-- **Linting:** Use **Oxlint** exclusively for linting. No ESLint.
-- **TypeScript:** Enforce the strictest possible settings (`strict: true`, `noImplicitAny: true`, `strictNullChecks: true`).
-- **Formatting:** Prettier must run on every commit.
-- **Documentation:** Every core business logic function MUST have JSDoc comments explaining its intent, parameters, and return value.
 - **Persistence:** Use **Drizzle ORM** with PostgreSQL. Keep the database portable and Dockerized.
 
 ## 3. Workflow Mandates

@@ -8,8 +8,12 @@ import { ItineraryMetrics } from '@/components/itinerary/itinerary-metrics';
 import { ItineraryRow } from '@/components/itinerary/itinerary-row';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Activity, MapPin, Clock } from 'lucide-react';
-import { groupEventsByBase, identifyItineraryGaps } from '@hopon/core';
+import { groupEventsByBase, identifyItineraryGaps, ItineraryEvent, BaseGroup } from '@hopon/core';
 
+/**
+ * Detailed itinerary view for a single trip.
+ * Composes timeline, metrics, and spatial context.
+ */
 export default function TripDetail() {
   const params = useParams();
   const tripId = params['id'] as string;
@@ -22,14 +26,14 @@ export default function TripDetail() {
   const gaps = identifyItineraryGaps(trip.events || []);
 
   return (
-    <main className="flex min-h-screen flex-col bg-slate-50/50 text-slate-900 transition-colors duration-500">
+    <main className="flex min-h-screen flex-col bg-slate-50/50 dark:bg-black text-slate-900 dark:text-white transition-colors duration-500">
       <ItineraryHeader tripName={trip.name} tripId={tripId} />
 
       <div className="flex-1 max-w-7xl mx-auto w-full p-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-8 flex flex-col gap-10">
             <TimelineHeader />
-            <div className="bg-white rounded-[3rem] border border-slate-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] overflow-hidden">
+            <div className="bg-white dark:bg-white/[0.02] rounded-[3rem] border border-slate-100 dark:border-white/5 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] overflow-hidden">
               <TimelineList baseGroups={baseGroups} gaps={gaps} />
             </div>
           </div>
@@ -45,30 +49,39 @@ export default function TripDetail() {
 }
 
 /**
- * Sub-components (Private to this file until reused)
+ * Header for the itinerary view with branding and sync status.
  */
-
 function TimelineHeader() {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3">
         <Activity className="size-4 text-blue-600" />
         <h2 className="text-[11px] uppercase text-slate-400 tracking-[0.4em] font-black">
-          Timeline Sequence
+          Trip Timeline
         </h2>
       </div>
-      <div className="h-px flex-1 bg-slate-200/50 ml-8" />
+      <div className="h-px flex-1 bg-slate-200/50 dark:bg-white/5 ml-8" />
     </div>
   );
 }
 
-function TimelineList({ baseGroups, gaps }: { baseGroups: any[]; gaps: any[] }) {
+/**
+ * Renders the chronological list of stays and their activities.
+ * Handles gap detection alerts between stays.
+ */
+function TimelineList({
+  baseGroups,
+  gaps,
+}: {
+  baseGroups: BaseGroup[];
+  gaps: { startTime: string; endTime: string }[];
+}) {
   if (baseGroups.length === 0) {
     return (
-      <div className="p-40 text-center flex flex-col items-center gap-4 bg-slate-50/30">
-        <Clock className="size-8 text-slate-200" />
-        <p className="text-slate-300 font-black uppercase tracking-widest text-[10px]">
-          Awaiting Instructions
+      <div className="p-40 text-center flex flex-col items-center gap-4 bg-slate-50/30 dark:bg-white/[0.01]">
+        <Clock className="size-8 text-slate-200 dark:text-zinc-800" />
+        <p className="text-slate-300 dark:text-zinc-700 font-black uppercase tracking-widest text-[10px]">
+          No events added yet
         </p>
       </div>
     );
@@ -78,25 +91,25 @@ function TimelineList({ baseGroups, gaps }: { baseGroups: any[]; gaps: any[] }) 
     <div className="flex flex-col">
       {baseGroups.map((group) => (
         <div key={group.stay.id}>
-          <div className="bg-slate-50/50 py-6 border-l-4 border-blue-600">
+          <div className="bg-slate-50/50 dark:bg-white/[0.03] py-6 border-l-4 border-blue-600">
             <ItineraryRow event={group.stay} className="bg-transparent border-none" />
           </div>
-          <div className="flex flex-col border-l-2 border-slate-50 ml-10">
-            {group.items.map((item: any) => (
+          <div className="flex flex-col border-l-2 border-slate-50 dark:border-white/5 ml-10">
+            {group.items.map((item: ItineraryEvent) => (
               <ItineraryRow
                 key={item.id}
                 event={item}
-                className="hover:bg-blue-50/20 transition-colors"
+                className="hover:bg-blue-50/20 dark:hover:bg-blue-900/10 transition-colors"
               />
             ))}
           </div>
           {gaps.find((g) => g.startTime === group.stay.endTime) && (
-            <div className="mx-10 my-6 p-5 rounded-[2rem] border border-dashed border-orange-100 bg-orange-50/30 flex items-center justify-between group">
+            <div className="mx-10 my-6 p-5 rounded-[2rem] border border-dashed border-orange-100 dark:border-orange-900/20 bg-orange-50/30 dark:bg-orange-900/5 flex items-center justify-between group">
               <span className="text-[10px] font-black text-orange-500 uppercase tracking-widest">
-                Temporal Discontinuity
+                Gap in Schedule
               </span>
-              <button className="text-[9px] font-black text-orange-600 uppercase bg-white px-3 py-1.5 rounded-full border border-orange-100 shadow-sm hover:scale-105 transition-all">
-                Assign Base
+              <button className="text-[9px] font-black text-orange-600 uppercase bg-white dark:bg-white/5 px-3 py-1.5 rounded-full border border-orange-100 dark:border-orange-900/20 shadow-sm hover:scale-105 transition-all">
+                Add Base
               </button>
             </div>
           )}
@@ -106,39 +119,52 @@ function TimelineList({ baseGroups, gaps }: { baseGroups: any[]; gaps: any[] }) 
   );
 }
 
+/**
+ * Visual placeholder for the future interactive map.
+ */
 function SpatialContext() {
   return (
     <section className="flex flex-col gap-6">
-      <h3 className="text-[11px] uppercase font-black text-slate-300 tracking-[0.4em]">Spatial</h3>
-      <div className="aspect-square bg-slate-100 rounded-[4rem] border border-slate-200 flex flex-col items-center justify-center relative overflow-hidden group shadow-inner">
-        <MapPin className="size-10 text-slate-300 group-hover:text-blue-600 transition-all duration-700 group-hover:scale-110" />
-        <span className="z-10 text-[9px] uppercase font-black text-slate-400 mt-8 tracking-[0.3em] group-hover:text-blue-600 transition-colors">
-          Coordinates Locked
+      <h3 className="text-[11px] uppercase font-black text-slate-300 dark:text-zinc-800 tracking-[0.4em]">
+        Map View
+      </h3>
+      <div className="aspect-square bg-slate-100 dark:bg-white/[0.01] rounded-[4rem] border border-slate-200 dark:border-white/5 flex flex-col items-center justify-center relative overflow-hidden group shadow-inner">
+        <MapPin className="size-10 text-slate-300 dark:text-zinc-800 group-hover:text-blue-600 transition-all duration-700 group-hover:scale-110" />
+        <span className="z-10 text-[9px] uppercase font-black text-slate-400 dark:text-zinc-600 mt-8 tracking-[0.3em] group-hover:text-blue-600 transition-colors">
+          Map Loading...
         </span>
       </div>
     </section>
   );
 }
 
+/**
+ * Standardized loading state for the detail view.
+ */
 function LoadingView() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-24 gap-4 bg-background">
-      <Skeleton className="h-12 w-64" />
-      <Skeleton className="h-4 w-48" />
+      <Skeleton className="h-12 w-64 bg-slate-50 dark:bg-slate-900" />
+      <Skeleton className="h-4 w-48 bg-slate-50 dark:bg-slate-900" />
     </div>
   );
 }
 
+/**
+ * Fallback UI for operational failures.
+ */
 function ErrorView({ message }: { message: string }) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
-      <h2 className="text-blue-600 font-black text-2xl uppercase tracking-tighter">System Alert</h2>
-      <p className="text-slate-400 text-sm mt-2 font-mono uppercase tracking-widest">{message}</p>
+      <h2 className="text-blue-600 font-black text-2xl uppercase tracking-tighter">
+        Something went wrong
+      </h2>
+      <p className="text-slate-400 text-sm mt-2 font-medium">{message}</p>
       <a
         href="/"
         className="mt-8 px-8 py-3 bg-blue-600 text-white font-black rounded-full text-xs uppercase hover:bg-blue-700 shadow-xl transition-all text-center"
       >
-        Back to Origin
+        Back to Dashboard
       </a>
     </div>
   );

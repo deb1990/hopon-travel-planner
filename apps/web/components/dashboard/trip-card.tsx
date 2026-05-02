@@ -9,6 +9,12 @@ interface TripCardProps {
   trip: Trip;
 }
 
+/**
+ * A high-density card representing a travel journey in the dashboard grid.
+ * Separates navigation (clicking the card) from management (the delete action).
+ *
+ * @param props.trip - The trip metadata to display.
+ */
 export function TripCard({ trip }: TripCardProps) {
   return (
     <div className="group relative">

@@ -8,6 +8,13 @@ interface ItineraryHeaderProps {
   tripId: string;
 }
 
+/**
+ * Sticky header for the trip detail view.
+ * Provides navigation back to dashboard, trip title, and sync status.
+ *
+ * @param props.tripName - The display name of the trip.
+ * @param props.tripId - Unique identifier for the trip.
+ */
 export function ItineraryHeader({ tripName, tripId }: ItineraryHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/80 backdrop-blur-xl px-8 py-5">

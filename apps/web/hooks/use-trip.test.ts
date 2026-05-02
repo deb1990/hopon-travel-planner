@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, type Mock } from 'vitest';
 import { useTrip } from './use-trip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
@@ -20,7 +20,7 @@ const createTestQueryClient = () =>
 describe('useTrip Hook', () => {
   it('should fetch trip data successfully', async () => {
     const mockTrip = { id: 'trip-1', name: 'Test Trip' };
-    (global.fetch as any).mockResolvedValueOnce({
+    (global.fetch as Mock).mockResolvedValueOnce({
       ok: true,
       json: async () => mockTrip,
     });
@@ -36,7 +36,7 @@ describe('useTrip Hook', () => {
   });
 
   it('should handle fetch errors', async () => {
-    (global.fetch as any).mockResolvedValueOnce({
+    (global.fetch as Mock).mockResolvedValueOnce({
       ok: false,
       status: 500,
     });

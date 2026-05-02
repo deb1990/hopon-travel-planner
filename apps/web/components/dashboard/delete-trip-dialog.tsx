@@ -22,6 +22,13 @@ interface DeleteTripDialogProps {
   tripName: string;
 }
 
+/**
+ * Safety confirmation dialog for trip removal.
+ * Prevents event propagation to avoid accidental navigation to trip details.
+ *
+ * @param props.tripId - The ID of the trip to delete.
+ * @param props.tripName - The name of the trip for confirmation display.
+ */
 export function DeleteTripDialog({ tripId, tripName }: DeleteTripDialogProps) {
   const [open, setOpen] = useState(false);
   const queryClient = useQueryClient();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, type Mock } from 'vitest';
 import Dashboard from './page';
 import QueryProvider from '@/components/providers/query-provider';
 
@@ -16,7 +16,7 @@ global.fetch = vi.fn(() =>
     ok: true,
     json: () => Promise.resolve([]),
   }),
-) as any;
+) as Mock;
 
 describe('Main Dashboard Integrity', () => {
   it('should render the dashboard without crashing', () => {

@@ -6,12 +6,17 @@ import { CreateTripDialog } from '@/components/dashboard/create-trip-dialog';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Compass, Sparkles } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { Trip } from '@hopon/core';
 
 const DEMO_USER_ID = 'b07bb29b-67de-4f35-8c85-111c8358436b';
 const API_URL = 'http://localhost:4000';
 
+/**
+ * The primary dashboard for managing travel journeys.
+ * Handles listing existing trips and initiating new ones.
+ */
 export default function Dashboard() {
-  const { data: trips, isLoading } = useQuery({
+  const { data: trips, isLoading } = useQuery<Trip[]>({
     queryKey: ['trips'],
     queryFn: async () => {
       const res = await fetch(`${API_URL}/trips`, {
@@ -75,9 +80,9 @@ export default function Dashboard() {
           </p>
         </div>
 
-        {trips?.length > 0 ? (
+        {trips && trips.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {trips.map((trip: any) => (
+            {trips.map((trip: Trip) => (
               <TripCard key={trip.id} trip={trip} />
             ))}
           </div>

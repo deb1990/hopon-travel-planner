@@ -4,6 +4,7 @@ import { tripsRouter } from './trips';
 import { db } from '../db';
 import { users, trips, itineraryEvents } from '../db/schema';
 import { eq, and, exists } from 'drizzle-orm';
+import { Trip } from '@hopon/core';
 
 describe('Trips API Integration', () => {
   let userId: string;
@@ -55,7 +56,7 @@ describe('Trips API Integration', () => {
 
     expect(res.status).toBe(200);
     const data = await res.json();
-    expect(data.some((t: any) => t.name === 'API Test Trip')).toBe(true);
+    expect(data.some((t: Trip) => t.name === 'API Test Trip')).toBe(true);
   });
 
   it('POST /trips should create a new trip', async () => {

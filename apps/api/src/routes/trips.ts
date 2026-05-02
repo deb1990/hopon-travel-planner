@@ -100,7 +100,7 @@ tripsRouter.get('/:id', async (c) => {
 tripsRouter.post('/:id/events', async (c) => {
   const tripId = c.req.param('id');
   const userId = c.get('userId');
-  const body = await c.req.json<any>();
+  const body = (await c.req.json()) as Record<string, unknown>;
 
   try {
     // 1. Check write permission
@@ -111,11 +111,11 @@ tripsRouter.post('/:id/events', async (c) => {
 
     // 2. Create event
     const newEvent = await eventRepo.create({
-      ...body,
+      ...(body as Record<string, unknown>), // Cast specifically for spread to schema
       tripId,
-      startTime: new Date(body.startTime),
-      endTime: body.endTime ? new Date(body.endTime) : null,
-    });
+      startTime: new Date(body['startTime'] as string),
+      endTime: body['endTime'] ? new Date(body['endTime'] as string) : null,
+    } as unknown as Parameters<typeof eventRepo.create>[0]); // Safe cast to the repo's expected type
 
     return c.json(newEvent, 201);
   } catch (error) {

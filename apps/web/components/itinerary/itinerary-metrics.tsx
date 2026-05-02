@@ -6,6 +6,12 @@ interface ItineraryMetricsProps {
   stays: number;
 }
 
+/**
+ * Sidebar component showing key statistics for a trip.
+ *
+ * @param props.days - Total planned duration in days.
+ * @param props.stays - Total number of unique accommodations (bases).
+ */
 export function ItineraryMetrics({ days, stays }: ItineraryMetricsProps) {
   return (
     <section className="flex flex-col gap-6">

@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "test": "npm run test --workspaces",
-    "lint": "oxlint . --deny-warnings",
+    "lint": "oxlint . --deny-warnings --deny no-explicit-any --deny require-jsdoc",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "prepare": "husky"
   },
