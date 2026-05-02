@@ -172,4 +172,26 @@ describe('Trips API Integration', () => {
       .where(eq(itineraryEvents.id, event!.id));
     expect(new Date(updatedEvent!.startTime).toISOString()).toBe('2026-10-02T10:00:00.000Z');
   });
+
+  it('DELETE /trips/:id should delete a trip if user is owner', async () => {
+    const [trip] = await db
+      .insert(trips)
+      .values({
+        ownerId: userId,
+        name: 'Delete Me',
+      })
+      .returning();
+
+    const res = await app.request(`/trips/${trip!.id}`, {
+      method: 'DELETE',
+      headers: { 'x-user-id': userId },
+    });
+
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data.success).toBe(true);
+
+    const [found] = await db.select().from(trips).where(eq(trips.id, trip!.id));
+    expect(found).toBeUndefined();
+  });
 });

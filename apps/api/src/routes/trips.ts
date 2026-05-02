@@ -125,6 +125,28 @@ tripsRouter.post('/:id/events', async (c) => {
 });
 
 /**
+ * Delete a trip
+ */
+tripsRouter.delete('/:id', async (c) => {
+  const tripId = c.req.param('id');
+  const userId = c.get('userId');
+
+  try {
+    const result = await tripRepo.delete(tripId, userId);
+    return c.json(result);
+  } catch (error) {
+    console.error('Failed to delete trip:', error);
+    return c.json(
+      {
+        error: 'Unauthorized or Not Found',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      },
+      403,
+    );
+  }
+});
+
+/**
  * Shift all events in a trip by a given offset
  */
 tripsRouter.patch('/:id/shift', async (c) => {

@@ -63,4 +63,19 @@ describe('TripRepository', () => {
     const publicTrips = await repo.findPublic();
     expect(publicTrips.find((t) => t.id === trip.id)).toBeDefined();
   });
+
+  it('should delete a trip and its associated permissions', async () => {
+    const repo = new TripRepository(db);
+
+    // 1. Create trip and a permission
+    const trip = await repo.create({ ownerId: userIdA, name: 'To Be Deleted' });
+    await repo.addPermission(trip.id, userIdB, 'viewer');
+
+    // 2. Delete
+    await repo.delete(trip.id, userIdA);
+
+    // 3. Verify deletion
+    const accessible = await repo.findAccessibleByUserId(userIdA);
+    expect(accessible.find((t) => t.id === trip.id)).toBeUndefined();
+  });
 });

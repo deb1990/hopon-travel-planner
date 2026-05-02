@@ -1,7 +1,7 @@
 import { eq, and, or, exists } from 'drizzle-orm';
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import * as schema from '../db/schema';
-import { trips, permissions } from '../db/schema';
+import { trips, permissions, itineraryEvents } from '../db/schema';
 
 /**
  * Repository for managing Trips and Permissions.
@@ -75,5 +75,27 @@ export class TripRepository {
       .where(and(eq(permissions.tripId, tripId), eq(permissions.userId, userId)));
 
     return permission?.role || null;
+  }
+
+  /**
+   * Deletes a trip and all its associated data (events, permissions).
+   * ONLY the owner can delete a trip.
+   */
+  async delete(tripId: string, userId: string) {
+    return this.db.transaction(async (tx) => {
+      // 1. Verify ownership
+      const [trip] = await tx
+        .select()
+        .from(trips)
+        .where(and(eq(trips.id, tripId), eq(trips.ownerId, userId)));
+      if (!trip) throw new Error('Unauthorized or Trip not found');
+
+      // 2. Cascade delete
+      await tx.delete(itineraryEvents).where(eq(itineraryEvents.tripId, tripId));
+      await tx.delete(permissions).where(eq(permissions.tripId, tripId));
+      await tx.delete(trips).where(eq(trips.id, tripId));
+
+      return { success: true };
+    });
   }
 }

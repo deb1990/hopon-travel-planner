@@ -94,6 +94,12 @@ This file tracks the granular progress of the implementation. Each step follows 
   - [x] Implement `GET /trips` list view on home page
   - [x] Implement `POST /trips` (Create Trip) modal/form
   - [x] Add navigation between Dashboard and Itinerary View
+- [x] **M5.4: Trip Lifecycle (Create & Delete)**
+  - [x] [TDD] Add `delete` method to `TripRepository` and verify with tests
+  - [x] [TDD] Implement `DELETE /trips/:id` with ownership verification
+  - [x] Build `components/dashboard/create-trip-dialog.tsx`
+  - [x] Add Delete action to `TripCard` with a Confirmation Modal
+  - [x] Implement optimistic UI updates for deletion
 
 ## Milestone 6: High-Density Itinerary & Mapping
 
