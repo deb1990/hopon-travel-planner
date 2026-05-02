@@ -27,9 +27,7 @@ export default function TripDetail() {
 
   const events = trip.events || [];
   const baseGroups = groupEventsByBase(events);
-  const gaps = identifyItineraryGaps(events);
-
-  // Use the verified utility logic
+  const gaps = identifyItineraryGaps(events, trip.startDate, trip.endDate);
   const days = calculateTripDuration(trip.startDate, trip.endDate);
 
   return (
@@ -38,7 +36,6 @@ export default function TripDetail() {
 
       <div className="flex-1 max-w-7xl mx-auto w-full p-8 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          {/* Main Timeline Column */}
           <div className="lg:col-span-8 flex flex-col gap-10">
             <div className="flex items-center justify-between px-2">
               <div className="flex items-center gap-4">
@@ -58,18 +55,20 @@ export default function TripDetail() {
               </Button>
             </div>
 
-            <div className="flex flex-col">
-              <TimelineList baseGroups={baseGroups} gaps={gaps} />
+            <div className="flex flex-col" data-testid="timeline-list">
+              <TimelineList
+                baseGroups={baseGroups}
+                gaps={gaps}
+                tripStartDate={trip.startDate}
+                tripEndDate={trip.endDate}
+              />
             </div>
           </div>
 
-          {/* Inspector Panel Sidebar */}
           <div className="lg:col-span-4 flex flex-col gap-12 pt-4">
             <div className="flex flex-col gap-8 sticky top-24">
               <ItineraryMetrics days={days} stays={baseGroups.length} />
               <SpatialContext />
-
-              {/* Secondary Meta Panel */}
               <div className="p-6 rounded-[2rem] bg-muted/30 border border-border/50">
                 <h4 className="text-[10px] font-black uppercase text-muted-foreground tracking-[0.2em] mb-4">
                   Workspace Details
@@ -100,11 +99,15 @@ export default function TripDetail() {
 function TimelineList({
   baseGroups,
   gaps,
+  tripStartDate,
+  tripEndDate,
 }: {
   baseGroups: BaseGroupType[];
   gaps: { startTime: string; endTime: string; numDays: number }[];
+  tripStartDate?: string;
+  tripEndDate?: string;
 }) {
-  if (baseGroups.length === 0) {
+  if (baseGroups.length === 0 && gaps.length === 0) {
     return (
       <div className="relative bg-card rounded-[2.5rem] border shadow-2xl p-32 text-center flex flex-col items-center gap-6">
         <div className="size-20 rounded-[2.5rem] bg-muted/30 border border-border/50 flex items-center justify-center mb-2 shadow-inner">
@@ -126,20 +129,36 @@ function TimelineList({
     );
   }
 
+  // 1. Detect START GAP
+  const startGap = tripStartDate ? gaps.find((g) => g.startTime === tripStartDate) : null;
+
+  // 2. Detect END GAP
+  const endGap = tripEndDate ? gaps.find((g) => g.endTime === tripEndDate) : null;
+
   return (
     <div className="flex flex-col gap-2">
+      {/* Render Start Gap */}
+      {startGap && <GhostGroup startTime={startGap.startTime} numDays={startGap.numDays} />}
+
+      {/* Render Stays and Middle Gaps */}
       {baseGroups.map((group) => {
-        const gapAfter = gaps.find((g) => g.startTime === group.stay.endTime);
+        // Gap is a middle gap if it starts when this stay ends AND it is not the startGap or endGap
+        const gapAfter = gaps.find(
+          (g) => g.startTime === group.stay.endTime && g !== startGap && g !== endGap,
+        );
 
         return (
           <React.Fragment key={group.stay.id}>
             <BaseGroup stay={group.stay} items={group.items} />
-
-            {/* Show the High-Fidelity Ghost Group for the gap */}
             {gapAfter && <GhostGroup startTime={gapAfter.startTime} numDays={gapAfter.numDays} />}
           </React.Fragment>
         );
       })}
+
+      {/* Render End Gap (if different from start gap) */}
+      {endGap && endGap !== startGap && (
+        <GhostGroup startTime={endGap.startTime} numDays={endGap.numDays} />
+      )}
     </div>
   );
 }
