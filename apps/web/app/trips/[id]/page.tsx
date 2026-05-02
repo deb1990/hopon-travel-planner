@@ -1,162 +1,105 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'next/navigation';
 import { useTrip } from '@/hooks/use-trip';
 import { ItineraryHeader } from '@/components/itinerary/itinerary-header';
 import { ItineraryMetrics } from '@/components/itinerary/itinerary-metrics';
 import { Skeleton } from '@/components/ui/skeleton';
 import { CalendarDays, Plus, Sparkles, MapPin } from 'lucide-react';
-import {
-  groupEventsByBase,
-  identifyItineraryGaps,
-  BaseGroup as BaseGroupType,
-  calculateDroppedTime,
-  ItineraryEvent,
-} from '@hopon/core';
+import { groupEventsByBase, identifyItineraryGaps, BaseGroup as BaseGroupType } from '@hopon/core';
 import { Button } from '@/components/ui/button';
 import { calculateTripDuration } from '@/lib/temporal-utils';
 import { BaseGroup } from '@/components/itinerary/base-group';
 import { GhostGroup } from '@/components/itinerary/ghost-group';
-import {
-  DndContext,
-  DragEndEvent,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  DragOverlay,
-  defaultDropAnimationSideEffects,
-} from '@dnd-kit/core';
-import { restrictToFirstScrollableAncestor } from '@dnd-kit/modifiers';
-import { toast } from 'sonner';
-import { ItineraryRow } from '@/components/itinerary/itinerary-row';
-import { CONFIG } from '@/lib/config';
 
 /**
  * Detailed itinerary view for a single trip.
- * Supports chronological drag-and-drop for activities.
+ * Displays a high-density chronological timeline.
  */
 export default function TripDetail() {
   const params = useParams();
   const tripId = params['id'] as string;
-  const { data: trip, isLoading, error, refetch } = useTrip(tripId);
-  const [activeEvent, setActiveEvent] = useState<ItineraryEvent | null>(null);
-
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: { distance: 8 },
-    }),
-  );
+  const { data: trip, isLoading, error } = useTrip(tripId);
 
   if (error) return <ErrorView message={(error as Error).message} />;
   if (isLoading || !trip) return <LoadingView />;
 
-  const events = trip.events || [];
+  // Sort events chronologically
+  const events = [...(trip.events || [])].sort(
+    (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime(),
+  );
+
   const baseGroups = groupEventsByBase(events);
   const gaps = identifyItineraryGaps(events, trip.startDate, trip.endDate);
   const days = calculateTripDuration(trip.startDate, trip.endDate);
 
-  const handleDragStart = (event: any) => {
-    setActiveEvent(event.active.data.current?.event || null);
-  };
-
-  const handleDragEnd = async (event: DragEndEvent) => {
-    setActiveEvent(null);
-    const { active, over } = event;
-
-    if (!over) return;
-
-    const draggedId = active.id as string;
-    const overData = over.data.current;
-
-    if (!overData || !overData['date']) return;
-
-    const newTime = calculateDroppedTime(overData['date']);
-
-    try {
-      const res = await fetch(`${CONFIG.API_URL}/trips/${tripId}/events/${draggedId}`, {
-        method: 'PATCH',
-        headers: {
-          'x-user-id': CONFIG.DEMO_USER_ID,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ startTime: newTime }),
-      });
-
-      if (!res.ok) throw new Error('Move failed');
-
-      toast.success('Activity moved successfully');
-      refetch();
-    } catch {
-      toast.error('Failed to move activity');
-    }
-  };
-
   return (
-    <DndContext
-      sensors={sensors}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      modifiers={[restrictToFirstScrollableAncestor]}
-    >
-      <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
-        <ItineraryHeader trip={trip} />
+    <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
+      <ItineraryHeader trip={trip} />
 
-        <div className="flex-1 max-w-7xl mx-auto w-full p-8 lg:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-8 flex flex-col gap-10">
-              <div className="flex items-center justify-between px-2">
-                <div className="flex items-center gap-4">
-                  <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <CalendarDays className="size-4 text-primary" />
-                  </div>
-                  <h2 className="text-sm font-black uppercase tracking-[0.2em] text-foreground">
-                    Timeline Sequence
-                  </h2>
+      <div className="flex-1 max-w-7xl mx-auto w-full p-8 lg:p-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Main Timeline Column */}
+          <div className="lg:col-span-8 flex flex-col gap-10">
+            <div className="flex items-center justify-between px-2">
+              <div className="flex items-center gap-4">
+                <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <CalendarDays className="size-4 text-primary" />
                 </div>
-                <Button
-                  size="sm"
-                  className="rounded-full bg-primary text-primary-foreground font-bold h-8 px-4 text-[10px] uppercase tracking-widest hover:scale-105 transition-transform"
-                >
-                  <Plus className="size-3 mr-1.5 stroke-[3]" />
-                  Add Entry
-                </Button>
+                <h2 className="text-sm font-black uppercase tracking-[0.2em] text-foreground">
+                  Timeline Sequence
+                </h2>
               </div>
-
-              <div className="flex flex-col" data-testid="timeline-list">
-                <TimelineList
-                  baseGroups={baseGroups}
-                  gaps={gaps}
-                  tripStartDate={trip.startDate}
-                  tripEndDate={trip.endDate}
-                />
-              </div>
+              <Button
+                size="sm"
+                className="rounded-full bg-primary text-primary-foreground font-bold h-8 px-4 text-[10px] uppercase tracking-widest hover:scale-105 transition-transform"
+              >
+                <Plus className="size-3 mr-1.5 stroke-[3]" />
+                Add Entry
+              </Button>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col gap-12 pt-4">
-              <div className="flex flex-col gap-8 sticky top-24">
-                <ItineraryMetrics days={days} stays={baseGroups.length} />
-                <SpatialContext />
+            <div className="flex flex-col" data-testid="timeline-list">
+              <TimelineList
+                baseGroups={baseGroups}
+                gaps={gaps}
+                tripStartDate={trip.startDate}
+                tripEndDate={trip.endDate}
+              />
+            </div>
+          </div>
+
+          {/* Inspector Panel Sidebar */}
+          <div className="lg:col-span-4 flex flex-col gap-12 pt-4">
+            <div className="flex flex-col gap-8 sticky top-24">
+              <ItineraryMetrics days={days} stays={baseGroups.length} />
+              <SpatialContext />
+
+              <div className="p-6 rounded-[2rem] bg-muted/30 border border-border/50">
+                <h4 className="text-[10px] font-black uppercase text-muted-foreground tracking-[0.2em] mb-4">
+                  Workspace Details
+                </h4>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center text-[11px]">
+                    <span className="text-muted-foreground font-medium">Author</span>
+                    <span className="text-foreground font-bold italic underline decoration-primary/30 underline-offset-4">
+                      Demo User
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center text-[11px]">
+                    <span className="text-muted-foreground font-medium">Visibility</span>
+                    <span className="bg-primary/10 text-primary px-2 py-0.5 rounded font-black uppercase tracking-tighter text-[9px] border border-primary/20">
+                      Private
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
-
-      <DragOverlay
-        dropAnimation={{
-          sideEffects: defaultDropAnimationSideEffects({
-            styles: { active: { opacity: '0.5' } },
-          }),
-        }}
-      >
-        {activeEvent ? (
-          <div className="w-[400px] shadow-2xl rounded-2xl overflow-hidden border border-primary/20 bg-background/80 backdrop-blur-xl">
-            <ItineraryRow event={activeEvent} className="border-none" />
-          </div>
-        ) : null}
-      </DragOverlay>
-    </DndContext>
+      </div>
+    </main>
   );
 }
 

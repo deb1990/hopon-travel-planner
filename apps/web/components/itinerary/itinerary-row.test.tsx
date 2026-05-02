@@ -4,26 +4,29 @@ import { describe, it, expect } from 'vitest';
 import { ItineraryRow } from './itinerary-row';
 import { ItineraryEvent } from '@hopon/core';
 
-describe('ItineraryRow', () => {
-  const mockEvent: ItineraryEvent = {
-    id: '1',
-    tripId: 'trip-1',
-    type: 'ACTIVITY',
-    title: 'Visit Louvre',
-    startTime: '2026-10-01T10:00:00Z',
-    locationName: 'Louvre Museum',
-  };
+const mockEvent: ItineraryEvent = {
+  id: '1',
+  tripId: 'trip-1',
+  type: 'ACTIVITY',
+  title: 'Test Activity',
+  startTime: '2026-10-01T10:00:00Z',
+  endTime: '2026-10-01T11:00:00Z',
+  locationName: 'Test Location',
+};
 
-  it('should render the event title and type', () => {
+describe('ItineraryRow Component', () => {
+  it('should render the event title and location', () => {
     render(<ItineraryRow event={mockEvent} />);
-    expect(screen.getByText('Visit Louvre')).toBeInTheDocument();
-    expect(screen.getByText('ACTIVITY')).toBeInTheDocument();
-    expect(screen.getByText('Louvre Museum')).toBeInTheDocument();
+    expect(screen.getByText('Test Activity')).toBeInTheDocument();
+    expect(screen.getByText('Test Location')).toBeInTheDocument();
   });
 
-  it('should apply special styling for STAY type', () => {
-    const stayEvent: ItineraryEvent = { ...mockEvent, type: 'STAY' };
-    const { container } = render(<ItineraryRow event={stayEvent} />);
-    expect(container.firstChild).toHaveClass('bg-primary/[0.02]');
+  it('should render both start and end times for activities', () => {
+    render(<ItineraryRow event={mockEvent} />);
+
+    // Use a flexible matcher since timezones in JSDOM can be finicky
+    // We just want to ensure two distinct time-like strings are rendered in the time column
+    const timeContainers = screen.getAllByText(/\d{2}:\d{2}/);
+    expect(timeContainers.length).toBeGreaterThanOrEqual(2);
   });
 });

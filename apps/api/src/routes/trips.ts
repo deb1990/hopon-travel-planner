@@ -139,6 +139,33 @@ tripsRouter.post('/:id/events', async (c) => {
 });
 
 /**
+ * Update an existing event in a trip
+ */
+tripsRouter.patch('/:id/events/:eventId', async (c) => {
+  const eventId = c.req.param('eventId');
+  const userId = c.get('userId');
+  const body = (await c.req.json()) as Record<string, unknown>;
+
+  try {
+    const updatedEvent = await eventRepo.update(eventId, userId, {
+      ...body,
+      startTime: body['startTime'] ? new Date(body['startTime'] as string) : undefined,
+      endTime: body['endTime'] ? new Date(body['endTime'] as string) : undefined,
+    } as any);
+
+    return c.json(updatedEvent);
+  } catch (error) {
+    return c.json(
+      {
+        error: 'Update failed',
+        message: error instanceof Error ? error.message : 'Unauthorized',
+      },
+      403,
+    );
+  }
+});
+
+/**
  * Delete a trip
  */
 tripsRouter.delete('/:id', async (c) => {
