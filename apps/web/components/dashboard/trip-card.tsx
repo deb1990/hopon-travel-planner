@@ -28,7 +28,7 @@ export function TripCard({ trip }: TripCardProps) {
         <Card className="studio-card h-48 rounded-[2rem] overflow-hidden flex flex-col justify-between border-none relative z-10">
           <CardHeader className="pb-0 pt-8 px-8">
             <div className="flex justify-between items-start">
-              <div className="size-10 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+              <div className="size-10 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
                 <Globe className="size-5" />
               </div>
               {/* Empty space for the absolute-positioned Trash button */}
@@ -36,10 +36,10 @@ export function TripCard({ trip }: TripCardProps) {
             </div>
           </CardHeader>
           <CardContent className="pb-8 px-8">
-            <CardTitle className="text-xl font-black tracking-tight text-slate-900 mb-2 truncate pr-4">
+            <CardTitle className="text-xl font-black tracking-tight text-foreground mb-2 truncate pr-4">
               {trip.name}
             </CardTitle>
-            <div className="flex items-center gap-4 text-[10px] text-slate-400 uppercase font-black tracking-widest">
+            <div className="flex items-center gap-4 text-[10px] text-muted-foreground uppercase font-black tracking-widest">
               <div className="flex items-center gap-1.5">
                 <Calendar className="size-3" />
                 <span>
@@ -49,7 +49,7 @@ export function TripCard({ trip }: TripCardProps) {
                   })}
                 </span>
               </div>
-              <div className="size-1 rounded-full bg-slate-200" />
+              <div className="size-1 rounded-full bg-border" />
               <span>{trip.visibility}</span>
             </div>
           </CardContent>
