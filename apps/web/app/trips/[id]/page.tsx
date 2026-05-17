@@ -22,7 +22,7 @@ const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
 
 /**
  * Detailed itinerary view for a single trip.
- * Uses a Day-Centric model for 100% chronological accuracy.
+ * High-density studio layout with balanced 1:1 dual-pane and compact inspector metrics.
  */
 export default function TripDetail() {
   const params = useParams();
@@ -31,12 +31,10 @@ export default function TripDetail() {
 
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
 
-  if (error) return <ErrorView message={(error as Error).message} />;
-  if (isLoading || !trip) return <LoadingView />;
-
-  const events = trip.events || [];
-  const startDate = trip.startDate ?? undefined;
-  const endDate = trip.endDate ?? undefined;
+  // --- HOOKS MUST BE CALLED BEFORE CONDITIONAL RETURNS ---
+  const events = trip?.events || [];
+  const startDate = trip?.startDate ?? undefined;
+  const endDate = trip?.endDate ?? undefined;
 
   // Group events by calendar day
   const dayGroups = useMemo(
@@ -45,6 +43,10 @@ export default function TripDetail() {
   );
 
   const days = calculateTripDuration(startDate, endDate);
+  // -------------------------------------------------------
+
+  if (error) return <ErrorView message={(error as Error).message} />;
+  if (isLoading || !trip) return <LoadingView />;
 
   return (
     <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
