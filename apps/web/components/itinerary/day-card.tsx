@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
-import { DayGroup } from '@hopon/core';
+import React, { useState } from 'react';
+import { DayGroup, StayEvent } from '@hopon/core';
 import { ItineraryRow } from './itinerary-row';
 import { DayHeader } from './day-header';
 import { AddEventDialog } from './add-event-dialog';
+import { EditEventDialog } from './edit-event-dialog';
 import { Home, LogOut, LogIn, AlertCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -21,25 +22,19 @@ interface DayCardProps {
  * High-density container for a single calendar day.
  */
 export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: DayCardProps) {
+  const [editingStay, setEditingStay] = useState<StayEvent | null>(null);
+
   const hasAccommodation = day.activeStays.length > 0;
 
-  // 1. Logic for Check-out continuity
   const isCheckoutDay = day.activeStays.some(
     (stay) => new Date(stay.endTime || '').toDateString() === new Date(day.date).toDateString(),
   );
 
-  // 2. Logic for Check-in continuity (First day of a stay)
   const isCheckinDay = day.activeStays.some(
     (stay) => new Date(stay.startTime).toDateString() === new Date(day.date).toDateString(),
   );
 
-  // 3. Sequential Constraint:
-  // - Show Add Stay if NO accommodation.
-  // - Show Add Stay if it's a Check-out day (unless it's the last day of the trip).
-  // - Show Add Stay if it's a Check-in day (unless it's the first day of the trip).
-
   let showAddStay = !hasAccommodation;
-
   if (hasAccommodation) {
     if (isCheckoutDay && !isLastDay) showAddStay = true;
     if (isCheckinDay && !isFirstDay) showAddStay = true;
@@ -47,7 +42,6 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
 
   return (
     <div className="relative flex flex-col group/day-card bg-card mb-8 rounded-[2.5rem] border border-border/40 shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:border-primary/20">
-      {/* 1. HEADER: Date & Stay Context */}
       <div className="relative z-10 border-b border-border/40 bg-muted/20 px-8 py-6 flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <DayHeader date={day.date} className="mt-0" />
@@ -59,21 +53,26 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
                 new Date(stay.startTime).toDateString() === new Date(day.date).toDateString();
 
               return (
-                <Badge
+                <button
                   key={stay.id}
-                  variant="outline"
-                  className={cn(
-                    'flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-tight bg-background/50',
-                    checkoutMatch && 'border-orange-500/30 text-orange-600',
-                    checkinMatch && 'border-indigo-500/30 text-indigo-600',
-                    !checkinMatch && !checkoutMatch && 'border-primary/20 text-primary',
-                  )}
+                  onClick={() => setEditingStay(stay)}
+                  className="cursor-pointer hover:scale-105 transition-transform"
                 >
-                  {checkoutMatch && <LogOut className="size-2.5" />}
-                  {checkinMatch && <LogIn className="size-2.5" />}
-                  {!checkinMatch && !checkoutMatch && <Home className="size-2.5" />}
-                  <span className="truncate max-w-[120px]">{stay.title}</span>
-                </Badge>
+                  <Badge
+                    variant="outline"
+                    className={cn(
+                      'flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-tight bg-background/50',
+                      checkoutMatch && 'border-orange-500/30 text-orange-600',
+                      checkinMatch && 'border-indigo-500/30 text-indigo-600',
+                      !checkinMatch && !checkoutMatch && 'border-primary/20 text-primary',
+                    )}
+                  >
+                    {checkoutMatch && <LogOut className="size-2.5" />}
+                    {checkinMatch && <LogIn className="size-2.5" />}
+                    {!checkinMatch && !checkoutMatch && <Home className="size-2.5" />}
+                    <span className="truncate max-w-[120px]">{stay.title}</span>
+                  </Badge>
+                </button>
               );
             })}
             {!hasAccommodation && (
@@ -88,7 +87,6 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
           </div>
         </div>
 
-        {/* Sequential Entry Point */}
         {showAddStay && (
           <AddEventDialog
             tripId={tripId}
@@ -99,7 +97,6 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
         )}
       </div>
 
-      {/* 2. TIMELINE */}
       <div className="relative z-10 pl-6 pr-2 py-4">
         <div className="absolute left-[31px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/10 via-primary/10 to-transparent z-0 opacity-40" />
 
@@ -133,6 +130,15 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
           </div>
         </div>
       </div>
+
+      {/* STAY EDIT MODAL */}
+      {editingStay && (
+        <EditEventDialog
+          event={editingStay}
+          open={!!editingStay}
+          onOpenChange={(open) => !open && setEditingStay(null)}
+        />
+      )}
     </div>
   );
 }
