@@ -3,16 +3,7 @@
 import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import {
-  Calendar,
-  MapPin,
-  Clock,
-  Link as LinkIcon,
-  Home,
-  Loader2,
-  Hash,
-  Plane,
-} from 'lucide-react';
+import { Calendar, MapPin, Clock, Link as LinkIcon, Home, Loader2, Plane } from 'lucide-react';
 import { ItineraryEvent, resolveLocation } from '@hopon/core';
 
 interface EventFormProps {
@@ -25,6 +16,7 @@ interface EventFormProps {
 
 /**
  * Reusable form logic for creating and editing itinerary events.
+ * Intelligently extracts coordinates from pasted Google Maps URLs.
  */
 export function EventForm({
   type,
@@ -65,7 +57,6 @@ export function EventForm({
   const [formData, setFormData] = useState({
     title: initialData?.title || '',
     locationName: initialData?.locationName || '',
-    plusCode: initialData?.plusCode || '',
     startTime: getStartTime(),
     endTime: getEndTime(),
     bookingLink: (initialData as any)?.bookingLink || '',
@@ -79,8 +70,8 @@ export function EventForm({
     setIsResolving(true);
 
     try {
-      const resolutionString = formData.plusCode || formData.locationName;
-      const coords = await resolveLocation(resolutionString);
+      // SMART RESOLUTION: Extracts from URL or searches by Name
+      const coords = await resolveLocation(formData.locationName);
 
       const finalStart = new Date(formData.startTime);
       const finalEnd = formData.endTime ? new Date(formData.endTime) : null;
@@ -102,39 +93,24 @@ export function EventForm({
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6 pt-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-            Location Name
-          </label>
-          <div className="relative">
-            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
-            <Input
-              required
-              placeholder={isTransit ? 'Destination' : 'e.g. Viking Museum'}
-              value={formData.locationName}
-              onChange={(e) => setFormData({ ...formData, locationName: e.target.value })}
-              className="rounded-2xl bg-muted/30 border-border/40 pl-10 h-12 text-sm font-medium"
-            />
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-            Plus Code (Opt)
-          </label>
-          <div className="relative">
-            <Hash className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
-            <Input
-              placeholder="e.g. FM5C+X5"
-              value={formData.plusCode}
-              onChange={(e) => setFormData({ ...formData, plusCode: e.target.value })}
-              className="rounded-2xl bg-muted/30 border-border/40 pl-10 h-12 text-xs font-mono"
-            />
-            {isResolving && (
-              <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 size-3.5 text-primary animate-spin" />
-            )}
-          </div>
+      <div className="space-y-2">
+        <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
+          Location / Maps URL
+        </label>
+        <div className="relative">
+          <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
+          <Input
+            required
+            placeholder={
+              isTransit ? 'Destination or Google Maps Link' : 'e.g. Viking Museum or Maps Link'
+            }
+            value={formData.locationName}
+            onChange={(e) => setFormData({ ...formData, locationName: e.target.value })}
+            className="rounded-2xl bg-muted/30 border-border/40 pl-10 h-12 text-sm font-medium"
+          />
+          {isResolving && (
+            <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 size-3.5 text-primary animate-spin" />
+          )}
         </div>
       </div>
 
