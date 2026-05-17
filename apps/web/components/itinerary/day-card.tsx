@@ -12,23 +12,38 @@ import { cn } from '@/lib/utils';
 interface DayCardProps {
   day: DayGroup;
   tripId: string;
+  isFirstDay?: boolean;
+  isLastDay?: boolean;
   onHoverItem?: (id: string | null) => void;
 }
 
 /**
  * High-density container for a single calendar day.
- * Displays activities and stay context badges.
  */
-export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
+export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: DayCardProps) {
   const hasAccommodation = day.activeStays.length > 0;
 
-  // Detect if this day is a Check-out point for any stay
-  const isTransitionDay = day.activeStays.some(
+  // 1. Logic for Check-out continuity
+  const isCheckoutDay = day.activeStays.some(
     (stay) => new Date(stay.endTime || '').toDateString() === new Date(day.date).toDateString(),
   );
 
-  // We show "Add Stay" if there's NO accommodation OR if it's a Check-out day
-  const showAddStay = !hasAccommodation || isTransitionDay;
+  // 2. Logic for Check-in continuity (First day of a stay)
+  const isCheckinDay = day.activeStays.some(
+    (stay) => new Date(stay.startTime).toDateString() === new Date(day.date).toDateString(),
+  );
+
+  // 3. Sequential Constraint:
+  // - Show Add Stay if NO accommodation.
+  // - Show Add Stay if it's a Check-out day (unless it's the last day of the trip).
+  // - Show Add Stay if it's a Check-in day (unless it's the first day of the trip).
+
+  let showAddStay = !hasAccommodation;
+
+  if (hasAccommodation) {
+    if (isCheckoutDay && !isLastDay) showAddStay = true;
+    if (isCheckinDay && !isFirstDay) showAddStay = true;
+  }
 
   return (
     <div className="relative flex flex-col group/day-card bg-card mb-8 rounded-[2.5rem] border border-border/40 shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:border-primary/20">
@@ -38,9 +53,9 @@ export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
           <DayHeader date={day.date} className="mt-0" />
           <div className="flex flex-wrap gap-2 mt-2">
             {day.activeStays.map((stay) => {
-              const isCheckout =
+              const checkoutMatch =
                 new Date(stay.endTime || '').toDateString() === new Date(day.date).toDateString();
-              const isCheckin =
+              const checkinMatch =
                 new Date(stay.startTime).toDateString() === new Date(day.date).toDateString();
 
               return (
@@ -49,14 +64,14 @@ export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
                   variant="outline"
                   className={cn(
                     'flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-tight bg-background/50',
-                    isCheckout && 'border-orange-500/30 text-orange-600',
-                    isCheckin && 'border-indigo-500/30 text-indigo-600',
-                    !isCheckin && !isCheckout && 'border-primary/20 text-primary',
+                    checkoutMatch && 'border-orange-500/30 text-orange-600',
+                    checkinMatch && 'border-indigo-500/30 text-indigo-600',
+                    !checkinMatch && !checkoutMatch && 'border-primary/20 text-primary',
                   )}
                 >
-                  {isCheckout && <LogOut className="size-2.5" />}
-                  {isCheckin && <LogIn className="size-2.5" />}
-                  {!isCheckin && !isCheckout && <Home className="size-2.5" />}
+                  {checkoutMatch && <LogOut className="size-2.5" />}
+                  {checkinMatch && <LogIn className="size-2.5" />}
+                  {!checkinMatch && !checkoutMatch && <Home className="size-2.5" />}
                   <span className="truncate max-w-[120px]">{stay.title}</span>
                 </Badge>
               );
@@ -73,7 +88,7 @@ export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
           </div>
         </div>
 
-        {/* Continuity Action: Add Stay on Gaps or Transition Days */}
+        {/* Sequential Entry Point */}
         {showAddStay && (
           <AddEventDialog
             tripId={tripId}
@@ -84,7 +99,7 @@ export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
         )}
       </div>
 
-      {/* 2. TIMELINE: Continuous Vertical Flow */}
+      {/* 2. TIMELINE */}
       <div className="relative z-10 pl-6 pr-2 py-4">
         <div className="absolute left-[31px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/10 via-primary/10 to-transparent z-0 opacity-40" />
 

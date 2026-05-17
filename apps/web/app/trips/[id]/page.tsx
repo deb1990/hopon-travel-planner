@@ -22,7 +22,6 @@ const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
 
 /**
  * Detailed itinerary view for a single trip.
- * High-density studio layout with balanced 1:1 dual-pane and compact inspector metrics.
  */
 export default function TripDetail() {
   const params = useParams();
@@ -31,19 +30,16 @@ export default function TripDetail() {
 
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
 
-  // --- HOOKS MUST BE CALLED BEFORE CONDITIONAL RETURNS ---
   const events = trip?.events || [];
   const startDate = trip?.startDate ?? undefined;
   const endDate = trip?.endDate ?? undefined;
 
-  // Group events by calendar day
   const dayGroups = useMemo(
     () => groupEventsByDay(events, startDate, endDate),
     [events, startDate, endDate],
   );
 
   const days = calculateTripDuration(startDate, endDate);
-  // -------------------------------------------------------
 
   if (error) return <ErrorView message={(error as Error).message} />;
   if (isLoading || !trip) return <LoadingView />;
@@ -54,7 +50,6 @@ export default function TripDetail() {
 
       <div className="flex-1 max-w-[1600px] mx-auto w-full p-8 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-          {/* Main Timeline Column (Left - 50%) */}
           <div className="flex flex-col gap-10">
             <div className="flex items-center gap-4 px-2">
               <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -66,11 +61,13 @@ export default function TripDetail() {
             </div>
 
             <div className="flex flex-col" data-testid="timeline-list">
-              {dayGroups.map((day) => (
+              {dayGroups.map((day, idx) => (
                 <DayCard
                   key={day.date}
                   day={day}
                   tripId={tripId}
+                  isFirstDay={idx === 0}
+                  isLastDay={idx === dayGroups.length - 1}
                   onHoverItem={setSelectedEventId}
                 />
               ))}
@@ -85,10 +82,8 @@ export default function TripDetail() {
             </div>
           </div>
 
-          {/* Inspector Panel Sidebar (Right - 50%) */}
           <div className="flex flex-col gap-10 pt-4">
             <div className="flex flex-col gap-10 sticky top-24">
-              {/* PRIMARY: Journey Visualization */}
               <section className="flex flex-col gap-6">
                 <h3 className="text-[11px] uppercase font-black text-muted-foreground tracking-[0.3em]">
                   Visualization
@@ -98,7 +93,6 @@ export default function TripDetail() {
                 </div>
               </section>
 
-              {/* SECONDARY: Metrics and Details */}
               <div className="flex flex-col gap-6">
                 <div className="p-5 rounded-[2.5rem] bg-muted/20 border border-border/50">
                   <h4 className="text-[9px] font-black uppercase text-muted-foreground/50 tracking-[0.3em] mb-4 ml-1">
