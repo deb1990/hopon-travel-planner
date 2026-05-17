@@ -36,20 +36,24 @@ This file tracks the granular progress of the implementation. Each step follows 
 - [x] Implement Trip Creation, Editing, and Deletion with validation
 - [x] Add Toast notifications (sonner) for live feedback
 
-## Milestone 6: High-Density Itinerary Timeline (CURRENT)
+## Milestone 6: High-Density Itinerary Timeline (DONE)
 
-- [ ] **M6.1: Visual Nesting (The Threaded Layout)**
-  - [ ] [TDD] Create `components/itinerary/base-group.tsx`
-  - [ ] Implement vertical "Thread" line connecting stays to nested activities
-  - [ ] Update `ItineraryRow` for high-density variants (Stay vs Activity)
-- [ ] **M6.2: Temporal Structure & Gap Visuals**
-  - [ ] Implement virtual "Day X" headers within the timeline
-  - [ ] Build functional "Amber Alert" cards for identified gaps
-- [ ] **M6.3: Entry Management**
-  - [ ] [TDD] Implement `AddEventDialog` with Type selection
-  - [ ] Integrate add/edit actions directly in the timeline rows
+- [x] **M6.1: Visual Nesting (The Threaded Layout)**
+  - [x] [TDD] Create `components/itinerary/base-group.tsx`
+  - [x] Implement vertical "Thread" line connecting stays to nested activities
+  - [x] Update `ItineraryRow` for high-density variants (Stay vs Activity)
+  - [x] Refine DayHeader with Day-of-week typography
+- [x] **M6.2: Temporal Structure & Gap Visuals**
+  - [x] Implement chronological date headers (replacing Day X numbering)
+  - [x] Build high-fidelity "Stay Not Assigned" ghost groups for gaps
+  - [x] Implement automatic day-filling placeholders for stays
+- [x] **M6.3: Entry & Life-cycle Management**
+  - [x] [TDD] Implement adaptive `AddEventDialog` with Type-specific pickers
+  - [x] Implement in-line "Add Activity" and "Add Stay" buttons
+  - [x] Implement Edit and Delete actions with safe confirmation
+  - [x] [Refactor] Implement Discriminated Unions for full-stack type safety
 
-## Milestone 7: Spatial Logic & Mapping
+## Milestone 7: Spatial Logic & Mapping (CURRENT)
 
 - [ ] **M7.1: Leaflet Engine Integration**
   - [ ] Setup interactive map in the inspector panel
