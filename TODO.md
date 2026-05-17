@@ -11,7 +11,7 @@ This file tracks the granular progress of the implementation. Each step follows 
 
 ## Milestone 2: Temporal Logic "The Brain" (DONE)
 
-- [x] [TDD] Implement `groupEventsByBase` logic
+- [x] [TDD] Implement `groupEventsByDay` logic
 - [x] [TDD] Implement `identifyItineraryGaps` logic
 - [x] [TDD] Implement `shiftEvents` logic
 
@@ -36,35 +36,42 @@ This file tracks the granular progress of the implementation. Each step follows 
 - [x] Implement Trip Creation, Editing, and Deletion with validation
 - [x] Add Toast notifications (sonner) for live feedback
 
-## Milestone 6: High-Density Itinerary Timeline (DONE)
+## Milestone 6: High-Density Day-Centric Timeline (DONE)
 
-- [x] **M6.1: Visual Nesting (The Threaded Layout)**
-  - [x] [TDD] Create `components/itinerary/base-group.tsx`
-  - [x] Implement vertical "Thread" line connecting stays to nested activities
-  - [x] Update `ItineraryRow` for high-density variants (Stay vs Activity)
-  - [x] Refine DayHeader with Day-of-week typography
-- [x] **M6.2: Temporal Structure & Gap Visuals**
-  - [x] Implement chronological date headers (replacing Day X numbering)
-  - [x] Build high-fidelity "Stay Not Assigned" ghost groups for gaps
-  - [x] Implement automatic day-filling placeholders for stays
+- [x] **M6.1: Day-Centric Refactor**
+  - [x] [TDD] Replace Stay-centric grouping with strict Day-centric containers
+  - [x] Implement transition day mastery (Multi-stay support per day)
+  - [x] Implement vertical "Thread" line for chronological flow
+  - [x] Mute visual prominence of the timeline line for professional feel
+- [x] **M6.2: Stay Lifecycle Automation**
+  - [x] Implement mandatory check-in/out timestamps for Stays
+  - [x] Automatically create/update/delete Check-in and Check-out activities linked to Stays
+  - [x] Implement backend-enforced Stay Overlap Validation
 - [x] **M6.3: Entry & Life-cycle Management**
   - [x] [TDD] Implement adaptive `AddEventDialog` with Type-specific pickers
-  - [x] Implement in-line "Add Activity" and "Add Stay" buttons
+  - [x] Implement universal, muted "Add Activity" and "Add Stay" buttons for every day
   - [x] Implement Edit and Delete actions with safe confirmation
   - [x] [Refactor] Implement Discriminated Unions for full-stack type safety
 
-## Milestone 7: Spatial Logic & Mapping (CURRENT)
+## Milestone 7: Spatial Logic & Mapping (DONE)
 
-- [ ] **M7.1: Leaflet Engine Integration**
-  - [ ] Setup interactive map in the inspector panel
-- [ ] **M7.2: Visual Threading**
-  - [ ] Synchronize map selection with timeline hover
-- [ ] **M7.3: Route Visualization**
-  - [ ] Draw travel paths between itinerary locations
+- [x] **M7.1: Leaflet Engine Integration**
+  - [x] Setup high-density, theme-aware map in the inspector panel
+  - [x] Implement 1:1 perfectly symmetric dual-pane layout
+- [x] **M7.2: Coordinate Resolution**
+  - [x] [TDD] Implement Plus Code decoding (Full and Short codes)
+  - [x] Add separate fields for Location Name and Plus Code in forms
+  - [x] Implement fly-to synchronization on timeline hover
+- [x] **M7.3: Route Visualization**
+  - [x] Integrate OSRM for automatic driving duration estimates
+  - [x] Draw dashed journey paths between markers on the map
+  - [x] Implement in-line "🚗 XX min drive" indicators in the timeline
 
-## Milestone 8: Advanced Logic & Polish
+## Milestone 8: Advanced Logic & Polish (CURRENT)
 
 - [ ] **M8.1: Deep-Clone Logic**
-  - [ ] [TDD] Implement and test trip duplication
+  - [ ] [TDD] Implement and test trip duplication (Cloning trip + all its events)
 - [ ] **M8.2: Mobile Layout Audit**
   - [ ] Optimize density for small-screen viewports
+- [ ] **M8.3: Navigation External Links**
+  - [ ] Add "Open in Google Maps" deep-links to itinerary rows
