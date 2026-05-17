@@ -24,7 +24,7 @@ interface AddEventDialogProps {
 
 /**
  * Technical dialog for adding new entries to the itinerary.
- * Adapts styling and fields based on the event type.
+ * Features a high-visibility but minimalist "Middle Ground" trigger.
  */
 export function AddEventDialog({ tripId, type, initialDate, className }: AddEventDialogProps) {
   const [open, setOpen] = useState(false);
@@ -43,13 +43,16 @@ export function AddEventDialog({ tripId, type, initialDate, className }: AddEven
         body: JSON.stringify(data),
       });
 
-      if (!res.ok) throw new Error('Failed to create event');
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.message || 'Failed to create event');
+      }
 
       toast.success(`${type.charAt(0) + type.slice(1).toLowerCase()} added to timeline`);
       queryClient.invalidateQueries({ queryKey: ['trip', tripId] });
       setOpen(false);
-    } catch {
-      toast.error('Could not save event. Check your connection.');
+    } catch (err: any) {
+      toast.error(err.message || 'Could not save event. Check your connection.');
     } finally {
       setIsSubmitting(false);
     }
@@ -62,17 +65,15 @@ export function AddEventDialog({ tripId, type, initialDate, className }: AddEven
       <DialogTrigger asChild>
         <button
           className={cn(
-            'inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer rounded-full transition-all group/add-btn',
-            isStay
-              ? 'bg-orange-600 text-white font-black h-8 px-4 text-[10px] uppercase tracking-widest hover:scale-105 shadow-md border-none'
-              : 'h-7 px-3 text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground/50 hover:text-primary hover:bg-primary/5',
+            'inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer rounded-full transition-all group/add-btn font-black uppercase tracking-[0.2em] text-[9px]',
+            'bg-muted/60 border border-border/40 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/30 h-8 px-4',
             className,
           )}
         >
           <Plus
             className={cn(
               'transition-transform group-hover/add-btn:scale-110',
-              isStay ? 'size-3 mr-1 stroke-[3]' : 'size-2.5 stroke-[4]',
+              isStay ? 'size-3 stroke-[3]' : 'size-2.5 stroke-[4]',
             )}
           />
           {isStay ? 'Add Stay' : 'Add Activity'}
