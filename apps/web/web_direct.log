@@ -389,3 +389,3089 @@ Import traces:
     ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
     ./apps/web/app/trips/[id]/page.tsx [Server Component] 
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 79ms (next.js: 35ms, application-code: 44ms)
+✓ Compiled in 54ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 68ms (next.js: 17ms, application-code: 51ms)
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+✓ Compiled in 52ms
+✓ Compiled in 111ms
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+✓ Compiled in 201ms
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 26ms (next.js: 13ms, application-code: 13ms)
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 9ms (next.js: 4ms, application-code: 5ms)
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 18ms (next.js: 7ms, application-code: 11ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 18ms (next.js: 12ms, application-code: 6ms)
+⨯ ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m * [36mas[0m [33mReact[0m [36mfrom[0m [32m"react"[0m
+[31m[1m>[0m [90m4 |[0m [36mimport[0m * [36mas[0m [33mDropdownMenuPrimitive[0m [36mfrom[0m [32m"@radix-ui/react-dropdown-menu"[0m
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mCheck[0m, [33mChevronRight[0m, [33mCircle[0m } [36mfrom[0m [32m"lucide-react"[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mimport[0m { cn } [36mfrom[0m [32m"@/lib/utils"[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./apps/web/components/ui/dropdown-menu.tsx:4:1
+Module not found: Can't resolve '@radix-ui/react-dropdown-menu'
+  2 |
+  3 | import * as React from "react"
+> 4 | import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Check, ChevronRight, Circle } from "lucide-react"
+  6 |
+  7 | import { cn } from "@/lib/utils"
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/ui/dropdown-menu.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/itinerary-row.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/base-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./apps/web/components/ui/dropdown-menu.tsx:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./apps/web/components/ui/dropdown-menu.tsx:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 359ms (next.js: 322ms, application-code: 37ms)

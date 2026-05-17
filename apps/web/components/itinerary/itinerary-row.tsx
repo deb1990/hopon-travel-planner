@@ -1,11 +1,19 @@
 'use client';
 
 import * as React from 'react';
-import { MapPin, Lock, ExternalLink, MoreVertical, ArrowRight } from 'lucide-react';
+import { MapPin, Lock, ExternalLink, MoreVertical, ArrowRight, Edit2, Trash2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { ItineraryEvent } from '@hopon/core';
 import { EditEventDialog } from './edit-event-dialog';
+import { DeleteEventDialog } from './delete-event-dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
 
 interface ItineraryRowProps {
   event: ItineraryEvent;
@@ -14,10 +22,11 @@ interface ItineraryRowProps {
 
 /**
  * A high-precision row for displaying itinerary events.
- * Click to edit integration.
+ * Features an action menu for Edit and Delete.
  */
 export function ItineraryRow({ event, className }: ItineraryRowProps) {
   const [editOpen, setEditOpen] = React.useState(false);
+  const [deleteOpen, setDeleteOpen] = React.useState(false);
   const isStay = event.type === 'STAY';
 
   const startTimeStr = new Date(event.startTime).toLocaleTimeString([], {
@@ -39,7 +48,6 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
   return (
     <>
       <div
-        onClick={() => setEditOpen(true)}
         className={cn(
           'group relative flex items-center gap-6 border-b border-border/40 bg-transparent px-6 py-4 hover:bg-muted/30 transition-all duration-200 cursor-pointer',
           isStay && 'bg-primary/[0.02] border-l-2 border-l-primary',
@@ -58,7 +66,7 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
         )}
 
         {/* Main Content */}
-        <div className="flex flex-1 flex-col gap-0.5 min-w-0">
+        <div className="flex flex-1 flex-col gap-0.5 min-w-0" onClick={() => setEditOpen(true)}>
           <div className="flex items-center gap-3">
             <span
               className={cn(
@@ -92,19 +100,43 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
               href={bookingLink}
               target="_blank"
               rel="noreferrer"
-              onClick={(e) => e.stopPropagation()} // Prevent triggering edit
+              onClick={(e) => e.stopPropagation()}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <ExternalLink className="size-3.5" />
             </a>
           )}
-          <button className="text-muted-foreground hover:text-foreground transition-colors">
-            <MoreVertical className="size-4" />
-          </button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                onClick={(e) => e.stopPropagation()}
+                className="text-muted-foreground hover:text-foreground transition-colors outline-none cursor-pointer p-1 rounded hover:bg-border/20"
+              >
+                <MoreVertical className="size-4" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-40">
+              <DropdownMenuItem onClick={() => setEditOpen(true)} className="gap-2">
+                <Edit2 className="size-3 text-muted-foreground" />
+                Edit
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={() => setDeleteOpen(true)}
+                className="gap-2 text-red-500 focus:text-red-500 focus:bg-red-500/10"
+              >
+                <Trash2 className="size-3" />
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
       <EditEventDialog event={event} open={editOpen} onOpenChange={setEditOpen} />
+
+      <DeleteEventDialog event={event} open={deleteOpen} onOpenChange={setDeleteOpen} />
     </>
   );
 }
