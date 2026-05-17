@@ -26,14 +26,26 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
 
   const hasAccommodation = day.activeStays.length > 0;
 
+  // NORMALIZE: Strict UTC Date comparison (YYYY-MM-DD)
+  const getUTCDateString = (dateStr: string) => {
+    const d = new Date(dateStr);
+    return isNaN(d.getTime()) ? '' : d.toISOString().split('T')[0];
+  };
+
+  const currentDayUtc = getUTCDateString(day.date);
+
   const isCheckoutDay = day.activeStays.some(
-    (stay) => new Date(stay.endTime || '').toDateString() === new Date(day.date).toDateString(),
+    (stay) => getUTCDateString(stay.endTime || '') === currentDayUtc,
   );
 
   const isCheckinDay = day.activeStays.some(
-    (stay) => new Date(stay.startTime).toDateString() === new Date(day.date).toDateString(),
+    (stay) => getUTCDateString(stay.startTime) === currentDayUtc,
   );
 
+  // Logic:
+  // 1. If NO accommodation -> Always show Add Stay.
+  // 2. If it's a checkout day -> show Add Stay (unless last day of trip).
+  // 3. If it's a checkin day -> show Add Stay (unless first day of trip).
   let showAddStay = !hasAccommodation;
   if (hasAccommodation) {
     if (isCheckoutDay && !isLastDay) showAddStay = true;
@@ -47,10 +59,8 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
           <DayHeader date={day.date} className="mt-0" />
           <div className="flex flex-wrap gap-2 mt-2">
             {day.activeStays.map((stay) => {
-              const checkoutMatch =
-                new Date(stay.endTime || '').toDateString() === new Date(day.date).toDateString();
-              const checkinMatch =
-                new Date(stay.startTime).toDateString() === new Date(day.date).toDateString();
+              const checkoutMatch = getUTCDateString(stay.endTime || '') === currentDayUtc;
+              const checkinMatch = getUTCDateString(stay.startTime) === currentDayUtc;
 
               return (
                 <button
@@ -131,7 +141,6 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
         </div>
       </div>
 
-      {/* STAY EDIT MODAL */}
       {editingStay && (
         <EditEventDialog
           event={editingStay}
