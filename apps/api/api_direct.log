@@ -98,3 +98,7 @@ Server is running on http://localhost:4001
 --> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
 <-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
 --> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 42ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 4ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 57ms
