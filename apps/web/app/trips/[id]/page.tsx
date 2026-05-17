@@ -24,7 +24,7 @@ const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
 
 /**
  * Detailed itinerary view for a single trip.
- * Optimized with a 50/50 split between Timeline and Spatial Journey.
+ * Uses a refined 3:2 ratio between Timeline and Spatial Visualization.
  */
 export default function TripDetail() {
   const params = useParams();
@@ -51,9 +51,9 @@ export default function TripDetail() {
       <ItineraryHeader trip={trip} />
 
       <div className="flex-1 max-w-[1600px] mx-auto w-full p-8 lg:p-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-          {/* Main Timeline Column (Left - 50%) */}
-          <div className="lg:col-span-6 flex flex-col gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+          {/* Main Timeline Column (Left - 3/5 or 60%) */}
+          <div className="lg:col-span-3 flex flex-col gap-10">
             <div className="flex items-center gap-4 px-2">
               <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
                 <CalendarDays className="size-4 text-primary" />
@@ -75,15 +75,15 @@ export default function TripDetail() {
             </div>
           </div>
 
-          {/* Inspector Panel Sidebar (Right - 50%) */}
-          <div className="lg:col-span-6 flex flex-col gap-12 pt-4">
+          {/* Inspector Panel Sidebar (Right - 2/5 or 40%) */}
+          <div className="lg:col-span-2 flex flex-col gap-12 pt-4">
             <div className="flex flex-col gap-12 sticky top-24">
-              {/* PRIMARY: Spatial Visualization (Now at the top) */}
+              {/* PRIMARY: Spatial Visualization */}
               <section className="flex flex-col gap-6">
                 <h3 className="text-[11px] uppercase font-black text-muted-foreground tracking-[0.3em]">
                   Spatial Visualization
                 </h3>
-                <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl group relative bg-card">
+                <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl group relative bg-card">
                   <MapView events={events} selectedEventId={selectedEventId} />
                 </div>
               </section>

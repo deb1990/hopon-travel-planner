@@ -4147,3 +4147,31 @@ https://nextjs.org/docs/messages/module-not-found
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 71ms (next.js: 21ms, application-code: 51ms)
 ✓ Compiled in 0ms
 ✓ Compiled in 61ms
+✓ Compiled in 28ms
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'appendChild')
+    at MapView (components/itinerary/map-view.tsx:74:9)
+    at TripDetail (app/trips/[id]/page.tsx:87:19)
+  72 |         zoomControl={false}
+  73 |       >
+> 74 |         <TileLayer
+     |         ^
+  75 |           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreet...
+  76 |           url={tileUrl}
+  77 |         />
+[browser] Uncaught Error: Map container is being reused by another instance
+    at MapContainerComponent (<anonymous>)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 73ms (next.js: 24ms, application-code: 48ms)
+✓ Compiled in 49ms
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'appendChild')
+    at MapView (components/itinerary/map-view.tsx:74:9)
+    at TripDetail (app/trips/[id]/page.tsx:86:20)
+  72 |         zoomControl={false}
+  73 |       >
+> 74 |         <TileLayer
+     |         ^
+  75 |           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreet...
+  76 |           url={tileUrl}
+  77 |         />
+[browser] Uncaught Error: Map container is being reused by another instance
+    at MapContainerComponent (<anonymous>)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 67ms (next.js: 22ms, application-code: 45ms)
