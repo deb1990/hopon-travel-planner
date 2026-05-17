@@ -1,4 +1,4 @@
-import { eq, and, or, exists, lt, gt, ne } from 'drizzle-orm';
+import { eq, and, or, exists, lt, gt, ne, asc } from 'drizzle-orm';
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import * as schema from '../db/schema';
 import { itineraryEvents, trips, permissions } from '../db/schema';
@@ -37,16 +37,24 @@ export class EventRepository {
       .where(eq(itineraryEvents.id, eventId));
     if (!event || !event.lat || !event.lng) return;
 
-    const prev = await this.getPreviousEvent(tripId, new Date(event.startTime));
+    // Fixed signature: no startTime needed
+    const prev = await this.getPreviousEvent(tripId, eventId);
 
     let polyline: string | null = null;
     let duration: number | null = null;
 
     if (prev && prev.lat && prev.lng) {
-      const route = await getRouteEstimate([prev.lat, prev.lng], [event.lat, event.lng]);
-      if (route) {
-        polyline = route.geometry;
-        duration = route.durationMinutes;
+      const isSamePoint =
+        Math.abs(prev.lat - event.lat) < 0.0001 && Math.abs(prev.lng - event.lng) < 0.0001;
+
+      if (!isSamePoint) {
+        const route = await getRouteEstimate([prev.lat, prev.lng], [event.lat, event.lng]);
+        if (route) {
+          polyline = route.geometry;
+          duration = route.durationMinutes;
+        }
+      } else {
+        duration = 0;
       }
     }
 
@@ -56,15 +64,9 @@ export class EventRepository {
       .where(eq(itineraryEvents.id, eventId));
   }
 
-  /**
-   * Triggers a cascade: recalculates route for the event AND its successor.
-   */
-  private async triggerRoutingCascade(tripId: string, eventId: string, startTime: Date) {
-    // 1. Refresh itself
+  private async triggerRoutingCascade(tripId: string, eventId: string) {
     await this.refreshRouteForEvent(tripId, eventId);
-
-    // 2. Refresh the event that now follows it
-    const successor = await this.getNextEvent(tripId, startTime);
+    const successor = await this.getNextEvent(tripId, eventId);
     if (successor) {
       await this.refreshRouteForEvent(tripId, successor.id);
     }
@@ -88,10 +90,8 @@ export class EventRepository {
     const [result] = await this.db.insert(itineraryEvents).values(event).returning();
     if (!result) throw new Error('Failed to create event');
 
-    // Initial Routing for itself and its successor
-    await this.triggerRoutingCascade(result.tripId, result.id, new Date(result.startTime));
+    await this.triggerRoutingCascade(result.tripId, result.id);
 
-    // AUTOMATIC LINKED CHECK-IN/OUT
     if (result.type === 'STAY' && result.startTime && result.endTime) {
       const [checkin] = await this.db
         .insert(itineraryEvents)
@@ -125,19 +125,13 @@ export class EventRepository {
         })
         .returning();
 
-      // Refresh routing for these sub-events
-      if (checkin)
-        await this.triggerRoutingCascade(result.tripId, checkin.id, new Date(checkin.startTime));
-      if (checkout)
-        await this.triggerRoutingCascade(result.tripId, checkout.id, new Date(checkout.startTime));
+      if (checkin) await this.triggerRoutingCascade(result.tripId, checkin.id);
+      if (checkout) await this.triggerRoutingCascade(result.tripId, checkout.id);
     }
 
     return result;
   }
 
-  /**
-   * Updates an event and recalculates routing.
-   */
   async update(id: string, userId: string, data: Partial<typeof itineraryEvents.$inferInsert>) {
     const [current] = await this.db
       .select()
@@ -190,15 +184,12 @@ export class EventRepository {
 
     if (!result) throw new Error('Event not found or unauthorized');
 
-    // CASCADING ROUTING UPDATE
-    await this.triggerRoutingCascade(result.tripId, result.id, new Date(result.startTime));
+    await this.triggerRoutingCascade(result.tripId, result.id);
 
-    // SYNC LINKED SUB-EVENTS
     if (result.type === 'STAY') {
       const checkinStartTime = result.startTime;
       const checkoutStartTime = result.endTime;
 
-      // Update Check-in
       const [updatedCheckin] = await this.db
         .update(itineraryEvents)
         .set({
@@ -214,7 +205,6 @@ export class EventRepository {
         )
         .returning();
 
-      // Update Check-out
       let updatedCheckout: any = null;
       if (checkoutStartTime) {
         [updatedCheckout] = await this.db
@@ -233,51 +223,35 @@ export class EventRepository {
           .returning();
       }
 
-      // Trigger cascades for sub-events
-      if (updatedCheckin)
-        await this.triggerRoutingCascade(
-          result.tripId,
-          updatedCheckin.id,
-          new Date(updatedCheckin.startTime),
-        );
-      if (updatedCheckout)
-        await this.triggerRoutingCascade(
-          result.tripId,
-          updatedCheckout.id,
-          new Date(updatedCheckout.startTime),
-        );
+      if (updatedCheckin) await this.triggerRoutingCascade(result.tripId, updatedCheckin.id);
+      if (updatedCheckout) await this.triggerRoutingCascade(result.tripId, updatedCheckout.id);
     }
 
     return result;
   }
 
-  private async getPreviousEvent(tripId: string, startTime: Date) {
+  private async getPreviousEvent(tripId: string, currentId: string) {
     const rows = await this.db
       .select()
       .from(itineraryEvents)
       .where(eq(itineraryEvents.tripId, tripId))
-      .orderBy(itineraryEvents.startTime);
+      .orderBy(asc(itineraryEvents.startTime), asc(itineraryEvents.createdAt));
 
-    const filtered = rows
-      .filter((r) => new Date(r.startTime).getTime() < startTime.getTime())
-      .reverse();
-    return filtered[0] || null;
+    const idx = rows.findIndex((r) => r.id === currentId);
+    return idx > 0 ? rows[idx - 1] : null;
   }
 
-  private async getNextEvent(tripId: string, startTime: Date) {
+  private async getNextEvent(tripId: string, currentId: string) {
     const rows = await this.db
       .select()
       .from(itineraryEvents)
       .where(eq(itineraryEvents.tripId, tripId))
-      .orderBy(itineraryEvents.startTime);
+      .orderBy(asc(itineraryEvents.startTime), asc(itineraryEvents.createdAt));
 
-    const filtered = rows.filter((r) => new Date(r.startTime).getTime() > startTime.getTime());
-    return filtered[0] || null;
+    const idx = rows.findIndex((r) => r.id === currentId);
+    return idx !== -1 && idx < rows.length - 1 ? rows[idx + 1] : null;
   }
 
-  /**
-   * Finds events for a trip.
-   */
   async findByTripId(tripId: string, userId: string) {
     return this.db
       .select({ event: itineraryEvents })
@@ -298,15 +272,11 @@ export class EventRepository {
           ),
         ),
       )
-      .orderBy(itineraryEvents.startTime)
+      .orderBy(asc(itineraryEvents.startTime), asc(itineraryEvents.createdAt))
       .then((rows) => rows.map((r) => r.event));
   }
 
-  /**
-   * Deletes an event.
-   */
   async delete(id: string, userId: string) {
-    // 1. Fetch to know what we are deleting (for successor update)
     const [current] = await this.db
       .select()
       .from(itineraryEvents)
@@ -344,8 +314,7 @@ export class EventRepository {
 
     if (!result) throw new Error('Event not found or unauthorized');
 
-    // 2. REFRESH SUCCESSOR ROUTING (It now has a new previous event)
-    const successor = await this.getNextEvent(result.tripId, new Date(result.startTime));
+    const successor = await this.getNextEvent(result.tripId, result.id);
     if (successor) {
       await this.refreshRouteForEvent(result.tripId, successor.id);
     }
