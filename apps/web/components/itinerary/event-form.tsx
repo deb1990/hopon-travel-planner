@@ -136,8 +136,8 @@ export function EventForm({
       {/* 2. TITLE FIELD */}
       <div className="space-y-2">
         <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-          {isStay ? 'Accommodation Header' : 'Activity Title'}
-        </label>
+          {isStay ? 'Accommodation Name' : 'Activity Title'}
+        </label>{' '}
         <Input
           required
           placeholder={isStay ? 'e.g. The Thief Hotel' : 'e.g. Afternoon Sightseeing'}

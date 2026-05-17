@@ -17,7 +17,7 @@ describe('AddEventDialog Component', () => {
     const trigger = screen.getByRole('button', { name: /Add Stay/i });
     fireEvent.click(trigger);
 
-    expect(screen.getByText(/New Accommodation/i)).toBeInTheDocument();
+    expect(screen.getByText(/Accommodation Name/i)).toBeInTheDocument();
     // Separate Location and Title fields
     expect(screen.getByPlaceholderText(/e.g. Viking Museum/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/e.g. The Thief Hotel/i)).toBeInTheDocument();
