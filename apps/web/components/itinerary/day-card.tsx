@@ -17,10 +17,18 @@ interface DayCardProps {
 
 /**
  * High-density container for a single calendar day.
- * Replaces the Stay-centric BaseGroup/GhostGroup model.
+ * Displays activities and stay context badges.
  */
 export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
   const hasAccommodation = day.activeStays.length > 0;
+
+  // Detect if this day is a Check-out point for any stay
+  const isTransitionDay = day.activeStays.some(
+    (stay) => new Date(stay.endTime || '').toDateString() === new Date(day.date).toDateString(),
+  );
+
+  // We show "Add Stay" if there's NO accommodation OR if it's a Check-out day
+  const showAddStay = !hasAccommodation || isTransitionDay;
 
   return (
     <div className="relative flex flex-col group/day-card bg-card mb-8 rounded-[2.5rem] border border-border/40 shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:border-primary/20">
@@ -65,20 +73,19 @@ export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
           </div>
         </div>
 
-        {/* Global actions for the day could go here */}
-        {!hasAccommodation && (
+        {/* Continuity Action: Add Stay on Gaps or Transition Days */}
+        {showAddStay && (
           <AddEventDialog
             tripId={tripId}
             type="STAY"
             initialDate={day.date}
-            className="bg-orange-600 hover:bg-orange-700"
+            className="bg-orange-600 hover:bg-orange-700 shadow-orange-500/20"
           />
         )}
       </div>
 
       {/* 2. TIMELINE: Continuous Vertical Flow */}
       <div className="relative z-10 pl-6 pr-2 py-4">
-        {/* The Thread (Muted Technical Shade) */}
         <div className="absolute left-[31px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/10 via-primary/10 to-transparent z-0 opacity-40" />
 
         <div className="flex flex-col gap-1 relative z-10">
@@ -105,7 +112,6 @@ export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
             </div>
           )}
 
-          {/* Contextual Entry Point */}
           <div className="relative pl-8 py-4">
             <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border/30 ring-2 ring-background z-10" />
             <AddEventDialog tripId={tripId} type="ACTIVITY" initialDate={day.date} />
