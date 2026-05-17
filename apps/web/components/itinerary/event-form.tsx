@@ -3,11 +3,20 @@
 import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Calendar, MapPin, Clock, Link as LinkIcon, Home, Loader2, Hash } from 'lucide-react';
+import {
+  Calendar,
+  MapPin,
+  Clock,
+  Link as LinkIcon,
+  Home,
+  Loader2,
+  Hash,
+  Plane,
+} from 'lucide-react';
 import { ItineraryEvent, resolveLocation } from '@hopon/core';
 
 interface EventFormProps {
-  type: 'STAY' | 'ACTIVITY' | 'TRAVEL';
+  type: 'STAY' | 'ACTIVITY' | 'TRAVEL' | 'TRANSIT';
   initialData?: ItineraryEvent;
   initialDate?: string;
   onSubmit: (data: any) => void;
@@ -25,6 +34,7 @@ export function EventForm({
   isSubmitting,
 }: EventFormProps) {
   const isStay = type === 'STAY';
+  const isTransit = type === 'TRANSIT';
   const [isResolving, setIsResolving] = useState(false);
 
   const getStartTime = () => {
@@ -33,7 +43,7 @@ export function EventForm({
     }
     if (initialDate) {
       const d = new Date(initialDate);
-      d.setUTCHours(15, 0, 0, 0); // Default check-in time: 3 PM
+      if (isStay) d.setUTCHours(15, 0, 0, 0);
       return d.toISOString().slice(0, 16);
     }
     return '';
@@ -46,7 +56,7 @@ export function EventForm({
     if (isStay && initialDate) {
       const d = new Date(initialDate);
       d.setUTCDate(d.getUTCDate() + 1);
-      d.setUTCHours(11, 0, 0, 0); // Default check-out time: 11 AM next day
+      d.setUTCHours(11, 0, 0, 0);
       return d.toISOString().slice(0, 16);
     }
     return '';
@@ -60,6 +70,7 @@ export function EventForm({
     endTime: getEndTime(),
     bookingLink: (initialData as any)?.bookingLink || '',
     accommodationType: (initialData as any)?.accommodationType || 'Hotel',
+    transitMode: (initialData as any)?.transitMode || 'Drive',
     notes: initialData?.notes || '',
   });
 
@@ -100,7 +111,7 @@ export function EventForm({
             <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
             <Input
               required
-              placeholder="e.g. Viking Museum"
+              placeholder={isTransit ? 'Destination' : 'e.g. Viking Museum'}
               value={formData.locationName}
               onChange={(e) => setFormData({ ...formData, locationName: e.target.value })}
               className="rounded-2xl bg-muted/30 border-border/40 pl-10 h-12 text-sm font-medium"
@@ -127,21 +138,27 @@ export function EventForm({
         </div>
       </div>
 
-      <div className="space-y-2">
-        <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-          {isStay ? 'Accommodation Name' : 'Activity Title'}
-        </label>
-        <Input
-          required
-          placeholder={isStay ? 'e.g. The Thief Hotel' : 'e.g. Afternoon Sightseeing'}
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          className="rounded-2xl bg-muted/30 border-border/40 focus:ring-primary/20 h-12 text-sm font-bold"
-        />
-      </div>
+      <div className={isStay || isTransit ? 'grid grid-cols-2 gap-4' : 'flex flex-col'}>
+        <div className="space-y-2">
+          <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
+            {isStay ? 'Accommodation Name' : isTransit ? 'Transit Description' : 'Activity Title'}
+          </label>
+          <Input
+            required
+            placeholder={
+              isStay
+                ? 'e.g. The Thief Hotel'
+                : isTransit
+                  ? 'e.g. Flight to Oslo'
+                  : 'e.g. Sushi Dinner'
+            }
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            className="rounded-2xl bg-muted/30 border-border/40 focus:ring-primary/20 h-12 text-sm font-bold"
+          />
+        </div>
 
-      {isStay && (
-        <div className="grid grid-cols-2 gap-4">
+        {isStay && (
           <div className="space-y-2">
             <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
               Stay Type
@@ -160,21 +177,46 @@ export function EventForm({
               </select>
             </div>
           </div>
+        )}
 
+        {isTransit && (
           <div className="space-y-2">
             <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-              Booking Link
+              Mode
             </label>
             <div className="relative">
-              <LinkIcon className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
-              <Input
-                type="url"
-                placeholder="https://..."
-                value={formData.bookingLink}
-                onChange={(e) => setFormData({ ...formData, bookingLink: e.target.value })}
-                className="rounded-2xl bg-muted/30 border-border/40 pl-10 h-12 text-[10px] font-medium"
-              />
+              <Plane className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40 pointer-events-none" />
+              <select
+                value={formData.transitMode}
+                onChange={(e) => setFormData({ ...formData, transitMode: e.target.value as any })}
+                className="flex h-12 w-full items-center justify-between rounded-2xl border border-border/40 bg-muted/30 pl-10 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring appearance-none font-bold"
+              >
+                <option value="Drive">🚗 Drive</option>
+                <option value="Flight">✈️ Flight</option>
+                <option value="Train">🚆 Train</option>
+                <option value="Bus">🚌 Bus</option>
+                <option value="Boat">⛴️ Boat</option>
+                <option value="Walk">🚶 Walk</option>
+              </select>
             </div>
+          </div>
+        )}
+      </div>
+
+      {isStay && (
+        <div className="space-y-2">
+          <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
+            Booking / Hotel Link
+          </label>
+          <div className="relative">
+            <LinkIcon className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
+            <Input
+              type="url"
+              placeholder="https://..."
+              value={formData.bookingLink}
+              onChange={(e) => setFormData({ ...formData, bookingLink: e.target.value })}
+              className="rounded-2xl bg-muted/30 border-border/40 pl-10 h-12 text-xs font-medium"
+            />
           </div>
         </div>
       )}
@@ -182,7 +224,7 @@ export function EventForm({
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-            {isStay ? 'Check-in Time' : 'Date & Time'}
+            {isStay ? 'Check-in Time' : isTransit ? 'Departure' : 'Start Time'}
           </label>
           <div className="relative">
             <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
@@ -198,7 +240,7 @@ export function EventForm({
 
         <div className="space-y-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-            {isStay ? 'Check-out Time' : 'End Time (Opt)'}
+            {isStay ? 'Check-out Time' : isTransit ? 'Arrival (Opt)' : 'End Time (Opt)'}
           </label>
           <div className="relative">
             <Clock className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />

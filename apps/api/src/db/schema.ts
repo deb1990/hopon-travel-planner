@@ -15,7 +15,7 @@ export const roleEnum = pgEnum('role', ['editor', 'viewer']);
 export const eventTypeEnum = pgEnum('event_type', [
   'STAY',
   'ACTIVITY',
-  'TRAVEL',
+  'TRANSIT', // New special type
   'CHECK_IN',
   'CHECK_OUT',
 ]);
@@ -25,6 +25,15 @@ export const accommodationTypeEnum = pgEnum('accommodation_type', [
   'AirBNB',
   'Camping',
   'Other',
+]);
+
+export const transitModeEnum = pgEnum('transit_mode', [
+  'Flight',
+  'Drive',
+  'Walk',
+  'Boat',
+  'Train',
+  'Bus',
 ]);
 
 /**
@@ -79,7 +88,6 @@ export const itineraryEvents = pgTable('itinerary_events', {
     .references(() => trips.id)
     .notNull(),
 
-  // Link system-generated events (CHECK_IN/OUT) back to their parent STAY
   parentStayId: uuid('parent_stay_id').references((): AnyPgColumn => itineraryEvents.id, {
     onDelete: 'cascade',
   }),
@@ -96,6 +104,7 @@ export const itineraryEvents = pgTable('itinerary_events', {
   travelTimeMinutes: integer('travel_time_minutes'),
   bookingLink: text('booking_link'),
   accommodationType: accommodationTypeEnum('accommodation_type'),
+  transitMode: transitModeEnum('transit_mode'), // New column for transit
   notes: text('notes'),
   isLocked: boolean('is_locked').default(false).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),

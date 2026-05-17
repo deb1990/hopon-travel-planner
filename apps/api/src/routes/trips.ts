@@ -229,7 +229,7 @@ tripsRouter.patch('/:id/shift', async (c) => {
   const coreEvents: ItineraryEvent[] = currentEvents.map((e) => ({
     id: e.id,
     tripId: e.tripId,
-    type: e.type,
+    type: e.type as any,
     title: e.title,
     startTime: e.startTime.toISOString(),
     endTime: e.endTime?.toISOString(),
@@ -238,7 +238,7 @@ tripsRouter.patch('/:id/shift', async (c) => {
     bookingLink: e.bookingLink ?? undefined,
     notes: e.notes ?? undefined,
     isLocked: e.isLocked,
-  }));
+  })) as ItineraryEvent[];
 
   const shifted = shiftEvents(coreEvents, offsetMs);
 

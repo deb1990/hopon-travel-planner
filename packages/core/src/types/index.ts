@@ -12,9 +12,12 @@ export interface Trip {
 
 export type AccommodationType = 'Hotel' | 'AirBNB' | 'Camping' | 'Other';
 
+export type TransitMode = 'Flight' | 'Drive' | 'Walk' | 'Boat' | 'Train' | 'Bus';
+
 interface BaseEvent {
   id: string;
   tripId: string;
+  parentStayId?: string | null;
   title: string;
   startTime: string;
   endTime?: string | null;
@@ -38,26 +41,26 @@ export interface ActivityEvent extends BaseEvent {
   type: 'ACTIVITY';
 }
 
-export interface TravelEvent extends BaseEvent {
-  type: 'TRAVEL';
+export interface TransitEvent extends BaseEvent {
+  type: 'TRANSIT';
+  transitMode: TransitMode;
 }
 
 export interface CheckInOutEvent extends BaseEvent {
   type: 'CHECK_IN' | 'CHECK_OUT';
 }
 
-export type ItineraryEvent = StayEvent | ActivityEvent | TravelEvent | CheckInOutEvent;
+export type ItineraryEvent = StayEvent | ActivityEvent | TransitEvent | CheckInOutEvent;
 
 /**
  * Represents a single calendar day in the itinerary.
  */
 export interface DayGroup {
-  date: string; // ISO Date at 00:00:00
+  date: string;
   items: ItineraryEvent[];
   activeStays: StayEvent[];
 }
 
-// Deprecated - will be removed after refactor
 export interface BaseGroup {
   stay: StayEvent;
   items: ItineraryEvent[];

@@ -36,6 +36,6 @@ describe('AddEventDialog Component', () => {
     expect(screen.getByText(/New Activity/i)).toBeInTheDocument();
     // Separate Location and Title fields
     expect(screen.getByPlaceholderText(/e.g. Viking Museum/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/e.g. Afternoon Sightseeing/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/e.g. Sushi Dinner/i)).toBeInTheDocument();
   });
 });

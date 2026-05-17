@@ -11,6 +11,14 @@ import {
   Trash2,
   Car,
   Hash,
+  Plane,
+  Train,
+  Bus,
+  Anchor,
+  Footprints,
+  LogIn,
+  LogOut,
+  CheckCircle2,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -32,12 +40,15 @@ interface ItineraryRowProps {
 
 /**
  * A high-precision row for displaying itinerary events.
- * Features separate Location and Plus Code visualization.
+ * Features mode-specific icons for Transit and Transition activities.
  */
 export function ItineraryRow({ event, className }: ItineraryRowProps) {
   const [editOpen, setEditOpen] = React.useState(false);
   const [deleteOpen, setDeleteOpen] = React.useState(false);
+
   const isStay = event.type === 'STAY';
+  const isTransit = event.type === 'TRANSIT';
+  const isCheckInOut = event.type === 'CHECK_IN' || event.type === 'CHECK_OUT';
 
   const startTimeStr = new Date(event.startTime).toLocaleTimeString([], {
     hour: '2-digit',
@@ -56,9 +67,35 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
   const bookingLink = event.type === 'STAY' ? event.bookingLink : null;
   const travelTime = event.travelTimeMinutes;
 
+  // 1. Determine the Primary Icon
+  const getIcon = () => {
+    if (event.type === 'CHECK_IN') return <LogIn className="size-3.5 text-indigo-500" />;
+    if (event.type === 'CHECK_OUT') return <LogOut className="size-3.5 text-orange-500" />;
+    if (event.type === 'STAY') return null; // Stays are full-width headers
+
+    if (isTransit) {
+      const mode = (event as any).transitMode;
+      switch (mode) {
+        case 'Flight':
+          return <Plane className="size-3.5 text-primary" />;
+        case 'Train':
+          return <Train className="size-3.5 text-primary" />;
+        case 'Bus':
+          return <Bus className="size-3.5 text-primary" />;
+        case 'Boat':
+          return <Anchor className="size-3.5 text-primary" />;
+        case 'Walk':
+          return <Footprints className="size-3.5 text-primary" />;
+        default:
+          return <Car className="size-3.5 text-primary" />;
+      }
+    }
+    return <CheckCircle2 className="size-3.5 text-muted-foreground/40" />;
+  };
+
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         {/* Travel Time Indicator */}
         {travelTime && (
           <div className="flex items-center gap-2 ml-32 mb-[-8px] relative z-20">
@@ -73,8 +110,9 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
 
         <div
           className={cn(
-            'group relative flex items-center gap-6 border-b border-border/40 bg-transparent px-6 py-4 hover:bg-muted/30 transition-all duration-200 cursor-pointer',
-            isStay && 'bg-primary/[0.02] border-l-2 border-l-primary',
+            'group relative flex items-center gap-6 border-b border-border/40 bg-transparent px-6 py-4 hover:bg-muted/30 transition-all duration-200 cursor-pointer w-full',
+            isStay && 'bg-primary/[0.02] border-l-2 border-l-primary py-8',
+            isCheckInOut && 'opacity-80 bg-muted/10',
             className,
           )}
         >
@@ -92,21 +130,25 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
           {/* Main Content */}
           <div className="flex flex-1 flex-col gap-0.5 min-w-0" onClick={() => setEditOpen(true)}>
             <div className="flex items-center gap-3">
+              <div className="shrink-0">{getIcon()}</div>
               <span
                 className={cn(
-                  'text-sm font-medium tracking-tight text-foreground/80 group-hover:text-foreground transition-colors',
-                  isStay && 'text-base font-bold text-foreground',
+                  'text-sm font-medium tracking-tight text-foreground/80 group-hover:text-foreground transition-colors truncate',
+                  isStay && 'text-base font-[1000] text-foreground uppercase italic',
+                  isCheckInOut && 'text-[13px] font-bold text-muted-foreground italic',
                 )}
               >
                 {event.title}
               </span>
-              <Badge
-                variant="outline"
-                className="h-4 px-1.5 text-[8px] font-black uppercase bg-muted/50 border-border/50 text-muted-foreground"
-              >
-                {event.type}
-              </Badge>
-              {event.isLocked && <Lock className="size-2.5 text-muted-foreground/50" />}
+              {!isCheckInOut && (
+                <Badge
+                  variant="outline"
+                  className="h-4 px-1.5 text-[8px] font-black uppercase bg-muted/50 border-border/50 text-muted-foreground shrink-0"
+                >
+                  {event.type}
+                </Badge>
+              )}
+              {event.isLocked && <Lock className="size-2.5 text-muted-foreground/50 shrink-0" />}
             </div>
 
             <div className="flex items-center gap-4 text-[11px] font-medium min-w-0">

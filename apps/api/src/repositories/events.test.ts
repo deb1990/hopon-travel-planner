@@ -79,7 +79,7 @@ describe('EventRepository', () => {
 
     const event = await repo.create({
       tripId,
-      type: 'TRAVEL',
+      type: 'TRANSIT',
       title: 'Flight',
       startTime: new Date('2026-10-03T10:00:00Z'),
     });
