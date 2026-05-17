@@ -19,7 +19,10 @@ interface BaseEvent {
   startTime: string;
   endTime?: string | null;
   locationName?: string | null;
-  coords?: [number, number];
+  lat?: number | null;
+  lng?: number | null;
+  routePolyline?: string | null; // For spatial paths
+  travelTimeMinutes?: number | null; // From previous item
   notes?: string | null;
   isLocked: boolean;
 }

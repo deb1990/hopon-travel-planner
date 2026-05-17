@@ -6,6 +6,7 @@ import {
   pgEnum,
   boolean,
   doublePrecision,
+  integer,
 } from 'drizzle-orm/pg-core';
 
 export const visibilityEnum = pgEnum('visibility', ['private', 'public']);
@@ -83,6 +84,8 @@ export const itineraryEvents = pgTable('itinerary_events', {
   locationName: text('location_name'),
   lat: doublePrecision('lat'),
   lng: doublePrecision('lng'),
+  routePolyline: text('route_polyline'),
+  travelTimeMinutes: integer('travel_time_minutes'),
   bookingLink: text('booking_link'),
   accommodationType: accommodationTypeEnum('accommodation_type'),
   notes: text('notes'),

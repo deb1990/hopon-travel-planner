@@ -3483,3 +3483,661 @@ https://nextjs.org/docs/messages/module-not-found
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 66ms (next.js: 19ms, application-code: 47ms)
 ✓ Compiled in 19ms
 ✓ Compiled in 38ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 77ms (next.js: 24ms, application-code: 53ms)
+✓ Compiled in 723ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 136ms (next.js: 70ms, application-code: 66ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 31ms (next.js: 1377µs, application-code: 30ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 27ms (next.js: 946µs, application-code: 26ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 23ms (next.js: 1376µs, application-code: 22ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 23ms (next.js: 1157µs, application-code: 22ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 27ms (next.js: 911µs, application-code: 26ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 26ms (next.js: 1579µs, application-code: 24ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 26ms (next.js: 1455µs, application-code: 25ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 14ms (next.js: 1012µs, application-code: 13ms)
+✓ Compiled in 5.5s
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 125ms (next.js: 85ms, application-code: 40ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 25ms (next.js: 1006µs, application-code: 24ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 26ms (next.js: 890µs, application-code: 25ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 25ms (next.js: 1014µs, application-code: 24ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 20ms (next.js: 931µs, application-code: 19ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 20ms (next.js: 1142µs, application-code: 19ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 23ms (next.js: 970µs, application-code: 22ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 31ms (next.js: 1039µs, application-code: 30ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 30ms (next.js: 1264µs, application-code: 29ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 30ms (next.js: 1076µs, application-code: 29ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 32ms (next.js: 1240µs, application-code: 31ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 43ms (next.js: 1269µs, application-code: 42ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 29ms (next.js: 4ms, application-code: 25ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 57ms (next.js: 21ms, application-code: 36ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 44ms (next.js: 1725µs, application-code: 42ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 42ms (next.js: 1269µs, application-code: 41ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 28ms (next.js: 1408µs, application-code: 27ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 28ms (next.js: 1309µs, application-code: 27ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 28ms (next.js: 1568µs, application-code: 26ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 25ms (next.js: 971µs, application-code: 24ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 29ms (next.js: 1472µs, application-code: 27ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 48ms (next.js: 1689µs, application-code: 47ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 50ms (next.js: 3ms, application-code: 47ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 35ms (next.js: 2ms, application-code: 32ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 24ms (next.js: 1764µs, application-code: 22ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 26ms (next.js: 1135µs, application-code: 25ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 25ms (next.js: 1890µs, application-code: 24ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 24ms (next.js: 1615µs, application-code: 23ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 14ms (next.js: 1299µs, application-code: 12ms)
+✓ Compiled in 57ms
+✓ Compiled in 0ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 159ms (next.js: 77ms, application-code: 82ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 68ms (next.js: 36ms, application-code: 32ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 29ms (next.js: 1470µs, application-code: 27ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 16ms (next.js: 1838µs, application-code: 14ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 332ms (next.js: 193ms, application-code: 139ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 22ms (next.js: 5ms, application-code: 17ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 281ms (next.js: 83ms, application-code: 198ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 192ms (next.js: 3ms, application-code: 190ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 206ms (next.js: 147ms, application-code: 59ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 39ms (next.js: 4ms, application-code: 35ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 36ms (next.js: 5ms, application-code: 31ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 23ms (next.js: 1892µs, application-code: 21ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 11ms (next.js: 874µs, application-code: 10ms)
+✓ Compiled in 0ms
+✓ Compiled in 376ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 269ms (next.js: 84ms, application-code: 185ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 125ms (next.js: 102ms, application-code: 24ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 139ms (next.js: 3ms, application-code: 136ms)
+✓ Compiled in 311ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 243ms (next.js: 69ms, application-code: 174ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 167ms (next.js: 120ms, application-code: 48ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 181ms (next.js: 3ms, application-code: 178ms)
+✓ Compiled in 106ms
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'appendChild')
+    at NewClass._initContainer (file:///Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/web/.next/dev/static/chunks/node_modules_0so1i~4._.js:9464:27)
+    at NewClass.onAdd (file:///Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/web/.next/dev/static/chunks/node_modules_0so1i~4._.js:9293:18)
+    at NewClass._layerAdd (file:///Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/web/.next/dev/static/chunks/node_modules_0so1i~4._.js:5656:18)
+    at NewClass.whenReady (file:///Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/web/.next/dev/static/chunks/node_modules_0so1i~4._.js:3812:26)
+    at NewClass.addLayer (file:///Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/web/.next/dev/static/chunks/node_modules_0so1i~4._.js:5708:18)
+    at addLayer (file:///Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/web/.next/dev/static/chunks/node_modules_0so1i~4._.js:12289:19)
+    at MapView (components/itinerary/map-view.tsx:50:45)
+    at SpatialContext (app/trips/[id]/page.tsx:176:9)
+    at TripDetail (app/trips/[id]/page.tsx:82:15)
+  48 |   const mapCenter: [number, number] = activeMarker 
+  49 |     ? [activeMarker.lat!, activeMarker.lng!] 
+> 50 |     : (markers.length > 0 ? [markers[0]!.lat!, markers[0]!.lng!] : center)
+     |                                             ^
+  51 |
+  52 |   return (
+  53 |     <div className="size-full bg-muted/20 relative">
+[browser] Uncaught Error: Map container is being reused by another instance
+    at NewClass.remove (file:///Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/web/.next/dev/static/chunks/node_modules_0so1i~4._.js:3209:23)
+    at MapContainerComponent.useEffect (file:///Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/web/.next/dev/static/chunks/node_modules_0so1i~4._.js:12005:34)
+    at MapContainerComponent (<anonymous>)
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 20ms
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template). 
+    at Set.forEach (<anonymous>) (<anonymous>)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 73ms (next.js: 12ms, application-code: 61ms)
+✓ Compiled in 33ms
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+✓ Compiled in 203ms
+[browser] ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+   7 | import { useTheme } from "next-themes"
+   8 | import { ItineraryEvent } from "@hopon/core"
+>  9 | import polyline from "@mapbox/polyline"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 |
+  11 | // Fix for default Leaflet icon missing in build
+  12 | const DefaultIcon = L.icon({
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+✓ Compiled in 150ms
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 42ms (next.js: 23ms, application-code: 19ms)
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 10ms (next.js: 3ms, application-code: 7ms)
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 34ms (next.js: 13ms, application-code: 21ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 33ms (next.js: 23ms, application-code: 10ms)
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 28ms (next.js: 12ms, application-code: 16ms)
+[browser] Uncaught Error: ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+   7 | import { useTheme } from "next-themes"
+   8 | import { ItineraryEvent } from "@hopon/core"
+>  9 | import polyline from "@mapbox/polyline"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 |
+  11 | // Fix for default Leaflet icon missing in build
+  12 | const DefaultIcon = L.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./apps/web/components/itinerary/map-view.tsx:9:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./apps/web/components/itinerary/map-view.tsx:9:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 11ms (next.js: 6ms, application-code: 5ms)
+[browser] Uncaught Error: ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+   7 | import { useTheme } from "next-themes"
+   8 | import { ItineraryEvent } from "@hopon/core"
+>  9 | import polyline from "@mapbox/polyline"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 |
+  11 | // Fix for default Leaflet icon missing in build
+  12 | const DefaultIcon = L.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./apps/web/components/itinerary/map-view.tsx:9:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./apps/web/components/itinerary/map-view.tsx:9:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+⨯ ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+  [90m 7 |[0m [36mimport[0m { useTheme } [36mfrom[0m [32m"next-themes"[0m
+  [90m 8 |[0m [36mimport[0m { [33mItineraryEvent[0m } [36mfrom[0m [32m"@hopon/core"[0m
+[31m[1m>[0m [90m 9 |[0m [36mimport[0m polyline [36mfrom[0m [32m"@mapbox/polyline"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m10 |[0m
+  [90m11 |[0m [90m// Fix for default Leaflet icon missing in build[0m
+  [90m12 |[0m [36mconst[0m [33mDefaultIcon[0m = [33mL[0m.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 16ms (next.js: 8ms, application-code: 8ms)
+[browser] Uncaught Error: ./apps/web/components/itinerary/map-view.tsx:9:1
+Module not found: Can't resolve '@mapbox/polyline'
+   7 | import { useTheme } from "next-themes"
+   8 | import { ItineraryEvent } from "@hopon/core"
+>  9 | import polyline from "@mapbox/polyline"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 |
+  11 | // Fix for default Leaflet icon missing in build
+  12 | const DefaultIcon = L.icon({
+
+
+
+Import trace:
+  Client Component Browser:
+    ./apps/web/components/itinerary/map-view.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./apps/web/components/itinerary/map-view.tsx:9:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./apps/web/components/itinerary/map-view.tsx:9:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 285ms (next.js: 89ms, application-code: 197ms)
+✓ Compiled in 99ms

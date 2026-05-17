@@ -126,3 +126,226 @@ Registered Routes:
 - DELETE /trips/:id
 - PATCH /trips/:id/shift
 Server is running on http://localhost:4001
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 2ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 70ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde/events/ce736ee6-c5ec-4ce8-8cdb-9035b7965773
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde/events/ce736ee6-c5ec-4ce8-8cdb-9035b7965773 [32m204[0m 1ms
+<-- DELETE /trips/e8db13bf-d508-4fbe-9861-f2914af5edde/events/ce736ee6-c5ec-4ce8-8cdb-9035b7965773
+--> DELETE /trips/e8db13bf-d508-4fbe-9861-f2914af5edde/events/ce736ee6-c5ec-4ce8-8cdb-9035b7965773 [32m200[0m 15ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 10ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 20ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 18ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 10ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 16ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 11ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 14ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 1ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 62ms
+11:23:35 AM [tsx] change in ./../../packages/core/src/index.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 3ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 29ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 13ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 2ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 9ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 66ms
+11:24:36 AM [tsx] change in ./../../packages/core/src/types/index.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌘ enable debugging { debug: true }
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 1ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 27ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 13ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 40ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 1ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 11ms
+11:27:13 AM [tsx] change in ./../../packages/core/src/types/index.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌘ enable debugging { debug: true }
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+11:27:21 AM [tsx] change in ./src/db/schema.ts Restarting...
+c◇ injected env (1) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 2ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 29ms
+11:28:16 AM [tsx] change in ./src/repositories/events.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183
+EOF
+^
+
+ReferenceError: EOF is not defined
+    at <anonymous> (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183:1)
+    at Object.<anonymous> (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183:1)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object.transformer (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+    at require (node:internal/modules/helpers:147:16)
+
+Node.js v22.21.0
+11:29:53 AM [tsx] change in ./../../packages/core/src/index.ts Rerunning...
+c◇ injected env (1) from .env // tip: ⌘ override existing { override: true }
+/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183
+EOF
+^
+
+ReferenceError: EOF is not defined
+    at <anonymous> (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183:1)
+    at Object.<anonymous> (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183:1)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object.transformer (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+    at require (node:internal/modules/helpers:147:16)
+
+Node.js v22.21.0
+11:30:16 AM [tsx] change in ./../../packages/core/src/spatial/plus-codes.ts Rerunning...
+c◇ injected env (1) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183
+EOF
+^
+
+ReferenceError: EOF is not defined
+    at <anonymous> (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183:1)
+    at Object.<anonymous> (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/apps/api/src/repositories/events.ts:183:1)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object.transformer (/Users/debarshibhaumik/Documents/repos/hop-on-travel-planner/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+    at require (node:internal/modules/helpers:147:16)
+
+Node.js v22.21.0
+11:31:06 AM [tsx] change in ./src/repositories/events.ts Rerunning...
+c◇ injected env (1) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 16ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 111ms
+11:34:18 AM [tsx] change in ./../../packages/core/src/spatial/plus-codes.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001

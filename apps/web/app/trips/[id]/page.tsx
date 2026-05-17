@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useTrip } from '@/hooks/use-trip';
 import { ItineraryHeader } from '@/components/itinerary/itinerary-header';
@@ -11,15 +11,24 @@ import { groupEventsByBase, identifyItineraryGaps, BaseGroup as BaseGroupType } 
 import { calculateTripDuration } from '@/lib/temporal-utils';
 import { BaseGroup } from '@/components/itinerary/base-group';
 import { GhostGroup } from '@/components/itinerary/ghost-group';
+import dynamic from 'next/dynamic';
 
-/**
- * Detailed itinerary view for a single trip.
- * Displays a high-density chronological timeline with in-line entry points.
- */
+const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
+  ssr: false,
+  loading: () => (
+    <div className="size-full bg-muted/20 animate-pulse flex items-center justify-center">
+      <MapPin className="size-8 text-muted-foreground/10" />
+    </div>
+  ),
+});
+
 export default function TripDetail() {
   const params = useParams();
   const tripId = params['id'] as string;
   const { data: trip, isLoading, error } = useTrip(tripId);
+
+  // Selection state for Map Sync
+  const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
 
   if (error) return <ErrorView message={(error as Error).message} />;
   if (isLoading || !trip) return <LoadingView />;
@@ -28,7 +37,6 @@ export default function TripDetail() {
     (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime(),
   );
 
-  // Normalize nulls to undefined for utility logic
   const startDate = trip.startDate ?? undefined;
   const endDate = trip.endDate ?? undefined;
 
@@ -42,7 +50,6 @@ export default function TripDetail() {
 
       <div className="flex-1 max-w-7xl mx-auto w-full p-8 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          {/* Main Timeline Column */}
           <div className="lg:col-span-8 flex flex-col gap-10">
             <div className="flex items-center gap-4 px-2">
               <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -60,15 +67,23 @@ export default function TripDetail() {
                 gaps={gaps}
                 tripStartDate={startDate}
                 tripEndDate={endDate}
+                onHoverEvent={setSelectedEventId}
               />
             </div>
           </div>
 
-          {/* Inspector Panel Sidebar */}
           <div className="lg:col-span-4 flex flex-col gap-12 pt-4">
             <div className="flex flex-col gap-8 sticky top-24">
               <ItineraryMetrics days={days} stays={baseGroups.length} />
-              <SpatialContext />
+
+              <section className="flex flex-col gap-6">
+                <h3 className="text-[11px] uppercase font-black text-muted-foreground tracking-[0.3em]">
+                  Spatial Visualization
+                </h3>
+                <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-border/50 shadow-inner group relative">
+                  <MapView events={events} selectedEventId={selectedEventId} />
+                </div>
+              </section>
 
               <div className="p-6 rounded-[2rem] bg-muted/30 border border-border/50">
                 <h4 className="text-[10px] font-black uppercase text-muted-foreground tracking-[0.2em] mb-4">
@@ -103,12 +118,14 @@ function TimelineList({
   gaps,
   tripStartDate,
   tripEndDate,
+  onHoverEvent,
 }: {
   tripId: string;
   baseGroups: BaseGroupType[];
   gaps: { startTime: string; endTime: string; numDays: number }[];
   tripStartDate?: string;
   tripEndDate?: string;
+  onHoverEvent: (id: string | null) => void;
 }) {
   if (baseGroups.length === 0 && gaps.length === 0) {
     return (
@@ -136,7 +153,12 @@ function TimelineList({
         );
         return (
           <React.Fragment key={group.stay.id}>
-            <BaseGroup stay={group.stay} items={group.items} />
+            <div
+              onMouseEnter={() => onHoverEvent(group.stay.id)}
+              onMouseLeave={() => onHoverEvent(null)}
+            >
+              <BaseGroup stay={group.stay} items={group.items} onHoverItem={onHoverEvent} />
+            </div>
             {gapAfter && (
               <GhostGroup
                 tripId={tripId}
@@ -152,22 +174,6 @@ function TimelineList({
         <GhostGroup tripId={tripId} startTime={endGap.startTime} numDays={endGap.numDays} />
       )}
     </div>
-  );
-}
-
-function SpatialContext() {
-  return (
-    <section className="flex flex-col gap-6">
-      <h3 className="text-[11px] uppercase font-black text-muted-foreground tracking-[0.3em]">
-        Spatial Visualization
-      </h3>
-      <div className="aspect-[4/3] bg-muted/40 rounded-[2.5rem] border border-border/50 flex flex-col items-center justify-center relative overflow-hidden group shadow-inner">
-        <MapPin className="size-10 text-muted-foreground/30" />
-        <span className="text-[9px] uppercase font-black text-muted-foreground/50 mt-8 tracking-[0.4em]">
-          Coordinates Locked
-        </span>
-      </div>
-    </section>
   );
 }
 
