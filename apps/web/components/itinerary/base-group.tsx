@@ -40,8 +40,10 @@ export function BaseGroup({ stay, items, onHoverItem }: BaseGroupProps) {
         <ItineraryRow event={stay} className="bg-primary/[0.04] py-8 border-none" />
       </div>
 
-      <div className="absolute left-[31px] top-[90px] bottom-0 w-px bg-gradient-to-b from-primary via-primary/30 to-border/40 z-0 opacity-60 group-hover/base-group:opacity-100 transition-opacity duration-500" />
+      {/* The Continuous Thread (Muted Technical Shade) */}
+      <div className="absolute left-[31px] top-[90px] bottom-0 w-px bg-gradient-to-b from-primary/20 via-primary/10 to-border/20 z-0 opacity-40 group-hover/base-group:opacity-60 transition-opacity duration-500" />
 
+      {/* Nested Chronological Flow */}
       <div className="flex flex-col relative z-10 pl-6 pb-8">
         {days.map((dayNum) => {
           const dayItems = itemsByDay.get(dayNum) || [];
@@ -62,7 +64,8 @@ export function BaseGroup({ stay, items, onHoverItem }: BaseGroupProps) {
                     onMouseEnter={() => onHoverItem?.(item.id)}
                     onMouseLeave={() => onHoverItem?.(null)}
                   >
-                    <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border ring-2 ring-background z-20" />
+                    {/* The Node Dot (Softer Border) */}
+                    <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border/60 ring-2 ring-background z-20" />
                     <ItineraryRow
                       event={item}
                       className="border-none py-3 pl-8 hover:bg-primary/[0.02]"
@@ -71,7 +74,7 @@ export function BaseGroup({ stay, items, onHoverItem }: BaseGroupProps) {
                 ))}
 
                 <div className="relative pl-8 py-2">
-                  <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border/40 ring-2 ring-background z-10" />
+                  <div className="absolute left-[-26px] top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-border/30 ring-2 ring-background z-10" />
                   <AddEventDialog tripId={stay.tripId} type="ACTIVITY" initialDate={dateISO} />
                 </div>
               </div>
