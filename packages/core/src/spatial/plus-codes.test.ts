@@ -1,7 +1,7 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { resolveLocation, getGoogleMapsUrl } from './plus-codes';
 
-describe('Universal Location Resolution', () => {
+describe('Universal Location Resolution (URL Strict)', () => {
   it('should extract coordinates from a Google Maps URL (@ format)', async () => {
     const url = 'https://www.google.com/maps/place/Oslo/@59.9139,10.7522,13z/...';
     const result = await resolveLocation(url);
@@ -15,19 +15,9 @@ describe('Universal Location Resolution', () => {
     expect(result).toEqual([59.9139, 10.7522]);
   });
 
-  it('should resolve a Full Plus Code directly', async () => {
-    const result = await resolveLocation('8FVC9G8F+5W');
-    expect(result).toBeDefined();
-    expect(result![0]).toBeCloseTo(47.37, 1);
-  });
-
-  it('should fallback to text search (Nominatim) for location names', async () => {
-    global.fetch = vi.fn().mockResolvedValue({
-      json: async () => [{ lat: '48.8584', lon: '2.2945' }],
-    });
-
+  it('should return null for non-URL text (Strict Mandate)', async () => {
     const result = await resolveLocation('Eiffel Tower');
-    expect(result).toEqual([48.8584, 2.2945]);
+    expect(result).toBeNull();
   });
 });
 
