@@ -8,7 +8,7 @@ interface ItineraryMetricsProps {
 
 /**
  * Sidebar component showing key statistics for a trip.
- * Refined with a 1:1 side-by-side layout for high-density analytics.
+ * High-density single-line layout for analytics.
  */
 export function ItineraryMetrics({ days, stays }: ItineraryMetricsProps) {
   return (
@@ -18,17 +18,17 @@ export function ItineraryMetrics({ days, stays }: ItineraryMetricsProps) {
       </h3>
       <div className="grid grid-cols-2 gap-4">
         {/* Mission Duration */}
-        <div className="bg-card p-5 rounded-[2.5rem] border border-border/50 shadow-sm flex flex-col gap-4 group hover:border-primary/50 transition-all duration-500">
-          <div className="size-10 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-500 group-hover:text-primary-foreground group-hover:shadow-lg">
+        <div className="bg-card px-5 py-4 rounded-[2.5rem] border border-border/50 shadow-sm flex items-center gap-4 group hover:border-primary/50 transition-all duration-500">
+          <div className="size-10 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-500 group-hover:text-primary-foreground group-hover:shadow-lg shrink-0">
             <Clock className="size-4" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-[9px] uppercase font-black text-muted-foreground/60 tracking-tight mb-1">
-              Mission Duration
+          <div className="flex flex-col min-w-0">
+            <span className="text-[8px] uppercase font-black text-muted-foreground/60 tracking-tight leading-none mb-1 truncate">
+              Duration
             </span>
-            <span className="text-2xl font-black text-foreground tabular-nums">
+            <span className="text-xl font-black text-foreground tabular-nums leading-none">
               {String(days).padStart(2, '0')}{' '}
-              <span className="text-[10px] text-primary/50 italic uppercase tracking-tighter">
+              <span className="text-[9px] text-primary/50 italic uppercase tracking-tighter">
                 Days
               </span>
             </span>
@@ -36,17 +36,17 @@ export function ItineraryMetrics({ days, stays }: ItineraryMetricsProps) {
         </div>
 
         {/* Total Stops */}
-        <div className="bg-card p-5 rounded-[2.5rem] border border-border/50 shadow-sm flex flex-col gap-4 group hover:border-primary/50 transition-all duration-500">
-          <div className="size-10 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-500 group-hover:text-primary-foreground group-hover:shadow-lg">
+        <div className="bg-card px-5 py-4 rounded-[2.5rem] border border-border/50 shadow-sm flex items-center gap-4 group hover:border-primary/50 transition-all duration-500">
+          <div className="size-10 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-500 group-hover:text-primary-foreground group-hover:shadow-lg shrink-0">
             <MapPin className="size-4" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-[9px] uppercase font-black text-muted-foreground/60 tracking-tight mb-1">
-              Total Stops
+          <div className="flex flex-col min-w-0">
+            <span className="text-[8px] uppercase font-black text-muted-foreground/60 tracking-tight leading-none mb-1 truncate">
+              Stops
             </span>
-            <span className="text-2xl font-black text-foreground tabular-nums">
+            <span className="text-xl font-black text-foreground tabular-nums leading-none">
               {String(stays).padStart(2, '0')}{' '}
-              <span className="text-[10px] text-primary/50 italic uppercase tracking-tighter">
+              <span className="text-[9px] text-primary/50 italic uppercase tracking-tighter">
                 Stays
               </span>
             </span>
