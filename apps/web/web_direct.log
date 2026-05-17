@@ -3475,3 +3475,7 @@ https://nextjs.org/docs/messages/module-not-found
     at <unknown> (Error: (./apps/web/components/ui/dropdown-menu.tsx:4:1)
     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 359ms (next.js: 322ms, application-code: 37ms)
+✓ Compiled in 31ms
+✓ Compiled in 78ms
+✓ Compiled in 23ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 72ms (next.js: 22ms, application-code: 50ms)
