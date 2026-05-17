@@ -20,7 +20,6 @@ interface DayCardProps {
 
 /**
  * High-density container for a single calendar day.
- * Displays activities and stay context badges.
  */
 export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
   const [editingStay, setEditingStay] = useState<StayEvent | null>(null);
@@ -79,17 +78,12 @@ export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
           </div>
         </div>
 
-        {/* ALWAYS SHOW: Muted Add Stay button */}
+        {/* UNIVERSAL: Muted Add Stay button for consistency */}
         <AddEventDialog
           tripId={tripId}
           type="STAY"
           initialDate={day.date}
-          className={cn(
-            'transition-all duration-300',
-            hasAccommodation
-              ? 'bg-muted text-muted-foreground/60 hover:bg-muted/80 hover:text-foreground shadow-none'
-              : 'bg-orange-600 text-white hover:bg-orange-700 shadow-orange-500/20',
-          )}
+          className="bg-muted text-muted-foreground/60 hover:bg-muted/80 hover:text-foreground shadow-none transition-all duration-300"
         />
       </div>
 
