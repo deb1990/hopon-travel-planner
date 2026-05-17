@@ -22,12 +22,14 @@ const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
   ),
 });
 
+/**
+ * Detailed itinerary view for a single trip.
+ * Optimized with a 50/50 split between Timeline and Spatial Journey.
+ */
 export default function TripDetail() {
   const params = useParams();
   const tripId = params['id'] as string;
   const { data: trip, isLoading, error } = useTrip(tripId);
-
-  // Selection state for Map Sync
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
 
   if (error) return <ErrorView message={(error as Error).message} />;
@@ -48,9 +50,10 @@ export default function TripDetail() {
     <main className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-500">
       <ItineraryHeader trip={trip} />
 
-      <div className="flex-1 max-w-7xl mx-auto w-full p-8 lg:p-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-8 flex flex-col gap-10">
+      <div className="flex-1 max-w-[1600px] mx-auto w-full p-8 lg:p-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          {/* Main Timeline Column (Left - 50%) */}
+          <div className="lg:col-span-6 flex flex-col gap-10">
             <div className="flex items-center gap-4 px-2">
               <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
                 <CalendarDays className="size-4 text-primary" />
@@ -72,35 +75,40 @@ export default function TripDetail() {
             </div>
           </div>
 
-          <div className="lg:col-span-4 flex flex-col gap-12 pt-4">
-            <div className="flex flex-col gap-8 sticky top-24">
-              <ItineraryMetrics days={days} stays={baseGroups.length} />
-
+          {/* Inspector Panel Sidebar (Right - 50%) */}
+          <div className="lg:col-span-6 flex flex-col gap-12 pt-4">
+            <div className="flex flex-col gap-12 sticky top-24">
+              {/* PRIMARY: Spatial Visualization (Now at the top) */}
               <section className="flex flex-col gap-6">
                 <h3 className="text-[11px] uppercase font-black text-muted-foreground tracking-[0.3em]">
                   Spatial Visualization
                 </h3>
-                <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-border/50 shadow-inner group relative">
+                <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl group relative bg-card">
                   <MapView events={events} selectedEventId={selectedEventId} />
                 </div>
               </section>
 
-              <div className="p-6 rounded-[2rem] bg-muted/30 border border-border/50">
-                <h4 className="text-[10px] font-black uppercase text-muted-foreground tracking-[0.2em] mb-4">
-                  Workspace Details
-                </h4>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center text-[11px]">
-                    <span className="text-muted-foreground font-medium">Author</span>
-                    <span className="text-foreground font-bold italic underline decoration-primary/30 underline-offset-4">
-                      Demo User
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center text-[11px]">
-                    <span className="text-muted-foreground font-medium">Visibility</span>
-                    <span className="bg-primary/10 text-primary px-2 py-0.5 rounded font-black uppercase tracking-tighter text-[9px] border border-primary/20">
-                      Private
-                    </span>
+              {/* SECONDARY: Metrics and Details */}
+              <div className="flex flex-col gap-12">
+                <ItineraryMetrics days={days} stays={baseGroups.length} />
+
+                <div className="p-8 rounded-[2.5rem] bg-muted/20 border border-border/50">
+                  <h4 className="text-[10px] font-black uppercase text-muted-foreground tracking-[0.2em] mb-6">
+                    Workspace Details
+                  </h4>
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-muted-foreground font-medium">Author</span>
+                      <span className="text-foreground font-bold italic underline decoration-primary/30 underline-offset-4">
+                        Demo User
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-muted-foreground font-medium">Visibility</span>
+                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-black uppercase tracking-tighter text-[10px] border border-primary/20">
+                        Private
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>

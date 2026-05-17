@@ -349,3 +349,30 @@ Registered Routes:
 - DELETE /trips/:id
 - PATCH /trips/:id/shift
 Server is running on http://localhost:4001
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 2ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 53ms
+11:36:02 AM [tsx] change in ./src/repositories/events.ts Restarting...
+c11:36:02 AM [tsx] change in ./../../packages/core/src/spatial/routing.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 47ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 1ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 27ms

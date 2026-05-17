@@ -4141,3 +4141,9 @@ https://nextjs.org/docs/messages/module-not-found
     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 285ms (next.js: 89ms, application-code: 197ms)
 ✓ Compiled in 99ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 43ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 71ms (next.js: 21ms, application-code: 51ms)
+✓ Compiled in 0ms
+✓ Compiled in 61ms
