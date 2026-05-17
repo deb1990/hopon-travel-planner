@@ -6,7 +6,7 @@ import { useTrip } from '@/hooks/use-trip';
 import { ItineraryHeader } from '@/components/itinerary/itinerary-header';
 import { ItineraryMetrics } from '@/components/itinerary/itinerary-metrics';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CalendarDays, Sparkles, MapPin } from 'lucide-react';
+import { CalendarDays, Sparkles, MapPin, User, ShieldCheck } from 'lucide-react';
 import { groupEventsByBase, identifyItineraryGaps, BaseGroup as BaseGroupType } from '@hopon/core';
 import { calculateTripDuration } from '@/lib/temporal-utils';
 import { BaseGroup } from '@/components/itinerary/base-group';
@@ -24,7 +24,7 @@ const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
 
 /**
  * Detailed itinerary view for a single trip.
- * Optimized with a perfectly balanced 1:1 split between Timeline and Visualization.
+ * High-density studio layout with balanced 1:1 dual-pane and compact inspector metrics.
  */
 export default function TripDetail() {
   const params = useParams();
@@ -52,7 +52,7 @@ export default function TripDetail() {
 
       <div className="flex-1 max-w-[1600px] mx-auto w-full p-8 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-          {/* Main Timeline Column (Left - 50%) */}
+          {/* Main Timeline Column */}
           <div className="flex flex-col gap-10">
             <div className="flex items-center gap-4 px-2">
               <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -75,9 +75,9 @@ export default function TripDetail() {
             </div>
           </div>
 
-          {/* Inspector Panel Sidebar (Right - 50%) */}
-          <div className="flex flex-col gap-12 pt-4">
-            <div className="flex flex-col gap-12 sticky top-24">
+          {/* Inspector Panel Sidebar */}
+          <div className="flex flex-col gap-10 pt-4">
+            <div className="flex flex-col gap-10 sticky top-24">
               {/* PRIMARY: Journey Visualization */}
               <section className="flex flex-col gap-6">
                 <h3 className="text-[11px] uppercase font-black text-muted-foreground tracking-[0.3em]">
@@ -89,25 +89,42 @@ export default function TripDetail() {
               </section>
 
               {/* SECONDARY: Metrics and Details */}
-              <div className="flex flex-col gap-12">
+              <div className="flex flex-col gap-6">
                 <ItineraryMetrics days={days} stays={baseGroups.length} />
 
-                <div className="p-8 rounded-[2.5rem] bg-muted/20 border border-border/50">
-                  <h4 className="text-[10px] font-black uppercase text-muted-foreground tracking-[0.2em] mb-6">
-                    Workspace Details
+                <div className="p-5 rounded-[2.5rem] bg-muted/20 border border-border/50">
+                  <h4 className="text-[9px] font-black uppercase text-muted-foreground/50 tracking-[0.3em] mb-4 ml-1">
+                    Workspace
                   </h4>
-                  <div className="space-y-6">
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="text-muted-foreground font-medium">Author</span>
-                      <span className="text-foreground font-bold italic underline decoration-primary/30 underline-offset-4">
-                        Demo User
-                      </span>
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Author Detail */}
+                    <div className="flex items-center gap-3 px-1">
+                      <div className="size-7 rounded-xl bg-background border border-border/40 flex items-center justify-center shrink-0">
+                        <User className="size-3 text-muted-foreground/60" />
+                      </div>
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-[7px] uppercase font-black text-muted-foreground/40 leading-none mb-0.5">
+                          Author
+                        </span>
+                        <span className="text-[11px] font-bold truncate italic underline decoration-primary/20 underline-offset-2">
+                          Demo User
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="text-muted-foreground font-medium">Visibility</span>
-                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-black uppercase tracking-tighter text-[10px] border border-primary/20">
-                        Private
-                      </span>
+
+                    {/* Visibility Detail */}
+                    <div className="flex items-center gap-3 px-1">
+                      <div className="size-7 rounded-xl bg-background border border-border/40 flex items-center justify-center shrink-0">
+                        <ShieldCheck className="size-3 text-primary/60" />
+                      </div>
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-[7px] uppercase font-black text-muted-foreground/40 leading-none mb-0.5">
+                          Access
+                        </span>
+                        <span className="text-[11px] font-black uppercase text-primary tracking-tighter">
+                          Private
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
