@@ -26,7 +26,7 @@ interface MapViewProps {
 
 /**
  * High-density map view for visualizing spatial journey.
- * Renders markers and travel path polylines.
+ * Features auto-zoom to fit all locations and paths.
  */
 export default function MapView({
   events = [],
@@ -36,17 +36,16 @@ export default function MapView({
 }: MapViewProps) {
   const { resolvedTheme } = useTheme();
 
-  // CartoDB Tile Sets
   const darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
   const lightTiles = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
   const tileUrl = resolvedTheme === 'dark' ? darkTiles : lightTiles;
 
-  // Filter events with coordinates
+  // 1. Filter events with coordinates
   const markers = events.filter(
     (e) => e.lat !== null && e.lng !== null && e.lat !== undefined && e.lng !== undefined,
   );
 
-  // Extract all polylines
+  // 2. Extract all polylines
   const paths = events
     .filter((e) => e.routePolyline)
     .map((e) => ({
@@ -54,18 +53,21 @@ export default function MapView({
       positions: polyline.decode(e.routePolyline!) as [number, number][],
     }));
 
-  // Determine dynamic center if a marker is selected
+  // 3. Calculate full trip bounds
+  const bounds = L.latLngBounds([]);
+  markers.forEach((m) => bounds.extend([m.lat!, m.lng!]));
+  paths.forEach((p) => p.positions.forEach((pos) => bounds.extend(pos)));
+
+  // 4. Determine target view
   const activeMarker = markers.find((m) => m.id === selectedEventId);
-  const mapCenter: [number, number] = activeMarker
+  const flyToTarget: [number, number] | null = activeMarker
     ? [activeMarker.lat!, activeMarker.lng!]
-    : markers.length > 0
-      ? [markers[0]!.lat!, markers[0]!.lng!]
-      : center;
+    : null;
 
   return (
     <div className="size-full bg-muted/20 relative">
       <MapContainer
-        center={mapCenter}
+        center={center}
         zoom={zoom}
         scrollWheelZoom={true}
         className="size-full z-10"
@@ -76,7 +78,6 @@ export default function MapView({
           url={tileUrl}
         />
 
-        {/* Render Journey Paths */}
         {paths.map((path) => (
           <Polyline
             key={path.id}
@@ -90,7 +91,6 @@ export default function MapView({
           />
         ))}
 
-        {/* Render Event Markers */}
         {markers.map((event) => (
           <Marker key={event.id} position={[event.lat!, event.lng!]}>
             <Popup className="technical-popup">
@@ -107,19 +107,39 @@ export default function MapView({
           </Marker>
         ))}
 
-        <MapController center={mapCenter} zoom={zoom} />
+        <MapController
+          flyToTarget={flyToTarget}
+          bounds={bounds.isValid() ? bounds : null}
+          defaultZoom={zoom}
+        />
       </MapContainer>
 
-      {/* Visual Overlay for Studio Feel */}
       <div className="absolute inset-0 pointer-events-none z-20 ring-1 ring-inset ring-border/50 rounded-[2.5rem]" />
     </div>
   );
 }
 
-function MapController({ center, zoom }: { center: [number, number]; zoom: number }) {
+/**
+ * Smart controller that fits bounds on load and flies to selections.
+ */
+function MapController({
+  flyToTarget,
+  bounds,
+  defaultZoom,
+}: {
+  flyToTarget: [number, number] | null;
+  bounds: L.LatLngBounds | null;
+  defaultZoom: number;
+}) {
   const map = useMap();
+
   useEffect(() => {
-    map.flyTo(center, zoom, { animate: true, duration: 1.5 });
-  }, [center, zoom, map]);
+    if (flyToTarget) {
+      map.flyTo(flyToTarget, 15, { animate: true, duration: 1.2 });
+    } else if (bounds) {
+      map.fitBounds(bounds, { padding: [50, 50], animate: true });
+    }
+  }, [flyToTarget, bounds, map, defaultZoom]);
+
   return null;
 }
