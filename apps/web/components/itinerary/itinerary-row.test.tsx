@@ -3,6 +3,9 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { ItineraryRow } from './itinerary-row';
 import { ItineraryEvent } from '@hopon/core';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const mockEvent: ItineraryEvent = {
   id: '1',
@@ -17,13 +20,22 @@ const mockEvent: ItineraryEvent = {
 
 describe('ItineraryRow Component', () => {
   it('should render the event title and location', () => {
-    render(<ItineraryRow event={mockEvent} />);
+    render(
+      <QueryClientProvider client={queryClient}>
+        <ItineraryRow event={mockEvent} />
+      </QueryClientProvider>,
+    );
     expect(screen.getByText('Test Activity')).toBeInTheDocument();
     expect(screen.getByText('Test Location')).toBeInTheDocument();
   });
 
   it('should render both start and end times for activities', () => {
-    render(<ItineraryRow event={mockEvent} />);
+    render(
+      <QueryClientProvider client={queryClient}>
+        <ItineraryRow event={mockEvent} />
+      </QueryClientProvider>,
+    );
+
     const timeContainers = screen.getAllByText(/\d{2}:\d{2}/);
     expect(timeContainers.length).toBeGreaterThanOrEqual(2);
   });

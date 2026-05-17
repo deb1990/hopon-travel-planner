@@ -4,9 +4,11 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Calendar, MapPin, Clock, Link as LinkIcon, Home } from 'lucide-react';
+import { ItineraryEvent } from '@hopon/core';
 
 interface EventFormProps {
   type: 'STAY' | 'ACTIVITY' | 'TRAVEL';
+  initialData?: ItineraryEvent;
   initialDate?: string;
   onSubmit: (data: any) => void;
   isSubmitting?: boolean;
@@ -14,23 +16,47 @@ interface EventFormProps {
 
 /**
  * Reusable form logic for creating and editing itinerary events.
- * Features adaptive pickers and accommodation metadata for stays.
  */
-export function EventForm({ type, initialDate, onSubmit, isSubmitting }: EventFormProps) {
+export function EventForm({
+  type,
+  initialData,
+  initialDate,
+  onSubmit,
+  isSubmitting,
+}: EventFormProps) {
   const isStay = type === 'STAY';
 
-  // Format initial date based on type
-  const defaultDate = initialDate ? new Date(initialDate).toISOString().split('T')[0] : '';
-  const defaultDateTime = initialDate ? new Date(initialDate).toISOString().slice(0, 16) : '';
+  const getStartTime = () => {
+    if (initialData) {
+      return isStay
+        ? new Date(initialData.startTime).toISOString().split('T')[0]
+        : new Date(initialData.startTime).toISOString().slice(0, 16);
+    }
+    if (initialDate) {
+      return isStay
+        ? new Date(initialDate).toISOString().split('T')[0]
+        : new Date(initialDate).toISOString().slice(0, 16);
+    }
+    return '';
+  };
+
+  const getEndTime = () => {
+    if (initialData?.endTime) {
+      return isStay
+        ? new Date(initialData.endTime).toISOString().split('T')[0]
+        : new Date(initialData.endTime).toISOString().slice(0, 16);
+    }
+    return isStay && initialDate ? new Date(initialDate).toISOString().split('T')[0] : '';
+  };
 
   const [formData, setFormData] = useState({
-    title: '',
-    locationName: '',
-    startTime: isStay ? defaultDate : defaultDateTime,
-    endTime: isStay ? defaultDate : '',
-    bookingLink: '',
-    accommodationType: 'Hotel', // Default for stays
-    notes: '',
+    title: initialData?.title || '',
+    locationName: initialData?.locationName || '',
+    startTime: getStartTime(),
+    endTime: getEndTime(),
+    bookingLink: (initialData as any)?.bookingLink || '',
+    accommodationType: (initialData as any)?.accommodationType || 'Hotel',
+    notes: initialData?.notes || '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -97,7 +123,7 @@ export function EventForm({ type, initialDate, onSubmit, isSubmitting }: EventFo
               <select
                 value={formData.accommodationType}
                 onChange={(e) => setFormData({ ...formData, accommodationType: e.target.value })}
-                className="flex h-12 w-full items-center justify-between rounded-2xl border border-border/40 bg-muted/30 pl-10 pr-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none font-bold"
+                className="flex h-12 w-full items-center justify-between rounded-2xl border border-border/40 bg-muted/30 pl-10 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring appearance-none font-bold"
               >
                 <option value="Hotel">Hotel</option>
                 <option value="AirBNB">AirBNB</option>
@@ -168,7 +194,11 @@ export function EventForm({ type, initialDate, onSubmit, isSubmitting }: EventFo
         disabled={isSubmitting}
         className="mt-4 rounded-2xl bg-primary text-primary-foreground font-black uppercase tracking-[0.2em] text-[10px] h-14 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
       >
-        {isSubmitting ? 'Syncing...' : `Save ${type.toLowerCase()}`}
+        {isSubmitting
+          ? 'Syncing...'
+          : initialData
+            ? 'Update Timeline'
+            : `Save ${type.toLowerCase()}`}
       </Button>
     </form>
   );

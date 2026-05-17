@@ -5,51 +5,387 @@
 ▲ Next.js 16.2.4 (Turbopack)
 - Local:         http://127.0.0.1:3001
 - Network:       http://127.0.0.1:3001
-✓ Ready in 341ms
+✓ Ready in 320ms
 
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 837ms (next.js: 723ms, application-code: 113ms)
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 109ms (next.js: 61ms, application-code: 48ms)
-✓ Compiled in 50ms
-✓ Compiled in 39ms
-✓ Compiled in 28ms
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 74ms (next.js: 17ms, application-code: 57ms)
-✓ Compiled in 163ms
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 104ms (next.js: 34ms, application-code: 70ms)
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 37ms (next.js: 23ms, application-code: 14ms)
-✓ Compiled in 64ms
-✓ Compiled in 21ms
-✓ Compiled in 29ms
-✓ Compiled in 35ms
-✓ Compiled in 214ms
-✓ Compiled in 180ms
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 75ms (next.js: 41ms, application-code: 34ms)
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 12ms (next.js: 1500µs, application-code: 11ms)
-✓ Compiled in 16ms
-✓ Compiled in 17ms
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 148ms (next.js: 21ms, application-code: 127ms)
+ GET / 200 in 234ms (next.js: 121ms, application-code: 114ms)
+ GET /trips/18720c50-412f-400c-8d6d-0eb5e5d54d26 200 in 297ms (next.js: 285ms, application-code: 12ms)
+ GET / 200 in 34ms (next.js: 9ms, application-code: 25ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 40ms (next.js: 12ms, application-code: 28ms)
 [browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
 [browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
 [browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
 [browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-✓ Compiled in 19ms
-✓ Compiled in 22ms
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 69ms (next.js: 19ms, application-code: 50ms)
 [browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
 [browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-✓ Compiled in 15ms
-[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-[browser] Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-✓ Compiled in 15ms
-✓ Compiled in 16ms
-✓ Compiled in 15ms
-✓ Compiled in 184ms
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 76ms (next.js: 38ms, application-code: 38ms)
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 33ms (next.js: 1284µs, application-code: 31ms)
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 11ms (next.js: 1556µs, application-code: 9ms)
-✓ Compiled in 76ms
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 44ms (next.js: 21ms, application-code: 23ms)
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 23ms (next.js: 1308µs, application-code: 21ms)
- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 15ms (next.js: 1336µs, application-code: 13ms)
-✓ Compiled in 22ms
-✓ Compiled in 14ms
-✓ Compiled in 16ms
+⨯ ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  [90m189 |[0m [32m  )[0m
+  [90m190 |[0m [32m}[0m
+[31m[1m>[0m [90m191 |[0m
+  [90m    |[0m [31m[1m^[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 145ms (next.js: 67ms, application-code: 78ms)
+⨯ ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  [90m189 |[0m [32m  )[0m
+  [90m190 |[0m [32m}[0m
+[31m[1m>[0m [90m191 |[0m
+  [90m    |[0m [31m[1m^[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 11ms (next.js: 5ms, application-code: 7ms)
+[browser] ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component] 
+⨯ ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  [90m189 |[0m [32m  )[0m
+  [90m190 |[0m [32m}[0m
+[31m[1m>[0m [90m191 |[0m
+  [90m    |[0m [31m[1m^[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 8ms (next.js: 3ms, application-code: 5ms)
+⨯ ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  [90m189 |[0m [32m  )[0m
+  [90m190 |[0m [32m}[0m
+[31m[1m>[0m [90m191 |[0m
+  [90m    |[0m [31m[1m^[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 13ms (next.js: 6ms, application-code: 7ms)
+⨯ ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  [90m189 |[0m [32m  )[0m
+  [90m190 |[0m [32m}[0m
+[31m[1m>[0m [90m191 |[0m
+  [90m    |[0m [31m[1m^[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 11ms (next.js: 3ms, application-code: 9ms)
+[browser] Uncaught Error: ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./apps/web/components/itinerary/event-form.tsx:191:1)
+    at <unknown> (Error: (./apps/web/components/itinerary/event-form.tsx:191:1)
+[browser] ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component] 
+[browser] ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component] 
+[browser] ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component] 
+[browser] ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component] 
+⨯ ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  [90m189 |[0m [32m  )[0m
+  [90m190 |[0m [32m}[0m
+[31m[1m>[0m [90m191 |[0m
+  [90m    |[0m [31m[1m^[0m
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 500 in 13ms (next.js: 7ms, application-code: 6ms)
+[browser] Uncaught Error: ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./apps/web/components/itinerary/event-form.tsx:191:1)
+    at <unknown> (Error: (./apps/web/components/itinerary/event-form.tsx:191:1)
+[browser] ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component] 
+[browser] ./apps/web/components/itinerary/event-form.tsx:191:1
+Expected '</', got '<eof>'
+  189 |   )
+  190 | }
+> 191 |
+      | ^
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component Browser]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component Browser]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/web/components/itinerary/event-form.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/add-event-dialog.tsx [Client Component SSR]
+    ./apps/web/components/itinerary/ghost-group.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Client Component SSR]
+    ./apps/web/app/trips/[id]/page.tsx [Server Component] 
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 79ms (next.js: 35ms, application-code: 44ms)
