@@ -19,10 +19,11 @@ import {
   LogIn,
   LogOut,
   CheckCircle2,
+  Navigation2,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { ItineraryEvent } from '@hopon/core';
+import { ItineraryEvent, getGoogleMapsUrl } from '@hopon/core';
 import { EditEventDialog } from './edit-event-dialog';
 import { DeleteEventDialog } from './delete-event-dialog';
 import {
@@ -40,7 +41,6 @@ interface ItineraryRowProps {
 
 /**
  * A high-precision row for displaying itinerary events.
- * Features mode-specific icons for Transit and Transition activities.
  */
 export function ItineraryRow({ event, className }: ItineraryRowProps) {
   const [editOpen, setEditOpen] = React.useState(false);
@@ -64,14 +64,14 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
       })
     : null;
 
+  const mapsUrl = getGoogleMapsUrl(event);
   const bookingLink = event.type === 'STAY' ? event.bookingLink : null;
   const travelTime = event.travelTimeMinutes;
 
-  // 1. Determine the Primary Icon
   const getIcon = () => {
     if (event.type === 'CHECK_IN') return <LogIn className="size-3.5 text-indigo-500" />;
     if (event.type === 'CHECK_OUT') return <LogOut className="size-3.5 text-orange-500" />;
-    if (event.type === 'STAY') return null; // Stays are full-width headers
+    if (event.type === 'STAY') return null;
 
     if (isTransit) {
       const mode = (event as any).transitMode;
@@ -96,7 +96,6 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
   return (
     <>
       <div className="flex flex-col w-full">
-        {/* Travel Time Indicator */}
         {travelTime && (
           <div className="flex items-center gap-2 ml-32 mb-[-8px] relative z-20">
             <div className="bg-background px-3 py-1 rounded-full border border-border/50 shadow-sm flex items-center gap-1.5">
@@ -116,7 +115,6 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
             className,
           )}
         >
-          {/* TIME COLUMN */}
           {!isStay && (
             <div className="flex w-24 flex-col font-mono tabular-nums tracking-tighter shrink-0 gap-0.5">
               <div className="flex items-center gap-1.5 text-[10px] font-black text-foreground">
@@ -127,7 +125,6 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
             </div>
           )}
 
-          {/* Main Content */}
           <div className="flex flex-1 flex-col gap-0.5 min-w-0" onClick={() => setEditOpen(true)}>
             <div className="flex items-center gap-3">
               <div className="shrink-0">{getIcon()}</div>
@@ -171,6 +168,19 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
 
           {/* Actions */}
           <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+            {mapsUrl && (
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-muted-foreground hover:text-indigo-600 transition-colors"
+                title="Open in Google Maps"
+              >
+                <Navigation2 className="size-3.5" />
+              </a>
+            )}
+
             {bookingLink && (
               <a
                 href={bookingLink}
@@ -178,6 +188,7 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
                 rel="noreferrer"
                 onClick={(e) => e.stopPropagation()}
                 className="text-muted-foreground hover:text-primary transition-colors"
+                title="View Booking"
               >
                 <ExternalLink className="size-3.5" />
               </a>
@@ -193,6 +204,19 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-40">
+                {mapsUrl && (
+                  <DropdownMenuItem asChild>
+                    <a
+                      href={mapsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <Navigation2 className="size-3 text-indigo-500" />
+                      Google Maps
+                    </a>
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem onClick={() => setEditOpen(true)} className="gap-2">
                   <Edit2 className="size-3 text-muted-foreground" />
                   Edit

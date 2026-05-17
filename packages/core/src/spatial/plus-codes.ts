@@ -12,18 +12,14 @@ export async function resolveLocation(text: string): Promise<[number, number] | 
   const match = text.match(PLUS_CODE_REGEX);
   if (!match) return null;
 
-  // Use the library's OpenLocationCode class
   const olc = new (OLC as any).OpenLocationCode();
-
   const code = match[0];
 
-  // 1. If it's a FULL Plus Code, decode it directly
   if (olc.isFull(code)) {
     const res = olc.decode(code);
     return [res.latitudeCenter, res.longitudeCenter];
   }
 
-  // 2. If it's a SHORT Plus Code, we need the locality to resolve it
   const locality = text
     .replace(code, '')
     .trim()
@@ -31,7 +27,6 @@ export async function resolveLocation(text: string): Promise<[number, number] | 
   if (!locality) return null;
 
   try {
-    // Geocode the locality using free OSM Nominatim
     const searchUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(locality)}&format=json&limit=1`;
     const response = await fetch(searchUrl, {
       headers: { 'User-Agent': 'HopOnTravelPlanner/1.0' },
@@ -41,14 +36,44 @@ export async function resolveLocation(text: string): Promise<[number, number] | 
     if (data && data.length > 0) {
       const refLat = parseFloat(data[0].lat);
       const refLng = parseFloat(data[0].lon);
-
-      // Recover the full code using the reference location
       const recoveredFullCode = olc.recoverNearest(code, refLat, refLng);
       const res = olc.decode(recoveredFullCode);
       return [res.latitudeCenter, res.longitudeCenter];
     }
   } catch (error) {
     console.error('[Spatial] Failed to resolve short plus code:', error);
+  }
+
+  return null;
+}
+
+/**
+ * Generates a Google Maps deep-link for an event.
+ * Priority: Plus Code > Lat/Lng > Location Name.
+ */
+export function getGoogleMapsUrl(event: {
+  plusCode?: string | null;
+  lat?: number | null;
+  lng?: number | null;
+  locationName?: string | null;
+}): string | null {
+  const baseUrl = 'https://www.google.com/maps/search/?api=1&query=';
+
+  if (event.plusCode) {
+    return `${baseUrl}${encodeURIComponent(event.plusCode)}`;
+  }
+
+  if (
+    event.lat !== null &&
+    event.lng !== null &&
+    event.lat !== undefined &&
+    event.lng !== undefined
+  ) {
+    return `${baseUrl}${event.lat},${event.lng}`;
+  }
+
+  if (event.locationName) {
+    return `${baseUrl}${encodeURIComponent(event.locationName)}`;
   }
 
   return null;
