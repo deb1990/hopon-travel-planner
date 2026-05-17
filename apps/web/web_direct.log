@@ -41,3 +41,19 @@
     at Set.forEach (<anonymous>) (<anonymous>)
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 93ms (next.js: 18ms, application-code: 75ms)
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 65ms (next.js: 11ms, application-code: 54ms)
+✓ Compiled in 23ms
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'appendChild')
+    at MapView (components/itinerary/map-view.tsx:74:9)
+    at TripDetail (app/trips/[id]/page.tsx:86:20)
+  72 |         zoomControl={false}
+  73 |       >
+> 74 |         <TileLayer
+     |         ^
+  75 |           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreet...
+  76 |           url={tileUrl}
+  77 |         />
+[browser] Uncaught Error: Map container is being reused by another instance
+    at MapContainerComponent (<anonymous>)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 34ms (next.js: 7ms, application-code: 28ms)
+✓ Compiled in 122ms
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 51ms (next.js: 13ms, application-code: 37ms)
