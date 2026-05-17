@@ -24,6 +24,7 @@ interface AddEventDialogProps {
 
 /**
  * Technical dialog for adding new entries to the itinerary.
+ * Uses the consistent "Middle Ground" trigger style for all actions.
  */
 export function AddEventDialog({ tripId, type, initialDate, className }: AddEventDialogProps) {
   const [open, setOpen] = useState(false);
@@ -72,11 +73,9 @@ export function AddEventDialog({ tripId, type, initialDate, className }: AddEven
         <button
           className={cn(
             'inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer rounded-full transition-all group/add-btn font-black uppercase tracking-[0.2em] text-[9px]',
-            isStay
-              ? className || 'bg-orange-600 text-white hover:bg-orange-700 h-8 px-4 shadow-md'
-              : 'bg-muted/60 border border-border/40 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/30 h-8 px-4',
-            isTransit &&
-              'bg-indigo-600 text-white hover:bg-indigo-700 hover:text-white border-none shadow-md',
+            // THE MIDDLE GROUND: Muted background, subtle borders
+            'bg-muted/60 border border-border/40 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/30 h-8 px-4',
+            // Contextual tinting for No-Accommodation gaps (Orange)
             className,
           )}
         >

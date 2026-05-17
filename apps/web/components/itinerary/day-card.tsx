@@ -20,7 +20,6 @@ interface DayCardProps {
 
 /**
  * High-density container for a single calendar day.
- * Displays activities and stay context badges.
  */
 export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
   const [editingStay, setEditingStay] = useState<StayEvent | null>(null);
@@ -79,17 +78,22 @@ export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
           </div>
         </div>
 
-        {/* REFINED MIDDLE GROUND: Add Stay button */}
-        <AddEventDialog
-          tripId={tripId}
-          type="STAY"
-          initialDate={day.date}
-          className={cn(
-            'transition-all duration-300',
-            !hasAccommodation &&
-              'bg-orange-600/10 border-orange-500/20 text-orange-600 hover:bg-orange-600 hover:text-white hover:border-transparent',
-          )}
-        />
+        <div className="flex items-center gap-3">
+          {/* 1. ADD STAY (Middle Ground + Optional Orange Hint) */}
+          <AddEventDialog
+            tripId={tripId}
+            type="STAY"
+            initialDate={day.date}
+            className={cn(
+              'transition-all duration-300',
+              !hasAccommodation &&
+                'bg-orange-600/10 border-orange-500/20 text-orange-600 hover:bg-orange-600 hover:text-white',
+            )}
+          />
+
+          {/* 2. ADD TRANSIT (Consistent Middle Ground) */}
+          <AddEventDialog tripId={tripId} type="TRANSIT" initialDate={day.date} />
+        </div>
       </div>
 
       <div className="relative z-10 pl-6 pr-2 py-4">
