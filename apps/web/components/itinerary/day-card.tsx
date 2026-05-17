@@ -20,37 +20,19 @@ interface DayCardProps {
 
 /**
  * High-density container for a single calendar day.
+ * Displays activities and stay context badges.
  */
-export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: DayCardProps) {
+export function DayCard({ day, tripId, onHoverItem }: DayCardProps) {
   const [editingStay, setEditingStay] = useState<StayEvent | null>(null);
 
   const hasAccommodation = day.activeStays.length > 0;
 
-  // NORMALIZE: Strict UTC Date comparison (YYYY-MM-DD)
   const getUTCDateString = (dateStr: string) => {
     const d = new Date(dateStr);
     return isNaN(d.getTime()) ? '' : d.toISOString().split('T')[0];
   };
 
   const currentDayUtc = getUTCDateString(day.date);
-
-  const isCheckoutDay = day.activeStays.some(
-    (stay) => getUTCDateString(stay.endTime || '') === currentDayUtc,
-  );
-
-  const isCheckinDay = day.activeStays.some(
-    (stay) => getUTCDateString(stay.startTime) === currentDayUtc,
-  );
-
-  // Logic:
-  // 1. If NO accommodation -> Always show Add Stay.
-  // 2. If it's a checkout day -> show Add Stay (unless last day of trip).
-  // 3. If it's a checkin day -> show Add Stay (unless first day of trip).
-  let showAddStay = !hasAccommodation;
-  if (hasAccommodation) {
-    if (isCheckoutDay && !isLastDay) showAddStay = true;
-    if (isCheckinDay && !isFirstDay) showAddStay = true;
-  }
 
   return (
     <div className="relative flex flex-col group/day-card bg-card mb-8 rounded-[2.5rem] border border-border/40 shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:border-primary/20">
@@ -97,14 +79,18 @@ export function DayCard({ day, tripId, isFirstDay, isLastDay, onHoverItem }: Day
           </div>
         </div>
 
-        {showAddStay && (
-          <AddEventDialog
-            tripId={tripId}
-            type="STAY"
-            initialDate={day.date}
-            className="bg-orange-600 hover:bg-orange-700 shadow-orange-500/20"
-          />
-        )}
+        {/* ALWAYS SHOW: Muted Add Stay button */}
+        <AddEventDialog
+          tripId={tripId}
+          type="STAY"
+          initialDate={day.date}
+          className={cn(
+            'transition-all duration-300',
+            hasAccommodation
+              ? 'bg-muted text-muted-foreground/60 hover:bg-muted/80 hover:text-foreground shadow-none'
+              : 'bg-orange-600 text-white hover:bg-orange-700 shadow-orange-500/20',
+          )}
+        />
       </div>
 
       <div className="relative z-10 pl-6 pr-2 py-4">

@@ -1,4 +1,4 @@
-import { eq, and, or, exists } from 'drizzle-orm';
+import { eq, and, or, exists, lt, gt, ne } from 'drizzle-orm';
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import * as schema from '../db/schema';
 import { itineraryEvents, trips, permissions } from '../db/schema';
@@ -11,12 +11,45 @@ export class EventRepository {
   constructor(private db: PostgresJsDatabase<typeof schema>) {}
 
   /**
+   * Checks if a stay overlap exists for a given time range.
+   */
+  private async checkStayOverlap(tripId: string, start: Date, end: Date, excludeId?: string) {
+    const existingStays = await this.db
+      .select()
+      .from(itineraryEvents)
+      .where(
+        and(
+          eq(itineraryEvents.tripId, tripId),
+          eq(itineraryEvents.type, 'STAY'),
+          excludeId ? ne(itineraryEvents.id, excludeId) : undefined,
+          // Overlap logic: (StartA < EndB) AND (EndA > StartB)
+          lt(itineraryEvents.startTime, end),
+          gt(itineraryEvents.endTime, start),
+        ),
+      );
+
+    return existingStays.length > 0;
+  }
+
+  /**
    * Creates a new event and calculates routing from the previous item if possible.
    */
   async create(event: typeof itineraryEvents.$inferInsert) {
+    // 1. Overlap Validation for Stays
+    if (event.type === 'STAY' && event.startTime && event.endTime) {
+      const hasOverlap = await this.checkStayOverlap(
+        event.tripId,
+        new Date(event.startTime),
+        new Date(event.endTime),
+      );
+      if (hasOverlap) {
+        throw new Error('Overlapping accommodation detected for these dates.');
+      }
+    }
+
     const enrichedEvent = { ...event };
 
-    // Automatic Routing Logic
+    // 2. Automatic Routing Logic
     if (event.lat && event.lng) {
       const prevEvent = await this.getPreviousEvent(event.tripId, new Date(event.startTime));
       if (prevEvent && prevEvent.lat && prevEvent.lng) {
@@ -40,29 +73,43 @@ export class EventRepository {
    * Updates an event and recalculates routing.
    */
   async update(id: string, userId: string, data: Partial<typeof itineraryEvents.$inferInsert>) {
+    // 1. Fetch current context
+    const [current] = await this.db
+      .select()
+      .from(itineraryEvents)
+      .where(eq(itineraryEvents.id, id));
+    if (!current) throw new Error('Event not found');
+
+    // 2. Overlap Validation for Stays
+    if ((data.type === 'STAY' || current.type === 'STAY') && (data.startTime || data.endTime)) {
+      const tripId = data.tripId || current.tripId;
+      const newStart = data.startTime ? new Date(data.startTime) : current.startTime;
+      const newEnd = data.endTime ? new Date(data.endTime) : current.endTime;
+
+      if (newEnd) {
+        const hasOverlap = await this.checkStayOverlap(tripId, newStart, newEnd, id);
+        if (hasOverlap) {
+          throw new Error('Update failed: New dates overlap with another stay.');
+        }
+      }
+    }
+
     const enrichedData = { ...data };
 
-    // If coordinates or time changed, we might need new routing
+    // 3. Recalculate Routing
     if (data.lat || data.lng || data.startTime) {
-      // Fetch current full event to get context
-      const [current] = await this.db
-        .select()
-        .from(itineraryEvents)
-        .where(eq(itineraryEvents.id, id));
-      if (current) {
-        const tripId = data.tripId || current.tripId;
-        const startTime = data.startTime || current.startTime;
-        const lat = data.lat || current.lat;
-        const lng = data.lng || current.lng;
+      const tripId = data.tripId || current.tripId;
+      const startTime = data.startTime || current.startTime;
+      const lat = data.lat || current.lat;
+      const lng = data.lng || current.lng;
 
-        if (lat && lng) {
-          const prev = await this.getPreviousEvent(tripId, new Date(startTime));
-          if (prev && prev.lat && prev.lng) {
-            const route = await getRouteEstimate([prev.lat, prev.lng], [lat, lng]);
-            if (route) {
-              enrichedData.routePolyline = route.geometry;
-              enrichedData.travelTimeMinutes = route.durationMinutes;
-            }
+      if (lat && lng) {
+        const prev = await this.getPreviousEvent(tripId, new Date(startTime));
+        if (prev && prev.lat && prev.lng) {
+          const route = await getRouteEstimate([prev.lat, prev.lng], [lat, lng]);
+          if (route) {
+            enrichedData.routePolyline = route.geometry;
+            enrichedData.travelTimeMinutes = route.durationMinutes;
           }
         }
       }
@@ -103,22 +150,17 @@ export class EventRepository {
   }
 
   private async getPreviousEvent(tripId: string, startTime: Date) {
-    const [prev] = await this.db
+    const rows = await this.db
       .select()
       .from(itineraryEvents)
-      .where(
-        and(
-          eq(itineraryEvents.tripId, tripId),
-          // Find the latest event that starts before the current one
-        ),
-      )
-      .orderBy(itineraryEvents.startTime)
-      // This is a simplified sequential check. In a real app we'd use a cleaner offset.
-      .then((rows) =>
-        rows.filter((r) => new Date(r.startTime).getTime() < startTime.getTime()).reverse(),
-      );
+      .where(eq(itineraryEvents.tripId, tripId))
+      .orderBy(itineraryEvents.startTime);
 
-    return prev || null;
+    // Find the latest event that starts before the current one
+    const filtered = rows
+      .filter((r) => new Date(r.startTime).getTime() < startTime.getTime())
+      .reverse();
+    return filtered[0] || null;
   }
 
   /**
