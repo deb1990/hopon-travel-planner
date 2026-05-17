@@ -10,9 +10,6 @@ import { getRouteEstimate } from '@hopon/core';
 export class EventRepository {
   constructor(private db: PostgresJsDatabase<typeof schema>) {}
 
-  /**
-   * Checks if a stay overlap exists for a given time range.
-   */
   private async checkStayOverlap(tripId: string, start: Date, end: Date, excludeId?: string) {
     const existingStays = await this.db
       .select()
@@ -34,7 +31,6 @@ export class EventRepository {
    * Creates a new event and calculates routing + sub-events.
    */
   async create(event: typeof itineraryEvents.$inferInsert) {
-    // 1. Overlap Validation for Stays
     if (event.type === 'STAY' && event.startTime && event.endTime) {
       const hasOverlap = await this.checkStayOverlap(
         event.tripId,
@@ -48,7 +44,6 @@ export class EventRepository {
 
     const enrichedEvent = { ...event };
 
-    // 2. Automatic Routing Logic
     if (event.lat && event.lng) {
       const prevEvent = await this.getPreviousEvent(event.tripId, new Date(event.startTime));
       if (prevEvent && prevEvent.lat && prevEvent.lng) {
@@ -66,11 +61,12 @@ export class EventRepository {
     const [result] = await this.db.insert(itineraryEvents).values(enrichedEvent).returning();
     if (!result) throw new Error('Failed to create event');
 
-    // 3. AUTOMATIC CHECK-IN/OUT ACTIVITIES
+    // AUTOMATIC LINKED CHECK-IN/OUT
     if (result.type === 'STAY' && result.startTime && result.endTime) {
       await this.db.insert(itineraryEvents).values([
         {
           tripId: result.tripId,
+          parentStayId: result.id,
           type: 'CHECK_IN',
           title: `Check-in: ${result.title}`,
           startTime: result.startTime,
@@ -78,11 +74,11 @@ export class EventRepository {
           lat: result.lat,
           lng: result.lng,
           plusCode: result.plusCode,
-          notes: `System-generated for ${result.title}`,
-          isLocked: true, // These are pinned to the stay
+          isLocked: true,
         },
         {
           tripId: result.tripId,
+          parentStayId: result.id,
           type: 'CHECK_OUT',
           title: `Check-out: ${result.title}`,
           startTime: result.endTime,
@@ -90,7 +86,6 @@ export class EventRepository {
           lat: result.lat,
           lng: result.lng,
           plusCode: result.plusCode,
-          notes: `System-generated for ${result.title}`,
           isLocked: true,
         },
       ]);
@@ -174,7 +169,7 @@ export class EventRepository {
 
     if (!result) throw new Error('Event not found or unauthorized');
 
-    // 4. SYNC SUB-EVENTS ON UPDATE
+    // SYNC LINKED SUB-EVENTS
     if (result.type === 'STAY') {
       // Sync Check-in
       await this.db
@@ -188,11 +183,7 @@ export class EventRepository {
           plusCode: result.plusCode,
         })
         .where(
-          and(
-            eq(itineraryEvents.tripId, result.tripId),
-            eq(itineraryEvents.type, 'CHECK_IN'),
-            eq(itineraryEvents.notes, `System-generated for ${result.title}`), // Strict link
-          ),
+          and(eq(itineraryEvents.parentStayId, result.id), eq(itineraryEvents.type, 'CHECK_IN')),
         );
 
       // Sync Check-out
@@ -208,11 +199,7 @@ export class EventRepository {
             plusCode: result.plusCode,
           })
           .where(
-            and(
-              eq(itineraryEvents.tripId, result.tripId),
-              eq(itineraryEvents.type, 'CHECK_OUT'),
-              eq(itineraryEvents.notes, `System-generated for ${result.title}`),
-            ),
+            and(eq(itineraryEvents.parentStayId, result.id), eq(itineraryEvents.type, 'CHECK_OUT')),
           );
       }
     }
@@ -294,19 +281,7 @@ export class EventRepository {
       .returning();
 
     if (!result) throw new Error('Event not found or unauthorized');
-
-    if (result.type === 'STAY') {
-      await this.db
-        .delete(itineraryEvents)
-        .where(
-          and(
-            eq(itineraryEvents.tripId, result.tripId),
-            or(eq(itineraryEvents.type, 'CHECK_IN'), eq(itineraryEvents.type, 'CHECK_OUT')),
-            eq(itineraryEvents.notes, `System-generated for ${result.title}`),
-          ),
-        );
-    }
-
+    // Cascading delete is handled by database foreign key parent_stay_id
     return result;
   }
 }

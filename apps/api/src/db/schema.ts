@@ -7,6 +7,7 @@ import {
   boolean,
   doublePrecision,
   integer,
+  AnyPgColumn,
 } from 'drizzle-orm/pg-core';
 
 export const visibilityEnum = pgEnum('visibility', ['private', 'public']);
@@ -77,12 +78,18 @@ export const itineraryEvents = pgTable('itinerary_events', {
   tripId: uuid('trip_id')
     .references(() => trips.id)
     .notNull(),
+
+  // Link system-generated events (CHECK_IN/OUT) back to their parent STAY
+  parentStayId: uuid('parent_stay_id').references((): AnyPgColumn => itineraryEvents.id, {
+    onDelete: 'cascade',
+  }),
+
   type: eventTypeEnum('type').notNull(),
   title: text('title').notNull(),
   startTime: timestamp('start_time').notNull(),
   endTime: timestamp('end_time'),
   locationName: text('location_name'),
-  plusCode: text('plus_code'), // Separate Plus Code storage
+  plusCode: text('plus_code'),
   lat: doublePrecision('lat'),
   lng: doublePrecision('lng'),
   routePolyline: text('route_polyline'),

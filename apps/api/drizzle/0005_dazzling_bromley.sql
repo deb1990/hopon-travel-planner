@@ -1,0 +1,2 @@
+ALTER TABLE "itinerary_events" ADD COLUMN "parent_stay_id" uuid;--> statement-breakpoint
+ALTER TABLE "itinerary_events" ADD CONSTRAINT "itinerary_events_parent_stay_id_itinerary_events_id_fk" FOREIGN KEY ("parent_stay_id") REFERENCES "public"."itinerary_events"("id") ON DELETE cascade ON UPDATE no action;
