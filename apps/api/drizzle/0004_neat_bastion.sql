@@ -1,0 +1,1 @@
+ALTER TABLE "itinerary_events" ADD COLUMN "plus_code" text;

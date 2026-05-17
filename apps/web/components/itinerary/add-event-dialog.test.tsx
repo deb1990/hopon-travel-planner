@@ -18,7 +18,9 @@ describe('AddEventDialog Component', () => {
     fireEvent.click(trigger);
 
     expect(screen.getByText(/New Accommodation/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/e.g. Park Hyatt Tokyo/i)).toBeInTheDocument();
+    // Separate Location and Title fields
+    expect(screen.getByPlaceholderText(/e.g. Viking Museum/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/e.g. The Thief Hotel/i)).toBeInTheDocument();
   });
 
   it('should render as "Add Activity" when type is ACTIVITY', () => {
@@ -32,6 +34,8 @@ describe('AddEventDialog Component', () => {
     fireEvent.click(trigger);
 
     expect(screen.getByText(/New Activity/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/e.g. Sushi Dinner/i)).toBeInTheDocument();
+    // Separate Location and Title fields
+    expect(screen.getByPlaceholderText(/e.g. Viking Museum/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/e.g. Afternoon Sightseeing/i)).toBeInTheDocument();
   });
 });

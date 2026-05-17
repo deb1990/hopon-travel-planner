@@ -10,6 +10,7 @@ import {
   Edit2,
   Trash2,
   Car,
+  Hash,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -31,7 +32,7 @@ interface ItineraryRowProps {
 
 /**
  * A high-precision row for displaying itinerary events.
- * Features an action menu and spatial travel estimates.
+ * Features separate Location and Plus Code visualization.
  */
 export function ItineraryRow({ event, className }: ItineraryRowProps) {
   const [editOpen, setEditOpen] = React.useState(false);
@@ -58,10 +59,10 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
   return (
     <>
       <div className="flex flex-col">
-        {/* Travel Time Indicator (Transition Bridge) */}
+        {/* Travel Time Indicator */}
         {travelTime && (
           <div className="flex items-center gap-2 ml-32 mb-[-8px] relative z-20">
-            <div className="bg-background px-3 py-1 rounded-full border border-border/50 shadow-sm flex items-center gap-1.5 animate-in fade-in slide-in-from-top-1 duration-700">
+            <div className="bg-background px-3 py-1 rounded-full border border-border/50 shadow-sm flex items-center gap-1.5">
               <Car className="size-2.5 text-primary/60" />
               <span className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/60">
                 {travelTime} min drive
@@ -108,12 +109,22 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
               {event.isLocked && <Lock className="size-2.5 text-muted-foreground/50" />}
             </div>
 
-            {event.locationName && (
-              <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground font-medium">
-                <MapPin className="size-3 shrink-0 opacity-40" />
-                <span className="truncate">{event.locationName}</span>
-              </div>
-            )}
+            <div className="flex items-center gap-4 text-[11px] font-medium min-w-0">
+              {event.locationName && (
+                <div className="flex items-center gap-1.5 text-muted-foreground min-w-0">
+                  <MapPin className="size-3 shrink-0 opacity-40" />
+                  <span className="truncate">{event.locationName}</span>
+                </div>
+              )}
+              {event.plusCode && (
+                <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-muted/50 border border-border/40 shrink-0">
+                  <Hash className="size-2 text-primary/60" />
+                  <span className="text-[9px] font-mono text-muted-foreground uppercase">
+                    {event.plusCode}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Actions */}

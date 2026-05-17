@@ -19,10 +19,11 @@ interface BaseEvent {
   startTime: string;
   endTime?: string | null;
   locationName?: string | null;
+  plusCode?: string | null; // Dedicated Plus Code field
   lat?: number | null;
   lng?: number | null;
-  routePolyline?: string | null; // For spatial paths
-  travelTimeMinutes?: number | null; // From previous item
+  routePolyline?: string | null;
+  travelTimeMinutes?: number | null;
   notes?: string | null;
   isLocked: boolean;
 }

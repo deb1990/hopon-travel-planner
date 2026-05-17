@@ -82,6 +82,7 @@ export const itineraryEvents = pgTable('itinerary_events', {
   startTime: timestamp('start_time').notNull(),
   endTime: timestamp('end_time'),
   locationName: text('location_name'),
+  plusCode: text('plus_code'), // Separate Plus Code storage
   lat: doublePrecision('lat'),
   lng: doublePrecision('lng'),
   routePolyline: text('route_polyline'),
