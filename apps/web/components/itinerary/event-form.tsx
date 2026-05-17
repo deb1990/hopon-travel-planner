@@ -16,7 +16,6 @@ interface EventFormProps {
 
 /**
  * Reusable form logic for creating and editing itinerary events.
- * Features separate Location and Plus Code fields.
  */
 export function EventForm({
   type,
@@ -30,25 +29,27 @@ export function EventForm({
 
   const getStartTime = () => {
     if (initialData) {
-      return isStay
-        ? new Date(initialData.startTime).toISOString().split('T')[0]
-        : new Date(initialData.startTime).toISOString().slice(0, 16);
+      return new Date(initialData.startTime).toISOString().slice(0, 16);
     }
     if (initialDate) {
-      return isStay
-        ? new Date(initialDate).toISOString().split('T')[0]
-        : new Date(initialDate).toISOString().slice(0, 16);
+      const d = new Date(initialDate);
+      d.setUTCHours(15, 0, 0, 0); // Default check-in time: 3 PM
+      return d.toISOString().slice(0, 16);
     }
     return '';
   };
 
   const getEndTime = () => {
     if (initialData?.endTime) {
-      return isStay
-        ? new Date(initialData.endTime).toISOString().split('T')[0]
-        : new Date(initialData.endTime).toISOString().slice(0, 16);
+      return new Date(initialData.endTime).toISOString().slice(0, 16);
     }
-    return isStay && initialDate ? new Date(initialDate).toISOString().split('T')[0] : '';
+    if (isStay && initialDate) {
+      const d = new Date(initialDate);
+      d.setUTCDate(d.getUTCDate() + 1);
+      d.setUTCHours(11, 0, 0, 0); // Default check-out time: 11 AM next day
+      return d.toISOString().slice(0, 16);
+    }
+    return '';
   };
 
   const [formData, setFormData] = useState({
@@ -67,17 +68,11 @@ export function EventForm({
     setIsResolving(true);
 
     try {
-      // 1. Resolve coordinates. Priority: Dedicated Plus Code field -> Location field (legacy check)
       const resolutionString = formData.plusCode || formData.locationName;
       const coords = await resolveLocation(resolutionString);
 
-      const startStr = formData.startTime || new Date().toISOString();
-      const finalStart = isStay ? new Date(startStr + 'T00:00:00Z') : new Date(startStr);
-
-      let finalEnd: Date | null = null;
-      if (formData.endTime) {
-        finalEnd = isStay ? new Date(formData.endTime + 'T23:59:59Z') : new Date(formData.endTime);
-      }
+      const finalStart = new Date(formData.startTime);
+      const finalEnd = formData.endTime ? new Date(formData.endTime) : null;
 
       onSubmit({
         ...formData,
@@ -96,7 +91,6 @@ export function EventForm({
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6 pt-4">
-      {/* 1. PRIMARY LOCATION DATA */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
@@ -133,11 +127,10 @@ export function EventForm({
         </div>
       </div>
 
-      {/* 2. TITLE FIELD */}
       <div className="space-y-2">
         <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
           {isStay ? 'Accommodation Name' : 'Activity Title'}
-        </label>{' '}
+        </label>
         <Input
           required
           placeholder={isStay ? 'e.g. The Thief Hotel' : 'e.g. Afternoon Sightseeing'}
@@ -147,7 +140,6 @@ export function EventForm({
         />
       </div>
 
-      {/* 3. METADATA (STAY ONLY) */}
       {isStay && (
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
@@ -187,16 +179,15 @@ export function EventForm({
         </div>
       )}
 
-      {/* 4. TEMPORAL DATA */}
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-            {isStay ? 'Check-in Date' : 'Date & Time'}
+            {isStay ? 'Check-in Time' : 'Date & Time'}
           </label>
           <div className="relative">
             <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
             <Input
-              type={isStay ? 'date' : 'datetime-local'}
+              type="datetime-local"
               required
               value={formData.startTime}
               onChange={(e) => setFormData({ ...formData, startTime: e.target.value })}
@@ -207,12 +198,12 @@ export function EventForm({
 
         <div className="space-y-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ml-1">
-            {isStay ? 'Check-out Date' : 'End Time (Opt)'}
+            {isStay ? 'Check-out Time' : 'End Time (Opt)'}
           </label>
           <div className="relative">
             <Clock className="absolute left-4 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground/40" />
             <Input
-              type={isStay ? 'date' : 'datetime-local'}
+              type="datetime-local"
               required={isStay}
               value={formData.endTime}
               onChange={(e) => setFormData({ ...formData, endTime: e.target.value })}

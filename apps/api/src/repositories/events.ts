@@ -22,7 +22,6 @@ export class EventRepository {
           eq(itineraryEvents.tripId, tripId),
           eq(itineraryEvents.type, 'STAY'),
           excludeId ? ne(itineraryEvents.id, excludeId) : undefined,
-          // Overlap logic: (StartA < EndB) AND (EndA > StartB)
           lt(itineraryEvents.startTime, end),
           gt(itineraryEvents.endTime, start),
         ),
@@ -32,7 +31,7 @@ export class EventRepository {
   }
 
   /**
-   * Creates a new event and calculates routing from the previous item if possible.
+   * Creates a new event and calculates routing + sub-events.
    */
   async create(event: typeof itineraryEvents.$inferInsert) {
     // 1. Overlap Validation for Stays
@@ -66,6 +65,37 @@ export class EventRepository {
 
     const [result] = await this.db.insert(itineraryEvents).values(enrichedEvent).returning();
     if (!result) throw new Error('Failed to create event');
+
+    // 3. AUTOMATIC CHECK-IN/OUT ACTIVITIES
+    if (result.type === 'STAY' && result.startTime && result.endTime) {
+      await this.db.insert(itineraryEvents).values([
+        {
+          tripId: result.tripId,
+          type: 'CHECK_IN',
+          title: `Check-in: ${result.title}`,
+          startTime: result.startTime,
+          locationName: result.locationName,
+          lat: result.lat,
+          lng: result.lng,
+          plusCode: result.plusCode,
+          notes: `System-generated for ${result.title}`,
+          isLocked: true, // These are pinned to the stay
+        },
+        {
+          tripId: result.tripId,
+          type: 'CHECK_OUT',
+          title: `Check-out: ${result.title}`,
+          startTime: result.endTime,
+          locationName: result.locationName,
+          lat: result.lat,
+          lng: result.lng,
+          plusCode: result.plusCode,
+          notes: `System-generated for ${result.title}`,
+          isLocked: true,
+        },
+      ]);
+    }
+
     return result;
   }
 
@@ -73,14 +103,12 @@ export class EventRepository {
    * Updates an event and recalculates routing.
    */
   async update(id: string, userId: string, data: Partial<typeof itineraryEvents.$inferInsert>) {
-    // 1. Fetch current context
     const [current] = await this.db
       .select()
       .from(itineraryEvents)
       .where(eq(itineraryEvents.id, id));
     if (!current) throw new Error('Event not found');
 
-    // 2. Overlap Validation for Stays
     if ((data.type === 'STAY' || current.type === 'STAY') && (data.startTime || data.endTime)) {
       const tripId = data.tripId || current.tripId;
       const newStart = data.startTime ? new Date(data.startTime) : current.startTime;
@@ -96,7 +124,6 @@ export class EventRepository {
 
     const enrichedData = { ...data };
 
-    // 3. Recalculate Routing
     if (data.lat || data.lng || data.startTime) {
       const tripId = data.tripId || current.tripId;
       const startTime = data.startTime || current.startTime;
@@ -146,6 +173,50 @@ export class EventRepository {
       .returning();
 
     if (!result) throw new Error('Event not found or unauthorized');
+
+    // 4. SYNC SUB-EVENTS ON UPDATE
+    if (result.type === 'STAY') {
+      // Sync Check-in
+      await this.db
+        .update(itineraryEvents)
+        .set({
+          startTime: result.startTime,
+          title: `Check-in: ${result.title}`,
+          locationName: result.locationName,
+          lat: result.lat,
+          lng: result.lng,
+          plusCode: result.plusCode,
+        })
+        .where(
+          and(
+            eq(itineraryEvents.tripId, result.tripId),
+            eq(itineraryEvents.type, 'CHECK_IN'),
+            eq(itineraryEvents.notes, `System-generated for ${result.title}`), // Strict link
+          ),
+        );
+
+      // Sync Check-out
+      if (result.endTime) {
+        await this.db
+          .update(itineraryEvents)
+          .set({
+            startTime: result.endTime,
+            title: `Check-out: ${result.title}`,
+            locationName: result.locationName,
+            lat: result.lat,
+            lng: result.lng,
+            plusCode: result.plusCode,
+          })
+          .where(
+            and(
+              eq(itineraryEvents.tripId, result.tripId),
+              eq(itineraryEvents.type, 'CHECK_OUT'),
+              eq(itineraryEvents.notes, `System-generated for ${result.title}`),
+            ),
+          );
+      }
+    }
+
     return result;
   }
 
@@ -156,7 +227,6 @@ export class EventRepository {
       .where(eq(itineraryEvents.tripId, tripId))
       .orderBy(itineraryEvents.startTime);
 
-    // Find the latest event that starts before the current one
     const filtered = rows
       .filter((r) => new Date(r.startTime).getTime() < startTime.getTime())
       .reverse();
@@ -164,7 +234,7 @@ export class EventRepository {
   }
 
   /**
-   * Finds events for a trip, but ONLY if the user has permission.
+   * Finds events for a trip.
    */
   async findByTripId(tripId: string, userId: string) {
     return this.db
@@ -191,7 +261,7 @@ export class EventRepository {
   }
 
   /**
-   * Deletes an event ONLY if the user is the owner or an editor.
+   * Deletes an event.
    */
   async delete(id: string, userId: string) {
     const [result] = await this.db
@@ -224,6 +294,19 @@ export class EventRepository {
       .returning();
 
     if (!result) throw new Error('Event not found or unauthorized');
+
+    if (result.type === 'STAY') {
+      await this.db
+        .delete(itineraryEvents)
+        .where(
+          and(
+            eq(itineraryEvents.tripId, result.tripId),
+            or(eq(itineraryEvents.type, 'CHECK_IN'), eq(itineraryEvents.type, 'CHECK_OUT')),
+            eq(itineraryEvents.notes, `System-generated for ${result.title}`),
+          ),
+        );
+    }
+
     return result;
   }
 }
