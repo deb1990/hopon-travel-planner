@@ -24,7 +24,7 @@ const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
 
 /**
  * Detailed itinerary view for a single trip.
- * Refined 3:2 ratio with simplified "Visualization" header.
+ * Optimized with high-density 3:2 layout and reduced gutters.
  */
 export default function TripDetail() {
   const params = useParams();
@@ -51,8 +51,8 @@ export default function TripDetail() {
       <ItineraryHeader trip={trip} />
 
       <div className="flex-1 max-w-[1600px] mx-auto w-full p-8 lg:p-12">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-          {/* Main Timeline Column */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10">
+          {/* Main Timeline Column (Left - 60%) */}
           <div className="lg:col-span-3 flex flex-col gap-10">
             <div className="flex items-center gap-4 px-2">
               <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -75,7 +75,7 @@ export default function TripDetail() {
             </div>
           </div>
 
-          {/* Inspector Panel Sidebar */}
+          {/* Inspector Panel Sidebar (Right - 40%) */}
           <div className="lg:col-span-2 flex flex-col gap-12 pt-4">
             <div className="flex flex-col gap-12 sticky top-24">
               {/* PRIMARY: Journey Visualization */}
