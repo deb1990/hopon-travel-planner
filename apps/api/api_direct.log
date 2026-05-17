@@ -102,3 +102,27 @@ Server is running on http://localhost:4001
 --> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 4ms
 <-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
 --> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 57ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m204[0m 0ms
+<-- GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde
+--> GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde [32m200[0m 13ms
+<-- OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde/events/86ae2774-0480-4247-bed3-7dde3844fc03
+--> OPTIONS /trips/e8db13bf-d508-4fbe-9861-f2914af5edde/events/86ae2774-0480-4247-bed3-7dde3844fc03 [32m204[0m 1ms
+<-- DELETE /trips/e8db13bf-d508-4fbe-9861-f2914af5edde/events/86ae2774-0480-4247-bed3-7dde3844fc03
+--> DELETE /trips/e8db13bf-d508-4fbe-9861-f2914af5edde/events/86ae2774-0480-4247-bed3-7dde3844fc03 [33m404[0m 0ms
+10:16:01 AM [tsx] change in ./src/routes/trips.ts Restarting...
+c◇ injected env (1) from .env // tip: ⌘ enable debugging { debug: true }
+Registered Routes:
+- ALL /*
+- ALL /*
+- ALL /trips/*
+- GET /trips
+- POST /trips
+- GET /trips/:id
+- PATCH /trips/:id
+- POST /trips/:id/events
+- PATCH /trips/:id/events/:eventId
+- DELETE /trips/:id/events/:eventId
+- DELETE /trips/:id
+- PATCH /trips/:id/shift
+Server is running on http://localhost:4001

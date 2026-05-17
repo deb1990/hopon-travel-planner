@@ -134,6 +134,72 @@ describe('Trips API Integration', () => {
     expect(data.title).toBe('New Hotel');
   });
 
+  it('PATCH /trips/:id/events/:eventId should update an existing event', async () => {
+    const [trip] = await db
+      .insert(trips)
+      .values({
+        ownerId: userId,
+        name: 'Event Update Trip',
+      })
+      .returning();
+
+    const [event] = await db
+      .insert(itineraryEvents)
+      .values({
+        tripId: trip!.id,
+        type: 'ACTIVITY',
+        title: 'Old Title',
+        startTime: new Date(),
+      })
+      .returning();
+
+    const res = await app.request(`/trips/${trip!.id}/events/${event!.id}`, {
+      method: 'PATCH',
+      headers: {
+        'x-user-id': userId,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title: 'New Title' }),
+    });
+
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data.title).toBe('New Title');
+  });
+
+  it('DELETE /trips/:id/events/:eventId should delete an event', async () => {
+    const [trip] = await db
+      .insert(trips)
+      .values({
+        ownerId: userId,
+        name: 'Event Delete Trip',
+      })
+      .returning();
+
+    const [event] = await db
+      .insert(itineraryEvents)
+      .values({
+        tripId: trip!.id,
+        type: 'ACTIVITY',
+        title: 'Bye Bye',
+        startTime: new Date(),
+      })
+      .returning();
+
+    const res = await app.request(`/trips/${trip!.id}/events/${event!.id}`, {
+      method: 'DELETE',
+      headers: { 'x-user-id': userId },
+    });
+
+    expect(res.status).toBe(200);
+
+    const [found] = await db
+      .select()
+      .from(itineraryEvents)
+      .where(eq(itineraryEvents.id, event!.id));
+    expect(found).toBeUndefined();
+  });
+
   it('PATCH /trips/:id/shift should shift all events in a trip', async () => {
     const [trip] = await db
       .insert(trips)
