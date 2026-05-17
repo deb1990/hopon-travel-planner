@@ -19,7 +19,7 @@ interface BaseEvent {
   startTime: string;
   endTime?: string | null;
   locationName?: string | null;
-  plusCode?: string | null; // Dedicated Plus Code field
+  plusCode?: string | null;
   lat?: number | null;
   lng?: number | null;
   routePolyline?: string | null;
@@ -48,6 +48,16 @@ export interface CheckInOutEvent extends BaseEvent {
 
 export type ItineraryEvent = StayEvent | ActivityEvent | TravelEvent | CheckInOutEvent;
 
+/**
+ * Represents a single calendar day in the itinerary.
+ */
+export interface DayGroup {
+  date: string; // ISO Date at 00:00:00
+  items: ItineraryEvent[];
+  activeStays: StayEvent[];
+}
+
+// Deprecated - will be removed after refactor
 export interface BaseGroup {
   stay: StayEvent;
   items: ItineraryEvent[];

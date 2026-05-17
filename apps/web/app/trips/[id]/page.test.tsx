@@ -18,29 +18,34 @@ describe('TripDetail Page', () => {
     vi.clearAllMocks();
   });
 
-  it('should render multiple base groups and an inter-stay gap', async () => {
+  it('should render Day Groups and Stay Badges correctly', async () => {
+    const mockTrip = {
+      id: 'trip-123',
+      name: 'Japan',
+      startDate: '2026-05-01T00:00:00Z',
+      endDate: '2026-05-05T00:00:00Z',
+      events: [
+        {
+          id: 's1',
+          type: 'STAY',
+          title: 'Tokyo Hotel',
+          startTime: '2026-05-01T15:00:00Z',
+          endTime: '2026-05-03T11:00:00Z',
+          isLocked: false,
+        },
+        {
+          id: 's2',
+          type: 'STAY',
+          title: 'Osaka Hotel',
+          startTime: '2026-05-03T15:00:00Z',
+          endTime: '2026-05-05T11:00:00Z',
+          isLocked: false,
+        },
+      ],
+    };
+
     (useTrip as any).mockReturnValue({
-      data: {
-        id: 'trip-123',
-        name: 'Japan',
-        events: [
-          {
-            id: 's1',
-            type: 'STAY',
-            title: 'Tokyo Hotel',
-            startTime: '2026-10-01T15:00:00Z',
-            endTime: '2026-10-03T11:00:00Z',
-          },
-          {
-            id: 's2',
-            type: 'STAY',
-            title: 'Osaka Hotel',
-            startTime: '2026-10-05T15:00:00Z',
-            endTime: '2026-10-07T11:00:00Z',
-          },
-          { id: 'a1', type: 'ACTIVITY', title: 'Sushi', startTime: '2026-10-02T12:00:00Z' },
-        ],
-      },
+      data: mockTrip,
       isLoading: false,
     });
 
@@ -50,11 +55,11 @@ describe('TripDetail Page', () => {
       </QueryClientProvider>,
     );
 
-    // Verify both hotels exist
-    expect(screen.getByText('Tokyo Hotel')).toBeInTheDocument();
-    expect(screen.getByText('Osaka Hotel')).toBeInTheDocument();
+    // Verify first day exists
+    expect(screen.getByText(/May 1, 2026/i)).toBeInTheDocument();
 
-    // Verify the "Stay Not Assigned" alert exists for the gap
-    expect(screen.getAllByText(/Stay Not Assigned/i).length).toBeGreaterThan(0);
+    // Verify stays exist as badges
+    expect(screen.getAllByText(/Tokyo Hotel/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Osaka Hotel/i).length).toBeGreaterThan(0);
   });
 });

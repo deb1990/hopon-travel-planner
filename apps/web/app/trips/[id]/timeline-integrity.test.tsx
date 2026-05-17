@@ -13,45 +13,47 @@ vi.mock('next/navigation', () => ({
 
 const queryClient = new QueryClient();
 
-describe('Timeline Section-by-Section Integrity', () => {
+describe('Timeline Day-Centric Integrity', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it('should render the timeline sections in strict chronological order with all variations', async () => {
+  it('should render days and transition stays correctly', async () => {
     // SCENARIO:
-    // Trip: June 01 to June 11 (11 Days)
-    // Stay 1: June 03 to June 05 (Tokyo)
-    // Stay 2: June 08 to June 10 (Osaka)
-    // Results in:
-    // 1. Ghost (Jun 1-3)
-    // 2. Base (Jun 3-5)
-    // 3. Ghost (Jun 5-8)
-    // 4. Base (Jun 8-10)
-    // 5. Ghost (Jun 10-11)
+    // Trip: June 18 to June 20
+    // Stay 1: Hotel A (18-19)
+    // Stay 2: Hotel B (19-20)
 
     (useTrip as any).mockReturnValue({
       data: {
         id: 'trip-integrity',
-        name: 'Section Test',
-        startDate: '2026-06-01T00:00:00Z',
-        endDate: '2026-06-11T00:00:00Z',
+        name: 'Day-Centric Test',
+        startDate: '2026-06-18T00:00:00Z',
+        endDate: '2026-06-20T00:00:00Z',
         events: [
           {
             id: 's1',
             type: 'STAY',
-            title: 'Tokyo Hotel',
-            startTime: '2026-06-03T15:00:00Z',
-            endTime: '2026-06-05T11:00:00Z',
+            title: 'Hotel A',
+            startTime: '2026-06-18T15:00:00Z',
+            endTime: '2026-06-19T11:00:00Z',
+            isLocked: false,
           },
           {
             id: 's2',
             type: 'STAY',
-            title: 'Osaka Hotel',
-            startTime: '2026-06-08T15:00:00Z',
-            endTime: '2026-06-10T11:00:00Z',
+            title: 'Hotel B',
+            startTime: '2026-06-19T15:00:00Z',
+            endTime: '2026-06-20T11:00:00Z',
+            isLocked: false,
           },
-          { id: 'a1', type: 'ACTIVITY', title: 'Museum', startTime: '2026-06-04T10:00:00Z' },
+          {
+            id: 'a1',
+            type: 'ACTIVITY',
+            title: 'Museum',
+            startTime: '2026-06-19T12:00:00Z',
+            isLocked: false,
+          },
         ],
       },
       isLoading: false,
@@ -63,15 +65,16 @@ describe('Timeline Section-by-Section Integrity', () => {
       </QueryClientProvider>,
     );
 
-    // VERIFY DATA EXISTENCE (Order is handled by the pure chronological sort in the component)
-    expect(screen.getByText('Tokyo Hotel')).toBeInTheDocument();
-    expect(screen.getByText('Osaka Hotel')).toBeInTheDocument();
+    // June 18th
+    expect(screen.getByText(/Jun 18, 2026/i)).toBeInTheDocument();
 
-    // Start Gap
-    expect(screen.getByText(/Jun 1, 2026/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/Stay Not Assigned/i).length).toBeGreaterThan(0);
+    // June 19th (TRANSITION)
+    expect(screen.getByText(/Jun 19, 2026/i)).toBeInTheDocument();
+    // Should see both hotels on June 19th
+    const hotelsOn19th = screen.getAllByText(/Hotel/i);
+    expect(hotelsOn19th.length).toBeGreaterThanOrEqual(2);
 
-    // Nested Activity with times
+    // Activity should be present
     expect(screen.getByText(/Museum/i)).toBeInTheDocument();
   });
 });

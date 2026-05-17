@@ -1,16 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams } from 'next/navigation';
 import { useTrip } from '@/hooks/use-trip';
 import { ItineraryHeader } from '@/components/itinerary/itinerary-header';
-import { ItineraryMetrics } from '@/components/itinerary/itinerary-metrics';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CalendarDays, Sparkles, MapPin, User, ShieldCheck } from 'lucide-react';
-import { groupEventsByBase, identifyItineraryGaps, BaseGroup as BaseGroupType } from '@hopon/core';
+import { CalendarDays, Sparkles, MapPin, ShieldCheck } from 'lucide-react';
+import { groupEventsByDay } from '@hopon/core';
 import { calculateTripDuration } from '@/lib/temporal-utils';
-import { BaseGroup } from '@/components/itinerary/base-group';
-import { GhostGroup } from '@/components/itinerary/ghost-group';
+import { DayCard } from '@/components/itinerary/day-card';
 import dynamic from 'next/dynamic';
 
 const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
@@ -24,26 +22,28 @@ const MapView = dynamic(() => import('@/components/itinerary/map-view'), {
 
 /**
  * Detailed itinerary view for a single trip.
- * High-density studio layout with balanced 1:1 dual-pane and compact inspector metrics.
+ * Uses a Day-Centric model for 100% chronological accuracy.
  */
 export default function TripDetail() {
   const params = useParams();
   const tripId = params['id'] as string;
   const { data: trip, isLoading, error } = useTrip(tripId);
+
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
 
   if (error) return <ErrorView message={(error as Error).message} />;
   if (isLoading || !trip) return <LoadingView />;
 
-  const events = [...(trip.events || [])].sort(
-    (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime(),
-  );
-
+  const events = trip.events || [];
   const startDate = trip.startDate ?? undefined;
   const endDate = trip.endDate ?? undefined;
 
-  const baseGroups = groupEventsByBase(events);
-  const gaps = identifyItineraryGaps(events, startDate, endDate);
+  // Group events by calendar day
+  const dayGroups = useMemo(
+    () => groupEventsByDay(events, startDate, endDate),
+    [events, startDate, endDate],
+  );
+
   const days = calculateTripDuration(startDate, endDate);
 
   return (
@@ -52,7 +52,7 @@ export default function TripDetail() {
 
       <div className="flex-1 max-w-[1600px] mx-auto w-full p-8 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-          {/* Main Timeline Column */}
+          {/* Main Timeline Column (Left - 50%) */}
           <div className="flex flex-col gap-10">
             <div className="flex items-center gap-4 px-2">
               <div className="size-8 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -64,18 +64,26 @@ export default function TripDetail() {
             </div>
 
             <div className="flex flex-col" data-testid="timeline-list">
-              <TimelineList
-                tripId={tripId}
-                baseGroups={baseGroups}
-                gaps={gaps}
-                tripStartDate={startDate}
-                tripEndDate={endDate}
-                onHoverEvent={setSelectedEventId}
-              />
+              {dayGroups.map((day) => (
+                <DayCard
+                  key={day.date}
+                  day={day}
+                  tripId={tripId}
+                  onHoverItem={setSelectedEventId}
+                />
+              ))}
+              {dayGroups.length === 0 && (
+                <div className="relative bg-card rounded-[2.5rem] border shadow-2xl p-32 text-center flex flex-col items-center gap-6 opacity-40">
+                  <Sparkles className="size-8 text-muted-foreground/40 animate-pulse" />
+                  <p className="text-foreground font-black uppercase tracking-[0.2em] text-sm italic">
+                    Zero days detected
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Inspector Panel Sidebar */}
+          {/* Inspector Panel Sidebar (Right - 50%) */}
           <div className="flex flex-col gap-10 pt-4">
             <div className="flex flex-col gap-10 sticky top-24">
               {/* PRIMARY: Journey Visualization */}
@@ -90,29 +98,25 @@ export default function TripDetail() {
 
               {/* SECONDARY: Metrics and Details */}
               <div className="flex flex-col gap-6">
-                <ItineraryMetrics days={days} stays={baseGroups.length} />
-
                 <div className="p-5 rounded-[2.5rem] bg-muted/20 border border-border/50">
                   <h4 className="text-[9px] font-black uppercase text-muted-foreground/50 tracking-[0.3em] mb-4 ml-1">
-                    Workspace
+                    Mission Analytics
                   </h4>
                   <div className="grid grid-cols-2 gap-4">
-                    {/* Author Detail */}
                     <div className="flex items-center gap-3 px-1">
                       <div className="size-7 rounded-xl bg-background border border-border/40 flex items-center justify-center shrink-0">
-                        <User className="size-3 text-muted-foreground/60" />
+                        <CalendarDays className="size-3 text-muted-foreground/60" />
                       </div>
                       <div className="flex flex-col min-w-0">
                         <span className="text-[7px] uppercase font-black text-muted-foreground/40 leading-none mb-0.5">
-                          Author
+                          Duration
                         </span>
-                        <span className="text-[11px] font-bold truncate italic underline decoration-primary/20 underline-offset-2">
-                          Demo User
+                        <span className="text-[11px] font-bold">
+                          {String(days).padStart(2, '0')} Days
                         </span>
                       </div>
                     </div>
 
-                    {/* Visibility Detail */}
                     <div className="flex items-center gap-3 px-1">
                       <div className="size-7 rounded-xl bg-background border border-border/40 flex items-center justify-center shrink-0">
                         <ShieldCheck className="size-3 text-primary/60" />
@@ -134,71 +138,6 @@ export default function TripDetail() {
         </div>
       </div>
     </main>
-  );
-}
-
-function TimelineList({
-  tripId,
-  baseGroups,
-  gaps,
-  tripStartDate,
-  tripEndDate,
-  onHoverEvent,
-}: {
-  tripId: string;
-  baseGroups: BaseGroupType[];
-  gaps: { startTime: string; endTime: string; numDays: number }[];
-  tripStartDate?: string;
-  tripEndDate?: string;
-  onHoverEvent: (id: string | null) => void;
-}) {
-  if (baseGroups.length === 0 && gaps.length === 0) {
-    return (
-      <div className="relative bg-card rounded-[2.5rem] border shadow-2xl p-32 text-center flex flex-col items-center gap-6 opacity-40">
-        <Sparkles className="size-8 text-muted-foreground/40 animate-pulse" />
-        <p className="text-foreground font-black uppercase tracking-[0.2em] text-sm italic">
-          Empty Itinerary
-        </p>
-      </div>
-    );
-  }
-
-  const startGap = tripStartDate ? gaps.find((g) => g.startTime === tripStartDate) : null;
-  const endGap = tripEndDate ? gaps.find((g) => g.endTime === tripEndDate) : null;
-
-  return (
-    <div className="flex flex-col gap-2">
-      {startGap && (
-        <GhostGroup tripId={tripId} startTime={startGap.startTime} numDays={startGap.numDays} />
-      )}
-
-      {baseGroups.map((group) => {
-        const gapAfter = gaps.find(
-          (g) => g.startTime === group.stay.endTime && g !== startGap && g !== endGap,
-        );
-        return (
-          <React.Fragment key={group.stay.id}>
-            <div
-              onMouseEnter={() => onHoverEvent(group.stay.id)}
-              onMouseLeave={() => onHoverEvent(null)}
-            >
-              <BaseGroup stay={group.stay} items={group.items} onHoverItem={onHoverEvent} />
-            </div>
-            {gapAfter && (
-              <GhostGroup
-                tripId={tripId}
-                startTime={gapAfter.startTime}
-                numDays={gapAfter.numDays}
-              />
-            )}
-          </React.Fragment>
-        );
-      })}
-
-      {endGap && endGap !== startGap && (
-        <GhostGroup tripId={tripId} startTime={endGap.startTime} numDays={endGap.numDays} />
-      )}
-    </div>
   );
 }
 
