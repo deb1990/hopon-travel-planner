@@ -22,3 +22,22 @@
 [browser] Uncaught Error: Map container is being reused by another instance
     at MapContainerComponent (<anonymous>)
  GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 61ms (next.js: 18ms, application-code: 43ms)
+✓ Compiled in 25ms
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'appendChild')
+    at MapView (components/itinerary/map-view.tsx:74:9)
+    at TripDetail (app/trips/[id]/page.tsx:86:20)
+  72 |         zoomControl={false}
+  73 |       >
+> 74 |         <TileLayer
+     |         ^
+  75 |           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreet...
+  76 |           url={tileUrl}
+  77 |         />
+[browser] Uncaught Error: Map container is being reused by another instance
+    at MapContainerComponent (<anonymous>)
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 36ms
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template). 
+    at Set.forEach (<anonymous>) (<anonymous>)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 93ms (next.js: 18ms, application-code: 75ms)
+ GET /trips/e8db13bf-d508-4fbe-9861-f2914af5edde 200 in 65ms (next.js: 11ms, application-code: 54ms)
