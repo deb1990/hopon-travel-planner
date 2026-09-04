@@ -11,12 +11,14 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "prepare": "husky || true"
   },
+  "dependencies": {
+    "typescript": "^5.0.0"
+  },
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "oxlint": "^1.62.0",
     "prettier": "^3.8.3",
-    "typescript": "^5.0.0",
     "vitest": "^1.6.1"
   }
 }
