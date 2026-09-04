@@ -3,5 +3,11 @@
   "compilerOptions": {
     "outDir": "./dist"
   },
-  "include": ["src/**/*", "../../packages/core/src/**/*"]
+  "include": ["src/**/*", "../../packages/core/src/**/*"],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "../../packages/core/src/**/*.test.ts",
+    "../../packages/core/src/**/*.spec.ts"
+  ]
 }
