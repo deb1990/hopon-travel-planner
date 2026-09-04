@@ -9,10 +9,11 @@
     "test": "npm run test --workspaces",
     "lint": "oxlint . --deny-warnings --deny no-explicit-any --deny require-jsdoc",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
-    "prepare": "husky"
+    "prepare": "is-ci || husky"
   },
   "devDependencies": {
     "husky": "^9.1.7",
+    "is-ci": "^4.1.0",
     "lint-staged": "^16.4.0",
     "oxlint": "^1.62.0",
     "prettier": "^3.8.3",
