@@ -50,18 +50,17 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
   const isTransit = event.type === 'TRANSIT';
   const isCheckInOut = event.type === 'CHECK_IN' || event.type === 'CHECK_OUT';
 
-  const startTimeStr = new Date(event.startTime).toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  });
+  const startDate = new Date(event.startTime);
+  const startTimeStr = `${String(startDate.getUTCHours()).padStart(2, '0')}:${String(
+    startDate.getUTCMinutes(),
+  ).padStart(2, '0')}`;
 
-  const endTimeStr = event.endTime
-    ? new Date(event.endTime).toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-      })
+  const endDate = event.endTime ? new Date(event.endTime) : null;
+  const endTimeStr = endDate
+    ? `${String(endDate.getUTCHours()).padStart(2, '0')}:${String(endDate.getUTCMinutes()).padStart(
+        2,
+        '0',
+      )}`
     : null;
 
   const mapsUrl = getGoogleMapsUrl(event);
@@ -115,15 +114,13 @@ export function ItineraryRow({ event, className }: ItineraryRowProps) {
             className,
           )}
         >
-          {!isStay && (
-            <div className="flex w-24 flex-col font-mono tabular-nums tracking-tighter shrink-0 gap-0.5">
-              <div className="flex items-center gap-1.5 text-[10px] font-black text-foreground">
-                <span>{startTimeStr}</span>
-                {endTimeStr && <ArrowRight className="size-2 text-muted-foreground/40" />}
-                <span className="text-muted-foreground/60">{endTimeStr}</span>
-              </div>
+          <div className="flex w-28 flex-col font-mono tabular-nums tracking-tighter shrink-0 gap-0.5">
+            <div className="flex items-center gap-1.5 text-[10px] font-black text-foreground">
+              <span>{startTimeStr}</span>
+              {endTimeStr && <ArrowRight className="size-2 text-muted-foreground/40" />}
+              {endTimeStr && <span className="text-muted-foreground/60">{endTimeStr}</span>}
             </div>
-          )}
+          </div>
 
           <div className="flex flex-1 flex-col gap-0.5 min-w-0" onClick={() => setEditOpen(true)}>
             <div className="flex items-center gap-3">

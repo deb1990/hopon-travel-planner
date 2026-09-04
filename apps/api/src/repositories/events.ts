@@ -1,4 +1,4 @@
-import { eq, and, or, exists, lt, gt, ne, asc } from 'drizzle-orm';
+import { eq, and, or, exists, asc } from 'drizzle-orm';
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import * as schema from '../db/schema';
 import { itineraryEvents, trips, permissions } from '../db/schema';
@@ -9,23 +9,6 @@ import { getRouteEstimate } from '@hopon/core';
  */
 export class EventRepository {
   constructor(private db: PostgresJsDatabase<typeof schema>) {}
-
-  private async checkStayOverlap(tripId: string, start: Date, end: Date, excludeId?: string) {
-    const existingStays = await this.db
-      .select()
-      .from(itineraryEvents)
-      .where(
-        and(
-          eq(itineraryEvents.tripId, tripId),
-          eq(itineraryEvents.type, 'STAY'),
-          excludeId ? ne(itineraryEvents.id, excludeId) : undefined,
-          lt(itineraryEvents.startTime, end),
-          gt(itineraryEvents.endTime, start),
-        ),
-      );
-
-    return existingStays.length > 0;
-  }
 
   /**
    * Internal helper to recalculate the route for a specific event based on its chronological predecessor.
@@ -76,16 +59,7 @@ export class EventRepository {
    * Creates a new event.
    */
   async create(event: typeof itineraryEvents.$inferInsert) {
-    if (event.type === 'STAY' && event.startTime && event.endTime) {
-      const hasOverlap = await this.checkStayOverlap(
-        event.tripId,
-        new Date(event.startTime),
-        new Date(event.endTime),
-      );
-      if (hasOverlap) {
-        throw new Error('Overlapping accommodation detected for these dates.');
-      }
-    }
+    // Overlap validation removed per user directive for flexible activity/stay scheduling.
 
     const [result] = await this.db.insert(itineraryEvents).values(event).returning();
     if (!result) throw new Error('Failed to create event');
@@ -139,18 +113,7 @@ export class EventRepository {
       .where(eq(itineraryEvents.id, id));
     if (!current) throw new Error('Event not found');
 
-    if ((data.type === 'STAY' || current.type === 'STAY') && (data.startTime || data.endTime)) {
-      const tripId = data.tripId || current.tripId;
-      const newStart = data.startTime ? new Date(data.startTime) : current.startTime;
-      const newEnd = data.endTime ? new Date(data.endTime) : current.endTime;
-
-      if (newEnd) {
-        const hasOverlap = await this.checkStayOverlap(tripId, newStart, newEnd, id);
-        if (hasOverlap) {
-          throw new Error('Update failed: New dates overlap with another stay.');
-        }
-      }
-    }
+    // Overlap validation removed per user directive for flexible activity/stay scheduling.
 
     const [result] = await this.db
       .update(itineraryEvents)

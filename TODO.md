@@ -69,9 +69,7 @@ This file tracks the granular progress of the implementation. Each step follows 
 
 ## Milestone 8: Advanced Logic & Polish (CURRENT)
 
-- [ ] **M8.1: Deep-Clone Logic**
-  - [ ] [TDD] Implement and test trip duplication (Cloning trip + all its events)
-- [ ] **M8.2: Mobile Layout Audit**
+- [ ] **M8.1: Mobile Layout Audit**
   - [ ] Optimize density for small-screen viewports
-- [ ] **M8.3: Navigation External Links**
+- [ ] **M8.2: Navigation External Links**
   - [ ] Add "Open in Google Maps" deep-links to itinerary rows
